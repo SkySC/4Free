@@ -10,7 +10,7 @@ def eigene_inserate_handler(handler_input):
     artikel_match_counter = 0
     for document in eigene_artikel:
         artikel_match_counter += 1
-        speech_text += f'{artikel_match_counter}. Treffer: '
+        speech_text += f'{artikel_match_counter}. Artikel: '
         keys = list(document.keys())
         for key in keys:
             speech_text += f'{key}: {str(document[key])}'
