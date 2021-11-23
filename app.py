@@ -10,6 +10,7 @@ from flask_ask_sdk.skill_adapter import SkillAdapter
 import Database
 import EntwicklerInfoIntent
 import EigeneInserateIntent
+import RadiusEinstellenIntent
 
 # logging.basicConfig(fiilename='logfile.log', level=logging.ERROR)
 
@@ -136,8 +137,13 @@ def entwickler_info_handler(handler_input) -> Response:
 
 
 @sb.request_handler(can_handle_func=is_intent_name('EigeneInserateIntent'))
-def entwickler_info_handler(handler_input) -> Response:
+def eigene_inserate_handler(handler_input) -> Response:
     return EigeneInserateIntent.eigene_inserate_handler(handler_input)
+
+
+@sb.request_handler(can_handle_func=is_intent_name('RadiusEinstellenIntent'))
+def radius_einstellen_handler(handler_input) -> Response:
+    return RadiusEinstellenIntent.radius_einstellen_handler(handler_input)
 
 
 skill_adapter = SkillAdapter(skill=sb.create(), skill_id=1, app=app)
