@@ -48,5 +48,4 @@ class MongoDB:
 
     @staticmethod
     def benutzer_get_umkreis(uid: str) -> int | None:
-        return \
-            MongoDB.get_db_instance()['benutzer_einstellungen'].find_one({'uid': uid}, {'_id': 0, 'uid': 0})['radius']
+        return MongoDB.get_db_instance()['benutzer_einstellungen'].find_one({'uid': uid})['radius']
