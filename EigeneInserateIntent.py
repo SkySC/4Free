@@ -1,11 +1,12 @@
 import Database
 
+from Benutzer import AmazonBenutzer
+
 
 def eigene_inserate_handler(handler_input):
     """Eigene Inserate ausgeben"""
-    tmp_uid = 'u1234'
     speech_text = ''
-    eigene_artikel = Database.MongoDB.get_eigene_inserate(tmp_uid)
+    eigene_artikel = Database.MongoDB.get_eigene_inserate(AmazonBenutzer.get_benutzer_uid())
 
     artikel_match_counter = 0
     for document in eigene_artikel:

@@ -44,8 +44,13 @@ class MongoDB:
         if benutzer_hat_eintrag:
             db_benutzer_einstellungen.update_one({'uid': uid}, {'$set': {'radius': radius}})
         else:
-            db_benutzer_einstellungen.insert_one({'uid': uid}, {'radius': radius})
+            db_benutzer_einstellungen.insert_one({'uid': uid, 'radius': radius})
 
     @staticmethod
     def benutzer_get_umkreis(uid: str) -> int | None:
-        return MongoDB.get_db_instance()['benutzer_einstellungen'].find_one({'uid': uid})['radius']
+        benutzer_einstellungen = MongoDB.get_db_instance()['benutzer_einstellungen'].find_one({'uid': uid})
+        if benutzer_einstellungen is None:
+            return None
+        else:
+            return benutzer_einstellungen['radius']
+

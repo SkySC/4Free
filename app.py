@@ -11,6 +11,7 @@ import Database
 import EntwicklerInfoIntent
 import EigeneInserateIntent
 import RadiusEinstellenIntent
+import AccountLinking
 
 # logging.basicConfig(fiilename='logfile.log', level=logging.ERROR)
 
@@ -19,6 +20,7 @@ app = Flask(__name__)
 sb = SkillBuilder()
 
 db = Database.MongoDB()
+
 
 """
 Response Handler & Intent Handler im Decorator-Style
@@ -35,12 +37,15 @@ Response Handler & Intent Handler im Decorator-Style
 def launch_request_handler(handler_input) -> Response:
     """Handler for Skill launch."""
     speech_text = 'Willkommen bei For Free!'
+    return AccountLinking.benutzer_authorisieren(handler_input)
 
+"""
     return (
         handler_input.response_builder.speak(speech_text).set_card(
             SimpleCard(speech_text)
         ).set_should_end_session(False).response
     )
+"""
 
 
 @sb.request_handler(can_handle_func=is_intent_name("AMAZON.HelpIntent"))
@@ -96,33 +101,6 @@ def all_exception_handler(handler_input, exception) -> Response:
     speech_text = "Tut mir Leid, es gab leider ein unerwartetes Problem. Versuche es bitte erneut!"
 
     return handler_input.response_builder.speak(speech_text).response
-
-
-# class StoreNameRequestHandler(AbstractRequestHandler):
-#    """Handler for Skill Launch."""
-#
-#    def can_handle(self, handler_input):
-#        # type: (HandlerInput) -> bool
-#        return is_intent_name("StoreName")(handler_input)
-#
-#    def handle(self, handler_input):
-#        # type: (HandlerInput) -> Response
-#
-#        slots = handler_input.request_envelope.request.intent.slots
-#        name = slots["name"].value
-#
-#        nameDoc = {
-#            'name': name
-#        }
-#
-#        db.names.insert(nameDoc)
-#
-#        speech_text = "Der Name wurde gespeichert."
-#
-#        handler_input.response_builder.speak(speech_text).set_card(
-#            SimpleCard("Name gespeichert", speech_text)).set_should_end_session(
-#            False)
-#        return handler_input.response_builder.response
 
 
 """
