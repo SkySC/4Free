@@ -26,7 +26,7 @@ class MongoDB:
         return MongoDB.db_instance
 
     @staticmethod
-    def get_eigene_inserate(uid: str) -> pymongo.cursor.Cursor:
+    def get_eigene_inserate(uid: str) -> pymongo.cursor.Cursor | None:
         # UID gets replaced by the UID of the users Amazon Account
         return MongoDB.get_db_instance()['eigene_inserate'].find({'uid': uid}, {'_id': 0, 'uid': 0})
 

@@ -1,4 +1,5 @@
 import requests
+import Database
 
 
 class AmazonBenutzer:
@@ -19,7 +20,11 @@ class AmazonBenutzer:
 
     @staticmethod
     def pruefe_benutzer_eintrag_existiert() -> bool:
-        pass
+        if Database.MongoDB.get_eigene_inserate(AmazonBenutzer.get_benutzer_uid()) is None \
+                and Database.MongoDB.benutzer_hat_einstellungen_eintrag(AmazonBenutzer.get_benutzer_uid()) is None:
+            return False
+        else:
+            return True
 
     @staticmethod
     def get_benutzer_namen() -> str:
