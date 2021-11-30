@@ -5,7 +5,6 @@ import requests
 import Database
 import datetime
 
-from Exceptions import BenutzerEintragExistiertNichtException
 
 # Logger einrichten für aktuelles Modul
 logger = logging.getLogger(__name__)
