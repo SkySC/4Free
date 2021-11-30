@@ -1,4 +1,7 @@
+import json
 import logging
+import random
+import sys
 
 from ask_sdk_core.skill_builder import SkillBuilder
 from ask_sdk_core.utils import is_request_type, is_intent_name
@@ -8,12 +11,16 @@ from flask import Flask
 from flask_ask_sdk.skill_adapter import SkillAdapter
 
 import Database
-import EntwicklerInfoIntent
-import EigeneInserateIntent
-import RadiusEinstellenIntent
-import AccountLinking
 
-# logging.basicConfig(fiilename='logfile.log', level=logging.ERROR)
+from EntwicklerInfoIntent import entwickler_info_handler
+from EigeneInserateIntent import eigene_inserate_handler
+from RadiusEinstellenIntent import radius_einstellen_handler
+from AbfrageAnmeldezeitpunktIntent import abfrage_anmeldezeitpunkt_handler
+from AccountLinking import benutzer_authorisieren
+
+# Logger einrichten für aktuelles Modul
+logger = logging.getLogger(__name__)
+logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
 app = Flask(__name__)
 
@@ -36,16 +43,14 @@ Response Handler & Intent Handler im Decorator-Style
 @sb.request_handler(can_handle_func=is_request_type('LaunchRequest'))
 def launch_request_handler(handler_input) -> Response:
     """Handler for Skill launch."""
-    speech_text = 'Willkommen bei For Free!'
-    return AccountLinking.benutzer_authorisieren(handler_input)
-
-"""
-    return (
-        handler_input.response_builder.speak(speech_text).set_card(
-            SimpleCard(speech_text)
-        ).set_should_end_session(False).response
-    )
-"""
+    # Session-Attribute laden & Ausgeben
+    # session_attribute = handler_input.attributes_manager.session_attributes
+    # logger.info(f'{session_attribute=}')
+    # Sprachstrings für deutsche Sprache laden
+    sprach_prompts = handler_input.attributes_manager.request_attributes['_']
+    logging.info(f'{sprach_prompts=}')
+    speech_text = random.choice(sprach_prompts['ONBOARDING_ERLEDIGT_BEGRUESSUNG'])
+    return benutzer_authorisieren(handler_input).response
 
 
 @sb.request_handler(can_handle_func=is_intent_name("AMAZON.HelpIntent"))
@@ -104,24 +109,48 @@ def all_exception_handler(handler_input, exception) -> Response:
 
 
 """
-Custom Intent Handler in Decorator-Style
+Eigene Intent-Handler im Decorator-Style
 - EntwicklerInfoIntent
 """
 
 
 @sb.request_handler(can_handle_func=is_intent_name('EntwicklerInfoIntent'))
-def entwickler_info_handler(handler_input) -> Response:
-    return EntwicklerInfoIntent.entwickler_info_handler(handler_input)
+def entwickler_info_handler_wrapper(handler_input) -> Response:
+    return entwickler_info_handler(handler_input)
 
 
 @sb.request_handler(can_handle_func=is_intent_name('EigeneInserateIntent'))
-def eigene_inserate_handler(handler_input) -> Response:
-    return EigeneInserateIntent.eigene_inserate_handler(handler_input)
+def eigene_inserate_handler_wrapper(handler_input) -> Response:
+    return eigene_inserate_handler(handler_input)
 
 
 @sb.request_handler(can_handle_func=is_intent_name('RadiusEinstellenIntent'))
-def radius_einstellen_handler(handler_input) -> Response:
-    return RadiusEinstellenIntent.radius_einstellen_handler(handler_input)
+def radius_einstellen_handler_wrapper(handler_input) -> Response:
+    return radius_einstellen_handler(handler_input)
+
+
+@sb.request_handler(can_handle_func=is_intent_name('AbfrageAnmeldezeitpunktIntent'))
+def abfrage_anmeldezeitpunkt_handler_wrapper(handler_input) -> Response:
+    return abfrage_anmeldezeitpunkt_handler(handler_input)
+
+
+"""
+Eigene Interceptoren, um Vor- & Nachbedingungen zu schaffen
+- localization_request_interceptor
+"""
+
+
+@sb.global_request_interceptor()
+def localization_request_interceptor(handler_input):
+    logger.info('Localization Interceptor wird ausgeführt...')
+
+    try:
+        with open('languages/de-DE.json') as sprach_prompt_daten:
+            sprach_prompts = json.load(sprach_prompt_daten)
+            handler_input.attributes_manager.request_attributes['_'] = sprach_prompts
+    except FileNotFoundError as e:
+        logger.warning(f'Alexa-Sprachbefehle konnten nicht geladen werden: {e}')
+        exit()
 
 
 skill_adapter = SkillAdapter(skill=sb.create(), skill_id=1, app=app)

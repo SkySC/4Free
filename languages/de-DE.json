@@ -1,0 +1,11 @@
+{
+  "SKILL_NAME": "For Free",
+  "ONBOARDING_ERLEDIGT_BEGRUESSUNG": [
+    "Willkommen bei For Free!"
+  ],
+  "BENUTZER_LINKED_BEGRUESSUNG": [
+    "Hallo {}, willkommen bei For Free!"
+  ],
+  "BENUTZER_LINKING_ANWEISUNGEN": "Bitte verwende die Alexa Companion App, um deinen Amazon Benutzer mit For Free zu verknüpfen. Danach kannst du mich erneut aufrufen und es kann weitergehen.",
+  "BENUTZER_LINKING_DATUM": "Du hast deinen Benutzer das erste Mal am {} mit For Free verbunden."
+}

@@ -53,4 +53,3 @@ class MongoDB:
             return None
         else:
             return benutzer_einstellungen['radius']
-

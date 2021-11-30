@@ -1,852 +1,942 @@
 {
-  "interactionModel": {
-    "languageModel": {
-      "invocationName": "for free",
-      "intents": [
-        {
-          "name": "AMAZON.CancelIntent",
-          "samples": [
-            "Abbruch"
-          ]
-        },
-        {
-          "name": "AMAZON.HelpIntent",
-          "samples": [
-            "For Free. Ich komme nicht weiter",
-            "For Free. Wie funktioniert das",
-            "For Free. Ich möchte Hilfe",
-            "For Free. Öffne die Hilfeseite",
-            "For Free. Hilf mir",
-            "For Free. Ich benötige Hilfe",
-            "For Free. Ich brauche Hilfe",
-            "For Free. Öffne die Hilfe",
-            "For Free. Hilfe",
-            "For Free. Wie geht das",
-            "Wie geht das",
-            "Ich komme nicht weiter",
-            "Wie funktioniert das",
-            "Ich möchte Hilfe",
-            "Ich benötige Hilfe",
-            "Hilfeseite öffnen",
-            "Öffne die Hilfeseite",
-            "Hilf mir",
-            "Ich brauche Hilfe",
-            "Öffne die Hilfe",
-            "Hilfe"
-          ]
-        },
-        {
-          "name": "AMAZON.StopIntent",
-          "samples": [
-            "For Free. Ich bin für heute durch",
-            "For Free. Ich bin fertig für heute",
-            "For Free. Genug für heute",
-            "For Free. Ich bin durch",
-            "For Free. Ich bin fertig",
-            "For Free. Bis dann",
-            "For Free. Mach's gut",
-            "For Free. Auf Wiedersehen",
-            "For Free. Schließe dich",
-            "For Free. Schließen",
-            "For Free. Beende dich",
-            "For Free. Beenden",
-            "Ich bin für heute durch",
-            "Ich bin fertig für heute",
-            "Genug für heute",
-            "Ich bin durch",
-            "Ich bin fertig",
-            "Bis dann",
-            "Mach's gut",
-            "Auf Wiedersehen",
-            "Schließe dich",
-            "Schließen",
-            "Beenden",
-            "Beende dich"
-          ]
-        },
-        {
-          "name": "AMAZON.NavigateHomeIntent",
-          "samples": [
-            "Navigiere zum Start"
-          ]
-        },
-        {
-          "name": "AMAZON.FallbackIntent",
-          "samples": []
-        },
-        {
-          "name": "EinstellungenOeffnenIntent",
-          "slots": [],
-          "samples": [
-            "For Free. Zeig meine Einstellungen",
-            "For Free. Zeige meine Einstellungen",
-            "For Free. Ruf meine Einstellungen auf",
-            "For Free. Rufe meine Einstellungen auf",
-            "For Free. Öffne meine Einstellungen",
-            "For Free. Öffne die Einstellungen",
-            "For Free. Einstellungen öffnen",
-            "For Free. Navigiere zu den Einstellungen",
-            "For Free. Einstellungen aufrufen",
-            "Ruf meine Einstellungen auf",
-            "Zeig meine Einstellungen",
-            "Zeige meine Einstellungen",
-            "Rufe meine Einstellungen auf",
-            "Navigiere zu meinen Einstellungen",
-            "Öffne meine Einstellungen",
-            "Öffne die Einstellungen",
-            "Navigiere zu den Einstellungen",
-            "Einstellungen aufrufen",
-            "Einstellungen",
-            "Einstellungen öffnen"
-          ]
-        },
-        {
-          "name": "SucheStartenIntent",
-          "slots": [],
-          "samples": [
-            "Ich möchte einen Artikel suchen"
-          ]
-        },
-        {
-          "name": "InserentKontaktierenIntent",
-          "slots": [],
-          "samples": [
-            "Ich habe Interesse an dem Artikel"
-          ]
-        },
-        {
-          "name": "FavorisierenIntent",
-          "slots": [],
-          "samples": [
-            "Merke dir den Artikel"
-          ]
-        },
-        {
-          "name": "EntwicklerInfoIntent",
-          "slots": [],
-          "samples": [
-            "Wer hat dich entwickelt"
-          ]
-        },
-        {
-          "name": "EigeneInserateIntent",
-          "slots": [],
-          "samples": [
-            "Welche Artikel biete ich derzeit an"
-          ]
-        },
-        {
-          "name": "AbfrageAnzahlKauefeIntent",
-          "slots": [],
-          "samples": [
-            "Wie viele Artikel habe ich bereits erworben"
-          ]
-        },
-        {
-          "name": "AbfrageAnzahlInserateIntent",
-          "slots": [],
-          "samples": [
-            "Wie viele Anzeigen habe ich geschaltet"
-          ]
-        },
-        {
-          "name": "AbfrageAnzahlSchenkungenIntent",
-          "slots": [],
-          "samples": [
-            "Wie viele Artikel habe ich verschenkt"
-          ]
-        },
-        {
-          "name": "AbfrageAnmeldezeitpunktIntent",
-          "slots": [],
-          "samples": [
-            "Wann habe ich das erste Mal For Free verwendet"
-          ]
-        },
-        {
-          "name": "InseratErzeugenIntent",
-          "slots": [
-            {
-              "name": "form",
-              "type": "ARTIKEL_Form",
-              "samples": [
-                "Der Artikel ist {form}"
-              ]
-            },
-            {
-              "name": "material",
-              "type": "ARTIKEL_Material",
-              "samples": [
-                "Der Artikel ist aus {material}"
-              ]
-            },
-            {
-              "name": "abholung",
-              "type": "ARTIKEL_Bestaetigung",
-              "samples": [
-                "{abholung}"
-              ]
-            },
-            {
-              "name": "farbe",
-              "type": "AMAZON.Color",
-              "samples": [
-                "Der Artikel ist {farbe}"
-              ]
-            },
-            {
-              "name": "zustand",
-              "type": "ARTIKEL_Zustand",
-              "samples": [
-                "Der Artikel ist in einem {zustand} Zustand"
-              ]
-            },
-            {
-              "name": "hersteller",
-              "type": "ARTIKEL_Hersteller",
-              "samples": [
-                "Der Hersteller ist {hersteller}"
-              ]
-            },
-            {
-              "name": "einArtikel",
-              "type": "ARTIKEL_Ein_Artikel",
-              "samples": [
-                "Ich biete ein {einArtikel} an"
-              ]
-            },
-            {
-              "name": "eineArtikel",
-              "type": "ARTIKEL_Eine_Artikel",
-              "samples": [
-                "Ich biete eine {eineArtikel} an"
-              ]
-            },
-            {
-              "name": "einenArtikel",
-              "type": "ARTIKEL_Einen_Artikel",
-              "samples": [
-                "Ich biete einen  {einenArtikel} an"
-              ]
-            },
-            {
-              "name": "hoehe",
-              "type": "AMAZON.NUMBER",
-              "samples": [
-                "Der Artikel ist {hoehe} zentimeter hoch"
-              ]
-            },
-            {
-              "name": "breite",
-              "type": "AMAZON.NUMBER",
-              "samples": [
-                "Der Artikel ist {breite} zentimeter breit"
-              ]
-            },
-            {
-              "name": "laenge",
-              "type": "AMAZON.NUMBER",
-              "samples": [
-                "Der Artikel ist {laenge} zentimeter lang"
-              ]
-            },
-            {
-              "name": "stueckzahl",
-              "type": "AMAZON.NUMBER",
-              "samples": [
-                "Ich biete {stueckzahl} Stück an"
-              ]
-            },
-            {
-              "name": "anmerkungen",
-              "type": "AMAZON.SearchQuery",
-              "samples": [
-                "{anmerkungen}"
-              ]
-            }
-          ],
-          "samples": [
-            "Ich habe etwas für dich",
-            "Ich möchte etwas verschenken",
-            "Ich habe etwas zu verschenken",
-            "Ich habe was für dich",
-            "Ich möchte was verschenken",
-            "Ich habe was zu verschenken",
-            "Ich möchte einen Gegenstand verschenken",
-            "Ich habe einen Gegenstand zu verschenken",
-            "Einen Gegenstand verschenken",
-            "Ich möchte eine {eineArtikel} verschenken",
-            "Ich habe eine {eineArtikel} zu verschenken",
-            "Ich will eine {eineArtikel} verschenken",
-            "Ich möchte einen {einenArtikel} verschenken",
-            "Ich habe einen {einenArtikel} zu verschenken",
-            "Ich will einen {einenArtikel} verschenken",
-            "Ich möchte ein {einArtikel} verschenken",
-            "Ich habe ein {einArtikel} zu verschenken",
-            "Ich will ein {einArtikel} verschenken",
-            "Ich will etwas verschenken",
-            "Ich will was verschenken",
-            "Ich will einen Gegenstand verschenken",
-            "Ich will eine Sache verschenken",
-            "Es gibt bei mir etwas zu verschenken",
-            "Ich möchte Anderen eine Freude bereiten",
-            "Ich will Anderen eine Freude bereiten",
-            "Ich habe Geschenke",
-            "Ich habe Geschenke für dich",
-            "Verschenken",
-            "Ich habe einen Artikel zu verschenken",
-            "Ich möchte einen Artikel verschenken",
-            "Es gibt bei mir einen Artikel zu verschenken",
-            "Ich will einen Artikel verschenken",
-            "Ich habe einen Artikel für dich",
-            "Ich habe einen Gegenstand für dich",
-            "Ich habe eine Sache für dich",
-            "Ich möchte jemand anderem eine Sache schenken",
-            "Ich möchte jemandem eine Sache schenken",
-            "Ich möchte jemand anderem einen Gegenstand schenken",
-            "Ich möchte jemand anderem einen Artikel schenken",
-            "Ich möchte jemandem einen Artikel schenken",
-            "Ich möchte jemandem einen Gegenstand schenken",
-            "Einen Artikel verschenken",
-            "Eine Sache verschenken",
-            "For Free. Ich habe etwas für dich",
-            "For Free. Ich habe etwas zu verschenken",
-            "For Free. Ich habe was für dich",
-            "For Free. Ich habe was zu verschenken",
-            "For Free. Ich habe einen Gegenstand zu verschenken",
-            "For Free. Ich habe eine {eineArtikel} zu verschenken",
-            "For Free. Ich habe einen {einenArtikel} zu verschenken",
-            "For Free. Ich habe ein {einArtikel} zu verschenken",
-            "For Free. Ich habe Geschenke",
-            "For Free. Ich habe Geschenke für dich",
-            "For Free. Ich habe einen Artikel zu verschenken",
-            "For Free. Ich habe einen Artikel für dich",
-            "For Free. Ich habe einen Gegenstand für dich",
-            "For Free. Ich habe eine Sache für dich",
-            "For Free. Ich will eine {eineArtikel} verschenken",
-            "For Free. Ich will einen {einenArtikel} verschenken",
-            "For Free. Ich will ein {einArtikel} verschenken",
-            "For Free. Ich will etwas verschenken",
-            "For Free. Ich will was verschenken",
-            "For Free. Ich will einen Gegenstand verschenken",
-            "For Free. Ich will eine Sache verschenken",
-            "For Free. Ich will Anderen eine Freude bereiten",
-            "For Free. Ich will einen Artikel verschenken",
-            "For Free. Ich möchte etwas verschenken",
-            "For Free. Ich möchte was verschenken",
-            "For Free. Ich möchte einen Gegenstand verschenken",
-            "For Free. Ich möchte eine {eineArtikel} verschenken",
-            "For Free. Ich möchte einen {einenArtikel} verschenken",
-            "For Free. Ich möchte ein {einArtikel} verschenken",
-            "For Free. Ich möchte Anderen eine Freude bereiten",
-            "For Free. Ich möchte verschenken",
-            "For Free. Ich möchte einen Artikel verschenken",
-            "For Free. Ich möchte jemand anderem eine Sache schenken",
-            "For Free. Ich möchte jemandem eine Sache schenken",
-            "For Free. Ich möchte jemand anderem einen Gegenstand schenken",
-            "For Free. Ich möchte jemand anderem einen Artikel schenken",
-            "For Free. Ich möchte jemandem einen Artikel schenken",
-            "For Free. Ich möchte jemandem einen Gegenstand schenken",
-            "For Free. Ich möchte eine Sache verschenken",
-            "For Free. Es gibt bei mir einen Gegenstand zu verschenken",
-            "For Free. Es gibt bei mir etwas zu verschenken",
-            "For Free. Es gibt bei mir was zu verschenken",
-            "For Free. Es gibt bei mir einen Artikel zu verschenken",
-            "For Free. Es gibt bei mir eine Sache zu verschenken",
-            "For Free. Es gibt einen Gegenstand zu verschenken",
-            "For Free. Es gibt etwas zu verschenken",
-            "For Free. Es gibt was zu verschenken",
-            "For Free. Es gibt einen Artikel zu verschenken",
-            "For Free. Es gibt eine Sache zu verschenken"
-          ]
-        },
-        {
-          "name": "BenutzerAnmeldenIntent",
-          "slots": [
-            {
-              "name": "id",
-              "type": "BENUTZER_FUENF_STELLIGE_NUMMER",
-              "samples": [
-                "{id}"
-              ]
-            },
-            {
-              "name": "passwort",
-              "type": "BENUTZER_ZAHLEN_UND_KLEINBUCHSTABEN",
-              "samples": [
-                "{passwort}"
-              ]
-            }
-          ],
-          "samples": [
-            "Einloggen",
-            "Ich möchte mich einloggen"
-          ]
-        }
-      ],
-      "types": [
-        {
-          "name": "ARTIKEL_Eine_Artikel",
-          "values": [
-            {
-              "name": {
-                "value": "Kerze"
-              }
-            }
-          ]
-        },
-        {
-          "name": "ARTIKEL_Ein_Artikel",
-          "values": [
-            {
-              "name": {
-                "value": "Saftautomat"
-              }
-            }
-          ]
-        },
-        {
-          "name": "ARTIKEL_Einen_Artikel",
-          "values": [
-            {
-              "name": {
-                "value": "Schrank"
-              }
-            }
-          ]
-        },
-        {
-          "name": "ARTIKEL_Form",
-          "values": [
-            {
-              "name": {
-                "value": "rechteckig"
-              }
-            }
-          ]
-        },
-        {
-          "name": "ARTIKEL_Zustand",
-          "values": [
-            {
-              "name": {
-                "value": "sehr gut"
-              }
-            }
-          ]
-        },
-        {
-          "name": "ARTIKEL_Kategorie",
-          "values": [
-            {
-              "name": {
-                "value": "Technik"
-              }
-            }
-          ]
-        },
-        {
-          "name": "BENUTZER_FUENF_STELLIGE_NUMMER",
-          "values": [
-            {
-              "name": {
-                "value": "12345"
-              }
-            }
-          ]
-        },
-        {
-          "name": "BENUTZER_ZAHLEN_UND_KLEINBUCHSTABEN",
-          "values": [
-            {
-              "name": {
-                "value": "abc123"
-              }
-            }
-          ]
-        },
-        {
-          "name": "ARTIKEL_Material",
-          "values": [
-            {
-              "name": {
-                "value": "Holz"
-              }
-            }
-          ]
-        },
-        {
-          "name": "ARTIKEL_Hersteller",
-          "values": [
-            {
-              "name": {
-                "value": "IKEA"
-              }
-            }
-          ]
-        },
-        {
-          "name": "ARTIKEL_Bestaetigung",
-          "values": [
-            {
-              "name": {
-                "value": "nein"
-              }
-            },
-            {
-              "name": {
-                "value": "ja"
-              }
-            }
-          ]
-        }
-      ]
-    },
-    "dialog": {
-      "intents": [
-        {
-          "name": "InseratErzeugenIntent",
-          "confirmationRequired": true,
-          "prompts": {
-            "confirmation": "Confirm.Intent.167088562670"
-          },
-          "slots": [
-            {
-              "name": "form",
-              "type": "ARTIKEL_Form",
-              "confirmationRequired": false,
-              "elicitationRequired": true,
-              "prompts": {
-                "elicitation": "Elicit.Slot.167088562670.494883029924"
-              }
-            },
-            {
-              "name": "material",
-              "type": "ARTIKEL_Material",
-              "confirmationRequired": false,
-              "elicitationRequired": true,
-              "prompts": {
-                "elicitation": "Elicit.Slot.167088562670.1243103029895"
-              }
-            },
-            {
-              "name": "abholung",
-              "type": "ARTIKEL_Bestaetigung",
-              "confirmationRequired": false,
-              "elicitationRequired": true,
-              "prompts": {
-                "elicitation": "Elicit.Slot.167088562670.1409346292419"
-              }
-            },
-            {
-              "name": "farbe",
-              "type": "AMAZON.Color",
-              "confirmationRequired": false,
-              "elicitationRequired": true,
-              "prompts": {
-                "elicitation": "Elicit.Slot.167088562670.590639906990"
-              }
-            },
-            {
-              "name": "zustand",
-              "type": "ARTIKEL_Zustand",
-              "confirmationRequired": false,
-              "elicitationRequired": true,
-              "prompts": {
-                "elicitation": "Elicit.Slot.167088562670.556712077720"
-              }
-            },
-            {
-              "name": "hersteller",
-              "type": "ARTIKEL_Hersteller",
-              "confirmationRequired": false,
-              "elicitationRequired": true,
-              "prompts": {
-                "elicitation": "Elicit.Slot.167088562670.1399384763448"
-              }
-            },
-            {
-              "name": "einArtikel",
-              "type": "ARTIKEL_Ein_Artikel",
-              "confirmationRequired": false,
-              "elicitationRequired": true,
-              "prompts": {
-                "elicitation": "Elicit.Slot.167088562670.744847671842"
-              }
-            },
-            {
-              "name": "eineArtikel",
-              "type": "ARTIKEL_Eine_Artikel",
-              "confirmationRequired": false,
-              "elicitationRequired": true,
-              "prompts": {
-                "elicitation": "Elicit.Slot.167088562670.266648039209"
-              }
-            },
-            {
-              "name": "einenArtikel",
-              "type": "ARTIKEL_Einen_Artikel",
-              "confirmationRequired": false,
-              "elicitationRequired": true,
-              "prompts": {
-                "elicitation": "Elicit.Slot.167088562670.1577798153125"
-              }
-            },
-            {
-              "name": "hoehe",
-              "type": "AMAZON.NUMBER",
-              "confirmationRequired": false,
-              "elicitationRequired": true,
-              "prompts": {
-                "elicitation": "Elicit.Slot.167088562670.623808636453"
-              }
-            },
-            {
-              "name": "breite",
-              "type": "AMAZON.NUMBER",
-              "confirmationRequired": false,
-              "elicitationRequired": true,
-              "prompts": {
-                "elicitation": "Elicit.Slot.167088562670.1142041027179"
-              }
-            },
-            {
-              "name": "laenge",
-              "type": "AMAZON.NUMBER",
-              "confirmationRequired": false,
-              "elicitationRequired": true,
-              "prompts": {
-                "elicitation": "Elicit.Slot.167088562670.973967840772"
-              }
-            },
-            {
-              "name": "stueckzahl",
-              "type": "AMAZON.NUMBER",
-              "confirmationRequired": false,
-              "elicitationRequired": true,
-              "prompts": {
-                "elicitation": "Elicit.Slot.392550176061.859591506360"
-              },
-              "validations": [
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "for free",
+            "intents": [
                 {
-                  "type": "isGreaterThan",
-                  "prompt": "Slot.Validation.392550176061.859591506360.83472921330",
-                  "value": "0"
+                    "name": "AMAZON.CancelIntent",
+                    "samples": [
+                        "Abbruch"
+                    ]
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": [
+                        "For Free. Ich komme nicht weiter",
+                        "For Free. Wie funktioniert das",
+                        "For Free. Ich möchte Hilfe",
+                        "For Free. Öffne die Hilfeseite",
+                        "For Free. Hilf mir",
+                        "For Free. Ich benötige Hilfe",
+                        "For Free. Ich brauche Hilfe",
+                        "For Free. Öffne die Hilfe",
+                        "For Free. Hilfe",
+                        "For Free. Wie geht das",
+                        "Wie geht das",
+                        "Ich komme nicht weiter",
+                        "Wie funktioniert das",
+                        "Ich möchte Hilfe",
+                        "Ich benötige Hilfe",
+                        "Hilfeseite öffnen",
+                        "Öffne die Hilfeseite",
+                        "Hilf mir",
+                        "Ich brauche Hilfe",
+                        "Öffne die Hilfe",
+                        "Hilfe"
+                    ]
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": [
+                        "For Free. Ich bin für heute durch",
+                        "For Free. Ich bin fertig für heute",
+                        "For Free. Genug für heute",
+                        "For Free. Ich bin durch",
+                        "For Free. Ich bin fertig",
+                        "For Free. Bis dann",
+                        "For Free. Mach's gut",
+                        "For Free. Auf Wiedersehen",
+                        "For Free. Schließe dich",
+                        "For Free. Schließen",
+                        "For Free. Beende dich",
+                        "For Free. Beenden",
+                        "Ich bin für heute durch",
+                        "Ich bin fertig für heute",
+                        "Genug für heute",
+                        "Ich bin durch",
+                        "Ich bin fertig",
+                        "Bis dann",
+                        "Mach's gut",
+                        "Auf Wiedersehen",
+                        "Schließe dich",
+                        "Schließen",
+                        "Beenden",
+                        "Beende dich"
+                    ]
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": [
+                        "Navigiere zum Start"
+                    ]
+                },
+                {
+                    "name": "AMAZON.FallbackIntent",
+                    "samples": []
+                },
+                {
+                    "name": "EinstellungenOeffnenIntent",
+                    "slots": [],
+                    "samples": [
+                        "For Free. Zeig meine Einstellungen",
+                        "For Free. Zeige meine Einstellungen",
+                        "For Free. Ruf meine Einstellungen auf",
+                        "For Free. Rufe meine Einstellungen auf",
+                        "For Free. Öffne meine Einstellungen",
+                        "For Free. Öffne die Einstellungen",
+                        "For Free. Einstellungen öffnen",
+                        "For Free. Navigiere zu den Einstellungen",
+                        "For Free. Einstellungen aufrufen",
+                        "Ruf meine Einstellungen auf",
+                        "Zeig meine Einstellungen",
+                        "Zeige meine Einstellungen",
+                        "Rufe meine Einstellungen auf",
+                        "Navigiere zu meinen Einstellungen",
+                        "Öffne meine Einstellungen",
+                        "Öffne die Einstellungen",
+                        "Navigiere zu den Einstellungen",
+                        "Einstellungen aufrufen",
+                        "Einstellungen",
+                        "Einstellungen öffnen"
+                    ]
+                },
+                {
+                    "name": "SucheStartenIntent",
+                    "slots": [],
+                    "samples": [
+                        "Ich möchte einen Artikel suchen"
+                    ]
+                },
+                {
+                    "name": "InserentKontaktierenIntent",
+                    "slots": [],
+                    "samples": [
+                        "Ich habe Interesse an dem Artikel"
+                    ]
+                },
+                {
+                    "name": "FavorisierenIntent",
+                    "slots": [],
+                    "samples": [
+                        "Merke dir den Artikel"
+                    ]
+                },
+                {
+                    "name": "EntwicklerInfoIntent",
+                    "slots": [],
+                    "samples": [
+                        "Wer hat dich entwickelt"
+                    ]
+                },
+                {
+                    "name": "EigeneInserateIntent",
+                    "slots": [],
+                    "samples": [
+                        "Welche Artikel biete ich derzeit an"
+                    ]
+                },
+                {
+                    "name": "AbfrageAnzahlKauefeIntent",
+                    "slots": [],
+                    "samples": [
+                        "Wie viele Artikel habe ich bereits erworben"
+                    ]
+                },
+                {
+                    "name": "AbfrageAnzahlInserateIntent",
+                    "slots": [],
+                    "samples": [
+                        "Wie viele Anzeigen habe ich geschaltet"
+                    ]
+                },
+                {
+                    "name": "AbfrageAnzahlSchenkungenIntent",
+                    "slots": [],
+                    "samples": [
+                        "Wie viele Artikel habe ich verschenkt"
+                    ]
+                },
+                {
+                    "name": "AbfrageAnmeldezeitpunktIntent",
+                    "slots": [],
+                    "samples": [
+                        "Wann habe ich das erste Mal For Free verwendet"
+                    ]
+                },
+                {
+                    "name": "InseratErzeugenIntent",
+                    "slots": [
+                        {
+                            "name": "form",
+                            "type": "ARTIKEL_Form",
+                            "samples": [
+                                "Der Artikel ist {form}"
+                            ]
+                        },
+                        {
+                            "name": "material",
+                            "type": "ARTIKEL_Material",
+                            "samples": [
+                                "Der Artikel ist aus {material}"
+                            ]
+                        },
+                        {
+                            "name": "abholung",
+                            "type": "ARTIKEL_Bestaetigung",
+                            "samples": [
+                                "{abholung}"
+                            ]
+                        },
+                        {
+                            "name": "farbe",
+                            "type": "AMAZON.Color",
+                            "samples": [
+                                "Der Artikel ist {farbe}"
+                            ]
+                        },
+                        {
+                            "name": "zustand",
+                            "type": "ARTIKEL_Zustand",
+                            "samples": [
+                                "Der Artikel ist in einem {zustand} Zustand"
+                            ]
+                        },
+                        {
+                            "name": "hersteller",
+                            "type": "ARTIKEL_Hersteller",
+                            "samples": [
+                                "Der Hersteller ist {hersteller}"
+                            ]
+                        },
+                        {
+                            "name": "einArtikel",
+                            "type": "ARTIKEL_Ein_Artikel",
+                            "samples": [
+                                "Ich biete ein {einArtikel} an"
+                            ]
+                        },
+                        {
+                            "name": "eineArtikel",
+                            "type": "ARTIKEL_Eine_Artikel",
+                            "samples": [
+                                "Ich biete eine {eineArtikel} an"
+                            ]
+                        },
+                        {
+                            "name": "einenArtikel",
+                            "type": "ARTIKEL_Einen_Artikel",
+                            "samples": [
+                                "Ich biete einen  {einenArtikel} an"
+                            ]
+                        },
+                        {
+                            "name": "hoehe",
+                            "type": "AMAZON.NUMBER",
+                            "samples": [
+                                "Der Artikel ist {hoehe} zentimeter hoch"
+                            ]
+                        },
+                        {
+                            "name": "breite",
+                            "type": "AMAZON.NUMBER",
+                            "samples": [
+                                "Der Artikel ist {breite} zentimeter breit"
+                            ]
+                        },
+                        {
+                            "name": "laenge",
+                            "type": "AMAZON.NUMBER",
+                            "samples": [
+                                "Der Artikel ist {laenge} zentimeter lang"
+                            ]
+                        },
+                        {
+                            "name": "stueckzahl",
+                            "type": "AMAZON.NUMBER",
+                            "samples": [
+                                "Ich biete {stueckzahl} Stück an"
+                            ]
+                        },
+                        {
+                            "name": "anmerkungen",
+                            "type": "AMAZON.SearchQuery",
+                            "samples": [
+                                "{anmerkungen}"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "Ich habe etwas für dich",
+                        "Ich möchte etwas verschenken",
+                        "Ich habe etwas zu verschenken",
+                        "Ich habe was für dich",
+                        "Ich möchte was verschenken",
+                        "Ich habe was zu verschenken",
+                        "Ich möchte einen Gegenstand verschenken",
+                        "Ich habe einen Gegenstand zu verschenken",
+                        "Einen Gegenstand verschenken",
+                        "Ich möchte eine {eineArtikel} verschenken",
+                        "Ich habe eine {eineArtikel} zu verschenken",
+                        "Ich will eine {eineArtikel} verschenken",
+                        "Ich möchte einen {einenArtikel} verschenken",
+                        "Ich habe einen {einenArtikel} zu verschenken",
+                        "Ich will einen {einenArtikel} verschenken",
+                        "Ich möchte ein {einArtikel} verschenken",
+                        "Ich habe ein {einArtikel} zu verschenken",
+                        "Ich will ein {einArtikel} verschenken",
+                        "Ich will etwas verschenken",
+                        "Ich will was verschenken",
+                        "Ich will einen Gegenstand verschenken",
+                        "Ich will eine Sache verschenken",
+                        "Es gibt bei mir etwas zu verschenken",
+                        "Ich möchte Anderen eine Freude bereiten",
+                        "Ich will Anderen eine Freude bereiten",
+                        "Ich habe Geschenke",
+                        "Ich habe Geschenke für dich",
+                        "Verschenken",
+                        "Ich habe einen Artikel zu verschenken",
+                        "Ich möchte einen Artikel verschenken",
+                        "Es gibt bei mir einen Artikel zu verschenken",
+                        "Ich will einen Artikel verschenken",
+                        "Ich habe einen Artikel für dich",
+                        "Ich habe einen Gegenstand für dich",
+                        "Ich habe eine Sache für dich",
+                        "Ich möchte jemand anderem eine Sache schenken",
+                        "Ich möchte jemandem eine Sache schenken",
+                        "Ich möchte jemand anderem einen Gegenstand schenken",
+                        "Ich möchte jemand anderem einen Artikel schenken",
+                        "Ich möchte jemandem einen Artikel schenken",
+                        "Ich möchte jemandem einen Gegenstand schenken",
+                        "Einen Artikel verschenken",
+                        "Eine Sache verschenken",
+                        "For Free. Ich habe etwas für dich",
+                        "For Free. Ich habe etwas zu verschenken",
+                        "For Free. Ich habe was für dich",
+                        "For Free. Ich habe was zu verschenken",
+                        "For Free. Ich habe einen Gegenstand zu verschenken",
+                        "For Free. Ich habe eine {eineArtikel} zu verschenken",
+                        "For Free. Ich habe einen {einenArtikel} zu verschenken",
+                        "For Free. Ich habe ein {einArtikel} zu verschenken",
+                        "For Free. Ich habe Geschenke",
+                        "For Free. Ich habe Geschenke für dich",
+                        "For Free. Ich habe einen Artikel zu verschenken",
+                        "For Free. Ich habe einen Artikel für dich",
+                        "For Free. Ich habe einen Gegenstand für dich",
+                        "For Free. Ich habe eine Sache für dich",
+                        "For Free. Ich will eine {eineArtikel} verschenken",
+                        "For Free. Ich will einen {einenArtikel} verschenken",
+                        "For Free. Ich will ein {einArtikel} verschenken",
+                        "For Free. Ich will etwas verschenken",
+                        "For Free. Ich will was verschenken",
+                        "For Free. Ich will einen Gegenstand verschenken",
+                        "For Free. Ich will eine Sache verschenken",
+                        "For Free. Ich will Anderen eine Freude bereiten",
+                        "For Free. Ich will einen Artikel verschenken",
+                        "For Free. Ich möchte etwas verschenken",
+                        "For Free. Ich möchte was verschenken",
+                        "For Free. Ich möchte einen Gegenstand verschenken",
+                        "For Free. Ich möchte eine {eineArtikel} verschenken",
+                        "For Free. Ich möchte einen {einenArtikel} verschenken",
+                        "For Free. Ich möchte ein {einArtikel} verschenken",
+                        "For Free. Ich möchte Anderen eine Freude bereiten",
+                        "For Free. Ich möchte verschenken",
+                        "For Free. Ich möchte einen Artikel verschenken",
+                        "For Free. Ich möchte jemand anderem eine Sache schenken",
+                        "For Free. Ich möchte jemandem eine Sache schenken",
+                        "For Free. Ich möchte jemand anderem einen Gegenstand schenken",
+                        "For Free. Ich möchte jemand anderem einen Artikel schenken",
+                        "For Free. Ich möchte jemandem einen Artikel schenken",
+                        "For Free. Ich möchte jemandem einen Gegenstand schenken",
+                        "For Free. Ich möchte eine Sache verschenken",
+                        "For Free. Es gibt bei mir einen Gegenstand zu verschenken",
+                        "For Free. Es gibt bei mir etwas zu verschenken",
+                        "For Free. Es gibt bei mir was zu verschenken",
+                        "For Free. Es gibt bei mir einen Artikel zu verschenken",
+                        "For Free. Es gibt bei mir eine Sache zu verschenken",
+                        "For Free. Es gibt einen Gegenstand zu verschenken",
+                        "For Free. Es gibt etwas zu verschenken",
+                        "For Free. Es gibt was zu verschenken",
+                        "For Free. Es gibt einen Artikel zu verschenken",
+                        "For Free. Es gibt eine Sache zu verschenken"
+                    ]
+                },
+                {
+                    "name": "BenutzerAnmeldenIntent",
+                    "slots": [
+                        {
+                            "name": "id",
+                            "type": "BENUTZER_FUENF_STELLIGE_NUMMER",
+                            "samples": [
+                                "{id}"
+                            ]
+                        },
+                        {
+                            "name": "passwort",
+                            "type": "BENUTZER_ZAHLEN_UND_KLEINBUCHSTABEN",
+                            "samples": [
+                                "{passwort}"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "Einloggen",
+                        "Ich möchte mich einloggen"
+                    ]
+                },
+                {
+                    "name": "RadiusEinstellenIntent",
+                    "slots": [
+                        {
+                            "name": "radius",
+                            "type": "AMAZON.NUMBER",
+                            "samples": [
+                                "Stelle den Radius auf {radius} Kilometer",
+                                "Auf {radius} Kilometer",
+                                "{radius} "
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "Umkreis eingrenzen",
+                        "Suchradius eingrenzen",
+                        "Umkreis verändern",
+                        "Umkreis einstellen",
+                        "Suchradius verändern",
+                        "Suchradius einstellen",
+                        "Ändere den Radius auf {radius} Kilometer"
+                    ]
                 }
-              ]
-            },
-            {
-              "name": "anmerkungen",
-              "type": "AMAZON.SearchQuery",
-              "confirmationRequired": false,
-              "elicitationRequired": true,
-              "prompts": {
-                "elicitation": "Elicit.Slot.1073867450144.783907809781"
-              }
-            }
-          ]
+            ],
+            "types": [
+                {
+                    "name": "ARTIKEL_Eine_Artikel",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "Kerze"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ARTIKEL_Ein_Artikel",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "Saftautomat"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ARTIKEL_Einen_Artikel",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "Schrank"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ARTIKEL_Form",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "rechteckig"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ARTIKEL_Zustand",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "sehr gut"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ARTIKEL_Kategorie",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "Technik"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "BENUTZER_FUENF_STELLIGE_NUMMER",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "12345"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "BENUTZER_ZAHLEN_UND_KLEINBUCHSTABEN",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "abc123"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ARTIKEL_Material",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "Holz"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ARTIKEL_Hersteller",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "IKEA"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ARTIKEL_Bestaetigung",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "nein"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "ja"
+                            }
+                        }
+                    ]
+                }
+            ]
         },
-        {
-          "name": "BenutzerAnmeldenIntent",
-          "confirmationRequired": false,
-          "prompts": {},
-          "slots": [
+        "dialog": {
+            "intents": [
+                {
+                    "name": "InseratErzeugenIntent",
+                    "confirmationRequired": true,
+                    "prompts": {
+                        "confirmation": "Confirm.Intent.167088562670"
+                    },
+                    "slots": [
+                        {
+                            "name": "form",
+                            "type": "ARTIKEL_Form",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.167088562670.494883029924"
+                            }
+                        },
+                        {
+                            "name": "material",
+                            "type": "ARTIKEL_Material",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.167088562670.1243103029895"
+                            }
+                        },
+                        {
+                            "name": "abholung",
+                            "type": "ARTIKEL_Bestaetigung",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.167088562670.1409346292419"
+                            }
+                        },
+                        {
+                            "name": "farbe",
+                            "type": "AMAZON.Color",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.167088562670.590639906990"
+                            }
+                        },
+                        {
+                            "name": "zustand",
+                            "type": "ARTIKEL_Zustand",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.167088562670.556712077720"
+                            }
+                        },
+                        {
+                            "name": "hersteller",
+                            "type": "ARTIKEL_Hersteller",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.167088562670.1399384763448"
+                            }
+                        },
+                        {
+                            "name": "einArtikel",
+                            "type": "ARTIKEL_Ein_Artikel",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.167088562670.744847671842"
+                            }
+                        },
+                        {
+                            "name": "eineArtikel",
+                            "type": "ARTIKEL_Eine_Artikel",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.167088562670.266648039209"
+                            }
+                        },
+                        {
+                            "name": "einenArtikel",
+                            "type": "ARTIKEL_Einen_Artikel",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.167088562670.1577798153125"
+                            }
+                        },
+                        {
+                            "name": "hoehe",
+                            "type": "AMAZON.NUMBER",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.167088562670.623808636453"
+                            }
+                        },
+                        {
+                            "name": "breite",
+                            "type": "AMAZON.NUMBER",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.167088562670.1142041027179"
+                            }
+                        },
+                        {
+                            "name": "laenge",
+                            "type": "AMAZON.NUMBER",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.167088562670.973967840772"
+                            }
+                        },
+                        {
+                            "name": "stueckzahl",
+                            "type": "AMAZON.NUMBER",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.392550176061.859591506360"
+                            },
+                            "validations": [
+                                {
+                                    "type": "isGreaterThan",
+                                    "prompt": "Slot.Validation.392550176061.859591506360.83472921330",
+                                    "value": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "anmerkungen",
+                            "type": "AMAZON.SearchQuery",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1073867450144.783907809781"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "BenutzerAnmeldenIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "id",
+                            "type": "BENUTZER_FUENF_STELLIGE_NUMMER",
+                            "confirmationRequired": true,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "confirmation": "Confirm.Slot.389065956396.363417409158",
+                                "elicitation": "Elicit.Slot.389065956396.363417409158"
+                            }
+                        },
+                        {
+                            "name": "passwort",
+                            "type": "BENUTZER_ZAHLEN_UND_KLEINBUCHSTABEN",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.389065956396.106288418799"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "EinstellungenOeffnenIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": []
+                },
+                {
+                    "name": "RadiusEinstellenIntent",
+                    "confirmationRequired": true,
+                    "prompts": {
+                        "confirmation": "Confirm.Intent.35832918871"
+                    },
+                    "slots": [
+                        {
+                            "name": "radius",
+                            "type": "AMAZON.NUMBER",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.35832918871.1502533261928"
+                            },
+                            "validations": [
+                                {
+                                    "type": "isGreaterThanOrEqualTo",
+                                    "prompt": "Slot.Validation.35832918871.1502533261928.756172721208",
+                                    "value": "1"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "delegationStrategy": "ALWAYS"
+        },
+        "prompts": [
             {
-              "name": "id",
-              "type": "BENUTZER_FUENF_STELLIGE_NUMMER",
-              "confirmationRequired": true,
-              "elicitationRequired": true,
-              "prompts": {
-                "confirmation": "Confirm.Slot.389065956396.363417409158",
-                "elicitation": "Elicit.Slot.389065956396.363417409158"
-              }
+                "id": "Confirm.Intent.167088562670",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Der Artikel den du inserieren möchtest heißt... Ist das so richtig?"
+                    }
+                ]
             },
             {
-              "name": "passwort",
-              "type": "BENUTZER_ZAHLEN_UND_KLEINBUCHSTABEN",
-              "confirmationRequired": false,
-              "elicitationRequired": true,
-              "prompts": {
-                "elicitation": "Elicit.Slot.389065956396.106288418799"
-              }
+                "id": "Elicit.Slot.167088562670.494883029924",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Welche Form hat der Artikel?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.167088562670.1243103029895",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Aus welchem Material ist der Artikel?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.167088562670.1409346292419",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Darf der Kunde den Artikel vor Ort abholen?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.167088562670.590639906990",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Welche Farbe hat der Artikel?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.167088562670.556712077720",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Welchen Zustand hat der Artikel?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.167088562670.1399384763448",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "WIe heißt der Hersteller des Artikels?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.167088562670.744847671842",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Welchen Artikel bietest du an?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.167088562670.266648039209",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Welchen Artikel bietest du an?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.167088562670.1577798153125",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Welchen Artikel bietest du an?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.167088562670.623808636453",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Wie hoch ist der Artikel in zentimetern?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.167088562670.1142041027179",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Wie breit ist der Artikel in zentimetern?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.167088562670.973967840772",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Wie lang ist der Artikel in zentimetern?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.392550176061.859591506360",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Wie viele Artikel dieser Art bietest du an?"
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Validation.392550176061.859591506360.83472921330",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Du musst mindestens einen Artikel anbieten"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.389065956396.363417409158",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Wie lautet deine Benutzer-I.D.?"
+                    }
+                ]
+            },
+            {
+                "id": "Confirm.Slot.389065956396.363417409158",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Deine Eingabe lautet {id} . Stimmt deine Eingabe?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.389065956396.106288418799",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Wie lautet dein Passwort?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.1073867450144.783907809781",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Gibt es noch zusätzlich etwas wichtiges anzumerken?"
+                    }
+                ]
+            },
+            {
+                "id": "Confirm.Intent.35832918871",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Möchtest du den Suchradius wirklich auf {radius} Kilometer stellen?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.35832918871.1502533261928",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Auf wie viel Kilometer möchtest du den Suchradius stellen?"
+                    }
+                ]
+            },
+            {
+                "id": "Confirm.Slot.35832918871.1502533261928",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Möchtest du den Suchradius wirklich auf {radius} Kilometer stellen?"
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Validation.35832918871.1502533261928.756172721208",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Der Suchumkreis muss mindestens einen Kilometer betragen"
+                    }
+                ]
             }
-          ]
-        }
-      ],
-      "delegationStrategy": "ALWAYS"
-    },
-    "prompts": [
-      {
-        "id": "Confirm.Intent.167088562670",
-        "variations": [
-          {
-            "type": "PlainText",
-            "value": "Der Artikel den du inserieren möchtest heißt... Ist das so richtig?"
-          }
         ]
-      },
-      {
-        "id": "Elicit.Slot.167088562670.494883029924",
-        "variations": [
-          {
-            "type": "PlainText",
-            "value": "Welche Form hat der Artikel?"
-          }
-        ]
-      },
-      {
-        "id": "Elicit.Slot.167088562670.1243103029895",
-        "variations": [
-          {
-            "type": "PlainText",
-            "value": "Aus welchem Material ist der Artikel?"
-          }
-        ]
-      },
-      {
-        "id": "Elicit.Slot.167088562670.1409346292419",
-        "variations": [
-          {
-            "type": "PlainText",
-            "value": "Darf der Kunde den Artikel vor Ort abholen?"
-          }
-        ]
-      },
-      {
-        "id": "Elicit.Slot.167088562670.590639906990",
-        "variations": [
-          {
-            "type": "PlainText",
-            "value": "Welche Farbe hat der Artikel?"
-          }
-        ]
-      },
-      {
-        "id": "Elicit.Slot.167088562670.556712077720",
-        "variations": [
-          {
-            "type": "PlainText",
-            "value": "Welchen Zustand hat der Artikel?"
-          }
-        ]
-      },
-      {
-        "id": "Elicit.Slot.167088562670.1399384763448",
-        "variations": [
-          {
-            "type": "PlainText",
-            "value": "WIe heißt der Hersteller des Artikels?"
-          }
-        ]
-      },
-      {
-        "id": "Elicit.Slot.167088562670.744847671842",
-        "variations": [
-          {
-            "type": "PlainText",
-            "value": "Welchen Artikel bietest du an?"
-          }
-        ]
-      },
-      {
-        "id": "Elicit.Slot.167088562670.266648039209",
-        "variations": [
-          {
-            "type": "PlainText",
-            "value": "Welchen Artikel bietest du an?"
-          }
-        ]
-      },
-      {
-        "id": "Elicit.Slot.167088562670.1577798153125",
-        "variations": [
-          {
-            "type": "PlainText",
-            "value": "Welchen Artikel bietest du an?"
-          }
-        ]
-      },
-      {
-        "id": "Elicit.Slot.167088562670.623808636453",
-        "variations": [
-          {
-            "type": "PlainText",
-            "value": "Wie hoch ist der Artikel in zentimetern?"
-          }
-        ]
-      },
-      {
-        "id": "Elicit.Slot.167088562670.1142041027179",
-        "variations": [
-          {
-            "type": "PlainText",
-            "value": "Wie breit ist der Artikel in zentimetern?"
-          }
-        ]
-      },
-      {
-        "id": "Elicit.Slot.167088562670.973967840772",
-        "variations": [
-          {
-            "type": "PlainText",
-            "value": "Wie lang ist der Artikel in zentimetern?"
-          }
-        ]
-      },
-      {
-        "id": "Elicit.Slot.392550176061.859591506360",
-        "variations": [
-          {
-            "type": "PlainText",
-            "value": "Wie viele Artikel dieser Art bietest du an?"
-          }
-        ]
-      },
-      {
-        "id": "Slot.Validation.392550176061.859591506360.83472921330",
-        "variations": [
-          {
-            "type": "PlainText",
-            "value": "Du musst mindestens einen Artikel anbieten"
-          }
-        ]
-      },
-      {
-        "id": "Elicit.Slot.389065956396.363417409158",
-        "variations": [
-          {
-            "type": "PlainText",
-            "value": "Wie lautet deine Benutzer-I.D.?"
-          }
-        ]
-      },
-      {
-        "id": "Confirm.Slot.389065956396.363417409158",
-        "variations": [
-          {
-            "type": "PlainText",
-            "value": "Deine Eingabe lautet {id} . Stimmt deine Eingabe?"
-          }
-        ]
-      },
-      {
-        "id": "Elicit.Slot.389065956396.106288418799",
-        "variations": [
-          {
-            "type": "PlainText",
-            "value": "Wie lautet dein Passwort?"
-          }
-        ]
-      },
-      {
-        "id": "Elicit.Slot.1073867450144.783907809781",
-        "variations": [
-          {
-            "type": "PlainText",
-            "value": "Gibt es noch zusätzlich etwas wichtiges anzumerken?"
-          }
-        ]
-      }
-    ]
-  }
+    }
 }
