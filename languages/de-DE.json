@@ -1,7 +1,8 @@
 {
   "SKILL_NAME": "For Free",
   "ONBOARDING_ERLEDIGT_BEGRUESSUNG": [
-    "Willkommen bei For Free!"
+    "Willkommen bei For Free!",
+    "Hallo und willkommen bei For Free!"
   ],
   "BENUTZER_LINKED_BEGRUESSUNG": [
     "Hallo {}, willkommen bei For Free!"

@@ -3,7 +3,8 @@ import logging
 import random
 import sys
 
-from ask_sdk_core.skill_builder import SkillBuilder
+from ask_sdk_core.skill_builder import CustomSkillBuilder
+from ask_sdk_core.api_client import DefaultApiClient
 from ask_sdk_core.utils import is_request_type, is_intent_name
 from ask_sdk_model import Response
 from ask_sdk_model.ui import SimpleCard
@@ -24,7 +25,7 @@ logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
 app = Flask(__name__)
 
-sb = SkillBuilder()
+sb = CustomSkillBuilder(api_client=DefaultApiClient())
 
 db = Database.MongoDB()
 
@@ -48,7 +49,6 @@ def launch_request_handler(handler_input) -> Response:
     # logger.info(f'{session_attribute=}')
     # Sprachstrings für deutsche Sprache laden
     sprach_prompts = handler_input.attributes_manager.request_attributes['_']
-    logging.info(f'{sprach_prompts=}')
     speech_text = random.choice(sprach_prompts['ONBOARDING_ERLEDIGT_BEGRUESSUNG'])
     return benutzer_authorisieren(handler_input).response
 
