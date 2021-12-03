@@ -3,7 +3,7 @@ import Database
 from Benutzer import AmazonBenutzer
 
 
-def eigene_inserate_handler(handler_input):
+def abfrage_eigene_inserate_handler(handler_input):
     """Eigene Inserate ausgeben"""
     speech_text = ''
     eigene_artikel = Database.MongoDB.get_eigene_inserate(AmazonBenutzer.get_benutzer_uid())

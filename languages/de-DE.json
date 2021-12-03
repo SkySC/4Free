@@ -7,6 +7,15 @@
   "BENUTZER_LINKED_BEGRUESSUNG": [
     "Hallo {}, willkommen bei For Free!"
   ],
-  "BENUTZER_LINKING_ANWEISUNGEN": "Bitte verwende die Alexa Companion App, um deinen Amazon Benutzer mit For Free zu verknüpfen. Danach kannst du mich erneut aufrufen und es kann weitergehen.",
-  "BENUTZER_LINKING_DATUM": "Du hast deinen Benutzer das erste Mal am {} mit For Free verbunden."
+  "BENUTZER_LINKING_ANWEISUNGEN": "Falls du dein Amazon Benutzerkonto mit For Free verbinden möchtest, verwende bitte die Alexa Companion App. Du hast die Möglichkeit dein Amazonkonto zu einem späteren Zeitpunkt zu verbinden.",
+  "BENUTZER_LINKING_DATUM": "Du hast deinen Benutzer das erste Mal am {} mit For Free verbunden.",
+  "ANFRAGE_STANDORT_BERECHTIGUNGEN": "Um Interessenten zu ermöglichen deine genaue Adresse zu sehen, erteile mir bitte über die Alexa Companion App die Berechtigungen dafür.",
+  "ADRESSE_NICHT_GEFUNDEN_ODER_UNVOLLSTAENDIG_FEHLER": "Tut mir Leid, ich konnte in deinem Benutzerkonto keine oder keine vollständige Adresse finden. Um dies zu beheben, gehe bitte in dein Amazon Benutzerkonto und ändere deine Adressdaten.",
+  "ADRESSE_AUSGABE": "Folgende Adresse habe ich finden können: {}, {}, {}, {}",
+  "ALLGEMEINER_FEHLER": "Tut mir Leid, es ist ein Fehler aufgetreten. Versuche es bitte erneut",
+  "INSERAT_SPEICHERN_FEHLER": "Tut mir Leid, es ist ein Fehler beim Speichern deines Inserats aufgetreten. Veruche es bitte erneut zu erstellen.",
+  "INSERAT_SPEICHERN_ERFOLG": [
+    "Dein Artikel wurde erfolgreich gespeichert. Jetzt musst du nur noch geduldig warten, bis sich ein Interessent bei dir meldet. Um dir dein Inserat erneut anzuschauen, sage zum Beispiel: Zeige mir meine Artikel.",
+    "Dein Artikel wurde erfolgreich gespeichert. Bald wird sich bestimmt schon ein Interessent bei dir melden. Ich werde dir Bescheid geben, sobald sich jemand meldet. Um dir dein Inserat erneut anzuschauen, sage zum Beispiel: Zeige mir meine Artikel."
+  ]
 }

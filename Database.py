@@ -1,7 +1,13 @@
 import logging
+import sys
 
 import pymongo.errors
 from pymongo import MongoClient
+
+import Benutzer
+
+logger = logging.getLogger('__name__')
+logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
 
 class MongoDB:
@@ -28,7 +34,7 @@ class MongoDB:
     @staticmethod
     def get_eigene_inserate(uid: str) -> pymongo.cursor.Cursor | None:
         # UID gets replaced by the UID of the users Amazon Account
-        return MongoDB.get_db_instance()['eigene_inserate'].find({'uid': uid}, {'_id': 0, 'uid': 0})
+        return MongoDB.get_db_instance()['benutzer_inserate'].find({'uid': uid}, {'_id': 0, 'uid': 0})
 
     @staticmethod
     def benutzer_hat_einstellungen_eintrag(uid: str) -> bool:
@@ -53,3 +59,17 @@ class MongoDB:
             return None
         else:
             return benutzer_einstellungen['radius']
+
+    @staticmethod
+    def benutzer_speichere_inserat(inserat: dict) -> bool:
+        # Inserat in DB speichern
+        try:
+            MongoDB.get_db_instance()['benutzer_inserate'].insert_one({
+                'uid': Benutzer.AmazonBenutzer.get_benutzer_uid(),
+                **inserat
+            })
+        except (pymongo.errors.WriteError, pymongo.errors.ConnectionFailure, pymongo.errors.NetworkTimeout) as e:
+            logging.error(f'{__name__}: Dokument konnte nicht geschrieben werden: {e}')
+            return False
+        else:
+            return True

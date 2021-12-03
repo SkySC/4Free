@@ -14,9 +14,11 @@ from flask_ask_sdk.skill_adapter import SkillAdapter
 import Database
 
 from EntwicklerInfoIntent import entwickler_info_handler
-from EigeneInserateIntent import eigene_inserate_handler
+from AbfrageEigeneInserateIntent import abfrage_eigene_inserate_handler
 from RadiusEinstellenIntent import radius_einstellen_handler
 from AbfrageAnmeldezeitpunktIntent import abfrage_anmeldezeitpunkt_handler
+from AbfrageEigeneAdresseIntent import abfrage_eigene_adresse_handler
+from InseratErzeugenIntent import inserat_erzeugen_handler
 from AccountLinking import benutzer_authorisieren
 
 # Logger einrichten für aktuelles Modul
@@ -120,8 +122,8 @@ def entwickler_info_handler_wrapper(handler_input) -> Response:
 
 
 @sb.request_handler(can_handle_func=is_intent_name('EigeneInserateIntent'))
-def eigene_inserate_handler_wrapper(handler_input) -> Response:
-    return eigene_inserate_handler(handler_input)
+def abfrage_eigene_inserate_handler_wrapper(handler_input) -> Response:
+    return abfrage_eigene_inserate_handler(handler_input)
 
 
 @sb.request_handler(can_handle_func=is_intent_name('RadiusEinstellenIntent'))
@@ -132,6 +134,16 @@ def radius_einstellen_handler_wrapper(handler_input) -> Response:
 @sb.request_handler(can_handle_func=is_intent_name('AbfrageAnmeldezeitpunktIntent'))
 def abfrage_anmeldezeitpunkt_handler_wrapper(handler_input) -> Response:
     return abfrage_anmeldezeitpunkt_handler(handler_input)
+
+
+@sb.request_handler(can_handle_func=is_intent_name('AbfrageEigeneAdresseIntent'))
+def abfrage_eigene_adresse_handler_wrapper(handler_input) -> Response:
+    return abfrage_eigene_adresse_handler(handler_input)
+
+
+@sb.request_handler(can_handle_func=is_intent_name('InseratErzeugenIntent'))
+def inserat_erzeugen_handler_wrapper(handler_input) -> Response:
+    return inserat_erzeugen_handler(handler_input)
 
 
 """
