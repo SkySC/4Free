@@ -13,6 +13,9 @@ from flask_ask_sdk.skill_adapter import SkillAdapter
 
 import Database
 
+# Stellt sicher, dass jeder Intent erreichbar ist
+sys.path.insert(0, './lambda/py')
+
 from EntwicklerInfoIntent import entwickler_info_handler
 from AbfrageEigeneInserateIntent import abfrage_eigene_inserate_handler
 from RadiusEinstellenIntent import radius_einstellen_handler
