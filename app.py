@@ -24,14 +24,13 @@ from AbfrageEigeneAdresseIntent import abfrage_eigene_adresse_handler
 from InseratErzeugenIntent import inserat_erzeugen_handler
 from AccountLinking import benutzer_authorisieren
 
+sb = CustomSkillBuilder(api_client=DefaultApiClient())
 # Logger einrichten für aktuelles Modul
 logger = logging.getLogger(__name__)
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
 app = Flask(__name__)
-
-sb = CustomSkillBuilder(api_client=DefaultApiClient())
-
+# Create a database instance
 db = Database.MongoDB()
 
 
@@ -52,9 +51,22 @@ def launch_request_handler(handler_input) -> Response:
     # Session-Attribute laden & Ausgeben
     # session_attribute = handler_input.attributes_manager.session_attributes
     # logger.info(f'{session_attribute=}')
+
     # Sprachstrings für deutsche Sprache laden
     sprach_prompts = handler_input.attributes_manager.request_attributes['_']
-    speech_text = random.choice(sprach_prompts['ONBOARDING_ERLEDIGT_BEGRUESSUNG'])
+    # Check the device id to enables/disable onboarding
+    device_id = handler_input.request_envelope.context.system.device.device_id
+    if db.skill_is_launched_first_time(device_id):
+        # onboarding process
+        logging.info('Onboarding wird gestartet...')
+        if db.register_client_device(device_id):
+            logging.info('Gerät wurde erfolgreich registriert')
+        else:
+            logging.warning('Fehler bei der Registrierung des Geräts')
+    else:
+        logging.info(f'{db.skill_is_launched_first_time(device_id)=}')
+        speech_text = random.choice(sprach_prompts['ONBOARDING_ERLEDIGT_BEGRUESSUNG'])
+
     return benutzer_authorisieren(handler_input).response
 
 

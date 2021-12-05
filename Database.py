@@ -73,3 +73,18 @@ class MongoDB:
             return False
         else:
             return True
+
+    @staticmethod
+    def register_client_device(device_id: str) -> bool:
+        try:
+            MongoDB.get_db_instance()['registrierte_geraete'].insert_one({'geraete_id': device_id})
+        except (pymongo.errors.WriteError, pymongo.errors.ConnectionFailure, pymongo.errors.NetworkTimeout) as e:
+            return False
+        else:
+            return True
+
+    @staticmethod
+    def skill_is_launched_first_time(device_id: str) -> bool:
+        return (
+            False if MongoDB.get_db_instance()['registrierte_geraete'].find_one({'geraete_id': device_id}) else True
+        )
