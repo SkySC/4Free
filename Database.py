@@ -24,41 +24,63 @@ class MongoDB:
             MongoDB.db_instance = client.for_free_db
 
     @staticmethod
-    def get_entwickler_namen() -> pymongo.cursor.Cursor:
-        return MongoDB.get_db_instance()['entwickler_namen'].find({}, {'_id': 0})
+    def get_entwickler_namen() -> (str, str):
+        entwickler_namen_document = MongoDB.get_db_instance()['entwickler_namen'].find({}, {'_id': 0})
+        entwickler1, entwickler2 = entwickler_namen_document
+        return entwickler1['name'], entwickler2['name']
 
     @staticmethod
     def get_db_instance() -> any:
         return MongoDB.db_instance
 
     @staticmethod
-    def get_eigene_inserate(uid: str) -> pymongo.cursor.Cursor | None:
+    def get_eigene_inserate() -> pymongo.cursor.Cursor | None:
         # UID gets replaced by the UID of the users Amazon Account
-        return MongoDB.get_db_instance()['benutzer_inserate'].find({'uid': uid}, {'_id': 0, 'uid': 0})
-
-    @staticmethod
-    def benutzer_hat_einstellungen_eintrag(uid: str) -> bool:
-        return (
-            False if MongoDB.get_db_instance()['benutzer_einstellungen'].find_one({'uid': uid}) is None else True
+        return MongoDB.get_db_instance()['benutzer_inserate'].find(
+            {'uid': Benutzer.AmazonBenutzer.get_benutzer_uid()},
+            {'_id': 0, 'uid': 0}
         )
 
     @staticmethod
-    def benutzer_set_umkreis(uid: str, radius: int) -> None:
-        db_benutzer_einstellungen = MongoDB.get_db_instance()['benutzer_einstellungen']
-
-        benutzer_hat_eintrag = MongoDB.benutzer_hat_einstellungen_eintrag(uid)
-        if benutzer_hat_eintrag:
-            db_benutzer_einstellungen.update_one({'uid': uid}, {'$set': {'radius': radius}})
-        else:
-            db_benutzer_einstellungen.insert_one({'uid': uid, 'radius': radius})
+    def benutzer_hat_einstellungen_eintrag() -> bool:
+        return (
+            True if MongoDB.get_db_instance()['benutzer_einstellungen'].find_one(
+                {'uid': Benutzer.AmazonBenutzer.get_benutzer_uid()}
+            )
+            else True
+        )
 
     @staticmethod
-    def benutzer_get_umkreis(uid: str) -> int | None:
-        benutzer_einstellungen = MongoDB.get_db_instance()['benutzer_einstellungen'].find_one({'uid': uid})
-        if benutzer_einstellungen is None:
-            return None
+    def benutzer_set_umkreis(radius: int) -> bool:
+        benutzer_uid = Benutzer.AmazonBenutzer.get_benutzer_uid()
+        db_benutzer_einstellungen = MongoDB.get_db_instance()['benutzer_einstellungen']
+
+        benutzer_hat_eintrag = MongoDB.benutzer_hat_einstellungen_eintrag()
+        if benutzer_hat_eintrag:
+            try:
+                db_benutzer_einstellungen.update_one({'uid': benutzer_uid}, {'$set': {'radius': radius}})
+            except (pymongo.errors.WriteError, pymongo.errors.ConnectionFailure, pymongo.errors.NetworkTimeout) as e:
+                logging.error(f'{__name__}: Dokument konnte nicht aktuallisiert werden: {e}')
+                return False
         else:
+            try:
+                db_benutzer_einstellungen.insert_one({'uid': benutzer_uid, 'radius': radius})
+            except (pymongo.errors.WriteError, pymongo.errors.ConnectionFailure, pymongo.errors.NetworkTimeout) as e:
+                logging.error(f'{__name__}: Dokument konnte nicht geschrieben werden: {e}')
+                return False
+
+        return True
+
+    @staticmethod
+    def benutzer_get_umkreis() -> int | None:
+        benutzer_einstellungen = MongoDB.get_db_instance()['benutzer_einstellungen'].find_one(
+            {'uid': Benutzer.AmazonBenutzer.get_benutzer_uid()}
+        )
+
+        if benutzer_einstellungen:
             return benutzer_einstellungen['radius']
+
+        return None
 
     @staticmethod
     def benutzer_speichere_inserat(inserat: dict) -> bool:

@@ -1,27 +1,34 @@
+import logging
+
 import Database
 
-from Benutzer import AmazonBenutzer
+from ask_sdk_core.utils import get_account_linking_access_token
 
 
 def radius_einstellen_handler(handler_input):
     """Suchradius einstellen"""
-    umkreis_slot_wert = handler_input.request_envelope.request.intent.slots['radius'].value
-
-    speech_text = f'Dein Suchradius wurde erfolgreich auf {umkreis_slot_wert} Kilometer geändert.'
-    speech_reprompt = 'Auf wie viel Kilometer möchtest du den Suchradius stellen?'
+    sprach_prompts = handler_input.attributes_manager.request_attributes['_']
+    response_builder = handler_input.response_builder
+    response_builder.set_should_end_session(False)
+    # response_builder.ask(sprach_prompts['SUCHRADIUS_REPROMPT'])
 
     db = Database.MongoDB
-    if db.benutzer_get_umkreis(AmazonBenutzer.get_benutzer_uid()) == umkreis_slot_wert:
-        speech_text = f'Dein aktueller Suchradius beträgt bereits {umkreis_slot_wert} Kilometer.'
+    umkreis_slot_wert = int(handler_input.request_envelope.request.intent.slots['radius'].value)
+    if get_account_linking_access_token(handler_input):
+        if db.benutzer_get_umkreis() == umkreis_slot_wert:
+            response_builder.speak(str(sprach_prompts['SUCHRADIUS_IDENTISCH_FEHLER']).format(umkreis_slot_wert))
+        else:
+            db.benutzer_set_umkreis(umkreis_slot_wert)
+            response_builder.speak(str(sprach_prompts['SUCHRADIUS_SPEICHERN_ERFOLG']).format(umkreis_slot_wert))
+        # Falls Wert nicht gesetzt werden konnte
+        if db.benutzer_hat_einstellungen_eintrag() is False:
+            response_builder.speak(sprach_prompts['SUCHRADIUS_SPEICHERN_FEHLER'])
+    # Store radius in session attribute, if no account is linked
     else:
-        db.benutzer_set_umkreis(AmazonBenutzer.get_benutzer_uid(), umkreis_slot_wert)
-    # Falls Wert nicht gesetzt werden konnte
-    if db.benutzer_hat_einstellungen_eintrag(AmazonBenutzer.get_benutzer_uid()) is False:
-        speech_text = 'Tut mir Leid, beim ändern des Suchradius ist ein Fehler aufgetreten. Bitte versuche es erneut.'
+        session_attr = handler_input.attributes_manager.session_attributes
+        session_attr['suchradius'] = umkreis_slot_wert
+        logging.info(f'{session_attr["suchradius"]=}')
 
-    return (
-        handler_input.response_builder
-            .speak(speech_text)
-            .ask(speech_reprompt)
-            .set_should_end_session(False).response
-    )
+        response_builder.speak(str(sprach_prompts['SUCHRADIUS_SPEICHERN_ERFOLG']).format(session_attr['suchradius']))
+
+    return response_builder.response

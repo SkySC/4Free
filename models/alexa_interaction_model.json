@@ -6,8 +6,6 @@
                 {
                     "name": "AMAZON.CancelIntent",
                     "samples": [
-                        "Aufhören",
-                        "Stop",
                         "Abbrechen",
                         "Abbruch"
                     ]
@@ -179,12 +177,9 @@
                         "Artikel merken",
                         "Markiere den Artikel",
                         "Markiere diesen Artikel",
-                        "Ich bin daran interessiert",
-                        "Ich habe Interesse daran",
                         "Artikel favorisieren",
                         "Favorisiere diesen Artikel",
                         "Favorisiere den Artikel",
-                        "Ich habe Interesse an dem Artikel",
                         "Favorisieren",
                         "Markieren"
                     ]
@@ -536,24 +531,44 @@
                     ]
                 },
                 {
-                    "name": "BenutzerAnmeldenIntent",
-                    "slots": [
-                        {
-                            "name": "id",
-                            "type": "BENUTZER_FUENF_STELLIGE_NUMMER",
-                            "samples": [
-                                "{id}"
-                            ]
-                        },
-                        {
-                            "name": "passwort",
-                            "type": "BENUTZER_ZAHLEN_UND_KLEINBUCHSTABEN",
-                            "samples": [
-                                "{passwort}"
-                            ]
-                        }
-                    ],
+                    "name": "BenutzerLinkingIntent",
+                    "slots": [],
                     "samples": [
+                        "Verbinde meinen Benutzer",
+                        "Verbinde mein Benutzerkonto",
+                        "Verbinde mein Konto",
+                        "Ich will mein Benutzerkonto verknüpfen",
+                        "Ich möchte mein Benutzerkonto verknüpfen",
+                        "Benutzerkonto verknüpfen",
+                        "Benutzerkonto verbinden",
+                        "Amazon Konto verbinden",
+                        "Amazon User verbinden",
+                        "Amazon User verknüpfen",
+                        "Amazon Konto verknüpfen",
+                        "Verknüpfe mein Amazon User",
+                        "Verknüpfe mein Amazon Konto",
+                        "Verbinde meinen Amazon User",
+                        "Verbinde mein Amazon Konto",
+                        "Ich möchte meinen Amazon Account verknüpfen",
+                        "Ich will meinen Amazon Account verknüpfen",
+                        "Ich will mein Amazon Konto verknüpfen",
+                        "Ich möchte mein Amazon Konto verknüpfen",
+                        "Ich will meinen User verknüpfen",
+                        "Ich will meinen User verbinden",
+                        "Ich möchte meinen User verbinden",
+                        "Ich möchte meinen User verknüpfen",
+                        "User verknüpfen",
+                        "User verbinden",
+                        "Konto verknüpfen",
+                        "Konto verbinden",
+                        "Ich will mein Konto verknüpfen",
+                        "Ich will mein Konto verbinden",
+                        "Ich will meinen Account verknüpfen",
+                        "Ich will meinen Account verbinden",
+                        "Ich möchte mein Konto verknüpfen",
+                        "Ich möchte mein Konto verbinden",
+                        "Ich möchte meinen Account verknüpfen",
+                        "Ich möchte meinen Account verbinden",
                         "Einloggen",
                         "Ich möchte mich einloggen"
                     ]
@@ -572,6 +587,43 @@
                         }
                     ],
                     "samples": [
+                        "Radius eingrenzen",
+                        "Verändere meinen Radius auf {radius} Kilometer",
+                        "Verändere den Radius auf {radius} Kilometer",
+                        "Ändere meinen Radius auf {radius} Kilometer",
+                        "Verändere meinen Umkreis",
+                        "Ändere meinen Umkreis",
+                        "Verändere meinen Radius",
+                        "Ändere meinen Radius",
+                        "Verändere meinen Suchradius",
+                        "Ändere meinen Suchradius",
+                        "Verändere den Umkreis",
+                        "Ändere den Umkreis",
+                        "Verändere den Radius",
+                        "Ändere den Radius",
+                        "Verändere den Suchradius",
+                        "Ändere den Suchradius",
+                        "Stelle meinen Radius auf {radius} Kilometer",
+                        "Ändere meinen Umkreis auf {radius} Kilometer",
+                        "Verändere meinen Umkreis auf {radius} Kilometer",
+                        "Stelle meinen Umkreis auf {radius} Kilometer",
+                        "Setze meinen Umkreis auf {radius} Kilometer",
+                        "Setze meinen Radius auf {radius} Kilometer",
+                        "Verändere meinen Suchradius auf {radius} Kilometer",
+                        "Ändere meinen Suchradius auf {radius} Kilometer",
+                        "Stelle meinen Suchradius auf {radius} Kilomete",
+                        "Stelle den Radius auf {radius} Kilometer",
+                        "Radius einstellen",
+                        "Ändere den Umkreis auf {radius} Kilometer",
+                        "Verändere den Umkreis auf {radius} Kilometer",
+                        "Stelle den Umkreis auf {radius} Kilometer",
+                        "Setze den Umkreis auf {radius} Kilometer",
+                        "Setze den Radius auf {radius} Kilometer",
+                        "Verändere den Suchradius auf {radius} Kilometer",
+                        "Ändere den Suchradius auf {radius} Kilometer",
+                        "Stelle den Suchradius auf {radius} Kilometer",
+                        "Radius verändern",
+                        "Radius ändern",
                         "Umkreis verändern",
                         "Umkreis ändern",
                         "Suchradius ändern",
@@ -633,26 +685,6 @@
                     ]
                 },
                 {
-                    "name": "BENUTZER_FUENF_STELLIGE_NUMMER",
-                    "values": [
-                        {
-                            "name": {
-                                "value": "12345"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "BENUTZER_ZAHLEN_UND_KLEINBUCHSTABEN",
-                    "values": [
-                        {
-                            "name": {
-                                "value": "abc123"
-                            }
-                        }
-                    ]
-                },
-                {
                     "name": "ARTIKEL_Material",
                     "values": [
                         {
@@ -693,7 +725,7 @@
             "intents": [
                 {
                     "name": "InseratErzeugenIntent",
-                    "delegationStrategy": "ALWAYS",
+                    "delegationStrategy": "SKILL_RESPONSE",
                     "confirmationRequired": true,
                     "prompts": {
                         "confirmation": "Confirm.Intent.167088562670"
@@ -817,30 +849,10 @@
                     ]
                 },
                 {
-                    "name": "BenutzerAnmeldenIntent",
+                    "name": "BenutzerLinkingIntent",
                     "confirmationRequired": false,
                     "prompts": {},
-                    "slots": [
-                        {
-                            "name": "id",
-                            "type": "BENUTZER_FUENF_STELLIGE_NUMMER",
-                            "confirmationRequired": true,
-                            "elicitationRequired": true,
-                            "prompts": {
-                                "confirmation": "Confirm.Slot.389065956396.363417409158",
-                                "elicitation": "Elicit.Slot.389065956396.363417409158"
-                            }
-                        },
-                        {
-                            "name": "passwort",
-                            "type": "BENUTZER_ZAHLEN_UND_KLEINBUCHSTABEN",
-                            "confirmationRequired": false,
-                            "elicitationRequired": true,
-                            "prompts": {
-                                "elicitation": "Elicit.Slot.389065956396.106288418799"
-                            }
-                        }
-                    ]
+                    "slots": []
                 },
                 {
                     "name": "EinstellungenOeffnenIntent",
@@ -882,7 +894,15 @@
                 "variations": [
                     {
                         "type": "PlainText",
-                        "value": "Du möchtest {stueckzahl} {artikelbezeichnung} verschenken in der Farbe {farbe} aus {material} vom Hersteller {hersteller} mit den Maßen {hoehe} mal {breite} mal {laenge} im Zustand {zustand} und Abholung {abholung} . Weiterhin hast du folgende Anmerkung hinterlassen, {anmerkung} . Sind die Daten soweit korrekt?"
+                        "value": "Stimmen deine Eingaben soweit?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Stimmen deine Eingaben?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Sind die Daten soweit korrekt?"
                     }
                 ]
             },
@@ -1063,33 +1083,6 @@
                     {
                         "type": "PlainText",
                         "value": "Du musst mindestens einen Artikel anbieten"
-                    }
-                ]
-            },
-            {
-                "id": "Elicit.Slot.389065956396.363417409158",
-                "variations": [
-                    {
-                        "type": "PlainText",
-                        "value": "Wie lautet deine Benutzer-I.D.?"
-                    }
-                ]
-            },
-            {
-                "id": "Confirm.Slot.389065956396.363417409158",
-                "variations": [
-                    {
-                        "type": "PlainText",
-                        "value": "Deine Eingabe lautet {id} . Stimmt deine Eingabe?"
-                    }
-                ]
-            },
-            {
-                "id": "Elicit.Slot.389065956396.106288418799",
-                "variations": [
-                    {
-                        "type": "PlainText",
-                        "value": "Wie lautet dein Passwort?"
                     }
                 ]
             },

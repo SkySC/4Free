@@ -1,21 +1,57 @@
 {
   "SKILL_NAME": "For Free",
-  "ONBOARDING_ERLEDIGT_BEGRUESSUNG": [
+  "BENUTZER_BEGRUESSUNG": [
     "Willkommen bei For Free!",
-    "Hallo und willkommen bei For Free!"
+    "Hallo und willkommen bei For Free!",
+    "Herzlich willkommen bei For Free!"
   ],
   "BENUTZER_LINKED_BEGRUESSUNG": [
-    "Hallo {}, willkommen bei For Free!"
+    "Hallo {}, willkommen bei For Free!",
+    "Hallo {}, schön dich wieder zu hören!",
+    "Hallo {}, willkommen zurück!"
   ],
-  "BENUTZER_LINKING_ANWEISUNGEN": "Falls du dein Amazon Benutzerkonto mit For Free verbinden möchtest, verwende bitte die Alexa Companion App. Du hast die Möglichkeit dein Amazonkonto zu einem späteren Zeitpunkt zu verbinden und For Free jetzt weiterhin zu verwenden.",
+  "BENUTZER_ONBOARDING_LINKING_ANWEISUNGEN": "Falls du dein Amazon Benutzerkonto mit mir verbinden möchtest, verwende bitte die Alexa Companion App. Du hast die Möglichkeit dein Amazonkonto zu einem späteren Zeitpunkt zu verbinden und For Free jetzt weiterhin zu verwenden.",
   "BENUTZER_LINKING_DATUM": "Du hast deinen Benutzer das erste Mal am {} mit For Free verbunden.",
   "ANFRAGE_STANDORT_BERECHTIGUNGEN": "Um Interessenten zu ermöglichen deine genaue Adresse zu sehen, erteile mir bitte über die Alexa Companion App die Berechtigungen dafür.",
   "ADRESSE_NICHT_GEFUNDEN_ODER_UNVOLLSTAENDIG_FEHLER": "Tut mir Leid, ich konnte in deinem Benutzerkonto keine oder keine vollständige Adresse finden. Um dies zu beheben, gehe bitte in dein Amazon Benutzerkonto und ändere deine Adressdaten.",
   "ADRESSE_AUSGABE": "Folgende Adresse habe ich finden können: {}, {}, {}, {}",
-  "ALLGEMEINER_FEHLER": "Tut mir Leid, es ist ein Fehler aufgetreten. Versuche es bitte erneut",
-  "INSERAT_SPEICHERN_FEHLER": "Tut mir Leid, es ist ein Fehler beim Speichern deines Inserats aufgetreten. Veruche es bitte erneut zu erstellen.",
+  "ALLGEMEINER_FEHLER": "Tut mir Leid, leider gab es ein unerwartetes Problem. Versuche es bitte erneut!",
+  "ALLGEMEINE_EXCEPTION": "Tut mir Leid, leider ist ein unerwartetes Problem aufgetreten. For Free wird nun beendet.",
+  "INSERAT_SPEICHERN_FEHLER": "Tut mir Leid, beim speichern deines Artikels ist ein Fehler aufgetreten. Versuche bitte zu einem späteren Zeitpunkt dein Inserat neu zu erstellen.",
   "INSERAT_SPEICHERN_ERFOLG": [
     "Dein Artikel wurde erfolgreich gespeichert. Jetzt musst du nur noch geduldig warten, bis sich ein Interessent bei dir meldet. Um dir dein Inserat erneut anzuschauen, sage zum Beispiel: Zeige mir meine Artikel.",
     "Dein Artikel wurde erfolgreich gespeichert. Bald wird sich bestimmt schon ein Interessent bei dir melden. Ich werde dir Bescheid geben, sobald sich jemand meldet. Um dir dein Inserat erneut anzuschauen, sage zum Beispiel: Zeige mir meine Artikel."
+  ],
+  "HILFESEITE_EINLEITUNG": "Um die Hilfe spezifischer zu gestalten, werde ich dir nun einige Bereiche nennen über die du mich ausfragen kannst. Zu folgenden Themen kann ich dir weitere Informationen geben: Angebotserstellung, Angebotssuche, Account Linking, Einstellungen, Statistiken.",
+  "HILFESEITE_FRAGE_PROMPT": "Nenne mir nun bitte einen der genannten Themenbereiche, um mehr darüber zu erfahren.",
+  "BENUTZER_VERABSCHIEDEN": [
+    "Auf Wiedersehen, bis zum nächsten Mal!",
+    "Mach's gut {}, bis zum nächsten Mal!",
+    "Ich würde mich freuen, bald wieder von dir zu hören {}!"
+  ],
+  "FALLBACK": "Leider kann ich dir mit deiner Anfrage nicht weiterhelfen. Du kannst mich zum Beispiel darum bitten, nach einem Wunschartikel zu suchen oder einen deiner Artikel zu inserieren. Sage dafür beispielsweise: Artikel suchen oder Artikel verschenken.",
+  "ARTIKEL_SUCHE_ANZAHL_TREFFER": "Insgesamt habe ich {} Artikel gefunden, welche auf deine Suchbeschreibung passen könnten:",
+  "ARTIKEL_SUCHE_KEINE_TREFFER": "Deine Suchbeschreibung hat leider keine Treffer ergeben. Vergrößere deinen Suchradius oder ändere deinen Suchfilter.",
+  "ANZAHL_AKTIVE_EIGENE_INSERATE": "Zum jetzigen Zeitpunkt sind {} deiner Inserate aktiv.",
+  "ANZAHL_AKTIVE_EIGENE_INSERATE_EINS": "Derzeit hast du nur ein aktives Inserat.",
+  "KEINE_AKTIVEN_EIGENEN_INSERATE": "Aktuell verfügst du über keine aktiven Inserate. Erstelle ein Inserat zum Beispiel mit dem Sprachbefehl: Artikel verschenken.",
+  "KEINE_EIGENEN_INSERATE": "Bisher hast du noch keine Artikel inseriert. Erstelle ein Inserat zum Beispiel mit dem Sprachbefehl: Artikel verschenken.",
+  "SUCHRADIUS_SPEICHERN_ERFOLG": "Dein Suchradius wurde erfolgreich auf {} Kilometer geändert.",
+  "SUCHRADIUS_SPEICHERN_FEHLER": "Tut mir Leid, beim ändern deines Suchradius ist ein Fehler aufgetreten. Versuche es bitte erneut.",
+  "SUCHRADIUS_IDENTISCH_FEHLER": "Dein aktueller Suchradius beträgt bereits {} Kilometer.",
+  "SUCHRADIUS_REPROMPT": "Auf wie viel Kilometer möchtest du den Suchradius stellen?",
+  "ENTWICKLER_INFORMATIONEN": "For Free wurde von {} und {} im Rahmen einer Projektarbeit an der Hochschule Worms entwickelt.",
+  "BENUTZER_LINKING_ANWEISUNGEN": "Um dein Amazon Benutzerkonto mit For Free zu verbinden, öffne bitte nun deine Alexa Companion App und führe folgende Schritte aus: Erstens: Navigiere zu den Skill-Einstellungen. Zweitens: Klicke auf Konto verknüpfen. Drittens: Melde dich mit deinen Amazon-Benutzerdaten an. Viertens: Bestätige den Button.",
+  "ACCOUNT_BEREITS_LINKED": "{}, dein Benutzerkonto ist bereits mit For Free verbunden!",
+  "INSERAT_ERZEUGEN_BENUTZER_NICHT_LINKED": "Um einen Artikel zu verschenken, musst du zunächst dein Benutzerkonto mit mir verbinden. Sage dafür zum Beispiel: Benutzer verbinden, und folge den Anweisungen.",
+  "INSERAT_ERZEUGEN_BEGRUESSUNG": [
+    "<speak>Es freut mich, dass du etwas verschenken möchtest. Um deinen Artikel zu erfassen, werde ich dir nun eine Reihe an Fragen stellen. Los geht's!<break time='1s' /></speak>",
+    "<speak>Das ist toll! Um deinen Artikel zu erfassen, werde ich dir nun eine Reihe an Fragen stellen. Lass uns direkt loslegen!<break time='1s' /></speak>"
+  ],
+  "ANZAHL_VERBLEIBENDE_FRAGEN": [
+    "Nur noch {} Fragen!",
+    "Es sind noch {} Fragen übrig!",
+    "Es verbleiben noch {} Fragen!",
+    "Nur noch {} Fragen verbleibend!"
   ]
 }

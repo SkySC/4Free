@@ -24,7 +24,7 @@ class AmazonBenutzer:
         logging.info(f'{benutzer_daten=}')
         # Instanzvariablen setzen
         AmazonBenutzer.uid = benutzer_daten['user_id']
-        AmazonBenutzer.name = benutzer_daten['name']
+        AmazonBenutzer.name = benutzer_daten['name'].split()[0]
         AmazonBenutzer.email = benutzer_daten['email']
         AmazonBenutzer.plz = benutzer_daten['postal_code']
         # Prüfen, ob Datum bereits eingetragen wurde
