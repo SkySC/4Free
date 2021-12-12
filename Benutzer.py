@@ -1,12 +1,11 @@
 import logging
 import sys
 
+import pymongo.errors
 import requests
 import Database
 import datetime
 
-
-# Logger einrichten für aktuelles Modul
 logger = logging.getLogger(__name__)
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
@@ -17,11 +16,11 @@ class AmazonBenutzer:
     email = None
     plz = None
 
-    def __init__(self, access_token):
-        url = f'https://api.amazon.com/user/profile?access_token={access_token}'
+    def __init__(self, benutzer_token):
+        url = f'https://api.amazon.com/user/profile?access_token={benutzer_token}'
         benutzer_daten = requests.get(url).json()
-        # Info
         logging.info(f'{benutzer_daten=}')
+
         # Instanzvariablen setzen
         AmazonBenutzer.uid = benutzer_daten['user_id']
         AmazonBenutzer.name = benutzer_daten['name'].split()[0]
@@ -33,25 +32,31 @@ class AmazonBenutzer:
 
     @staticmethod
     def anmeldedatum_speichern() -> None:
-        Database.MongoDB.get_db_instance()['benutzer_statistiken'].insert_one({
-            'uid': AmazonBenutzer.get_benutzer_uid(),
-            'datum': str(datetime.date.today())
-        })
+        try:
+            Database.MongoDB.get_db_instance()['benutzer_statistiken'].insert_one({
+                'uid': AmazonBenutzer.get_benutzer_uid(),
+                'datum': str(datetime.date.today())
+            })
+        except (pymongo.errors.WriteError, pymongo.errors.ConnectionFailure, pymongo.errors.NetworkTimeout) as e:
+            logging.exception(f'{__name__}: Datum konnte nicht gespeichert werden: {e}')
 
     @staticmethod
     def benutzer_get_statistik(eintrag: str) -> any:
-        benutzer_statistik = Database.MongoDB.get_db_instance()['benutzer_statistiken'].find_one({
-            'uid': AmazonBenutzer.get_benutzer_uid()
-        })
-        if benutzer_statistik is None:
-            pass
+        try:
+            benutzer_statistik = Database.MongoDB.get_db_instance()['benutzer_statistiken'].find_one({
+                'uid': AmazonBenutzer.get_benutzer_uid()
+            })
+        except (pymongo.errors.InvalidDocument, pymongo.errors.ConnectionFailure, pymongo.errors.NetworkTimeout) as e:
+            logging.exception(f'{__name__}: Statistik für \"{eintrag}\" konnte nicht gelesen werden: {e}')
         else:
             try:
                 angefragter_wert = benutzer_statistik[eintrag]
             except KeyError as e:
-                logging.critical(f'{__name__}:Key existiert nicht: {e}')
+                logging.exception(f'{__name__}:Key existiert nicht: {e}')
             else:
                 return angefragter_wert
+
+        return None
 
     @staticmethod
     def get_benutzer_namen() -> str:

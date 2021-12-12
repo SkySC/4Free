@@ -14,7 +14,7 @@
   "BENUTZER_LINKING_DATUM": "Du hast deinen Benutzer das erste Mal am {} mit For Free verbunden.",
   "ANFRAGE_STANDORT_BERECHTIGUNGEN": "Um Interessenten zu ermöglichen deine genaue Adresse zu sehen, erteile mir bitte über die Alexa Companion App die Berechtigungen dafür.",
   "ADRESSE_NICHT_GEFUNDEN_ODER_UNVOLLSTAENDIG_FEHLER": "Tut mir Leid, ich konnte in deinem Benutzerkonto keine oder keine vollständige Adresse finden. Um dies zu beheben, gehe bitte in dein Amazon Benutzerkonto und ändere deine Adressdaten.",
-  "ADRESSE_AUSGABE": "Folgende Adresse habe ich finden können: {}, {}, {}, {}",
+  "ADRESSE_AUSGABE": "<speak><say-as interpret-as='address'>Folgende Adresse habe ich finden können: {}, {} {}, {}</say-as></speak>",
   "ALLGEMEINER_FEHLER": "Tut mir Leid, leider gab es ein unerwartetes Problem. Versuche es bitte erneut!",
   "ALLGEMEINE_EXCEPTION": "Tut mir Leid, leider ist ein unerwartetes Problem aufgetreten. For Free wird nun beendet.",
   "INSERAT_SPEICHERN_FEHLER": "Tut mir Leid, beim speichern deines Artikels ist ein Fehler aufgetreten. Versuche bitte zu einem späteren Zeitpunkt dein Inserat neu zu erstellen.",
@@ -40,18 +40,28 @@
   "SUCHRADIUS_SPEICHERN_FEHLER": "Tut mir Leid, beim ändern deines Suchradius ist ein Fehler aufgetreten. Versuche es bitte erneut.",
   "SUCHRADIUS_IDENTISCH_FEHLER": "Dein aktueller Suchradius beträgt bereits {} Kilometer.",
   "SUCHRADIUS_REPROMPT": "Auf wie viel Kilometer möchtest du den Suchradius stellen?",
-  "ENTWICKLER_INFORMATIONEN": "For Free wurde von {} und {} im Rahmen einer Projektarbeit an der Hochschule Worms entwickelt.",
+  "ENTWICKLER_INFORMATIONEN": "<speak>For Free wurde von <phoneme alphabet='x-sampa' ph='/\"i_?\\ssa:m SA_?\\:re:f/'>{}</phoneme> und <phoneme alphabet='x-sampa' ph='/s_?\\a: \"leh  S_?\\A:\\?bA:\\?n/'>{}</phoneme> im Rahmen einer Projektarbeit an der Hochschule Worms entwickelt.</speak>",
   "BENUTZER_LINKING_ANWEISUNGEN": "Um dein Amazon Benutzerkonto mit For Free zu verbinden, öffne bitte nun deine Alexa Companion App und führe folgende Schritte aus: Erstens: Navigiere zu den Skill-Einstellungen. Zweitens: Klicke auf Konto verknüpfen. Drittens: Melde dich mit deinen Amazon-Benutzerdaten an. Viertens: Bestätige den Button.",
   "ACCOUNT_BEREITS_LINKED": "{}, dein Benutzerkonto ist bereits mit For Free verbunden!",
   "INSERAT_ERZEUGEN_BENUTZER_NICHT_LINKED": "Um einen Artikel zu verschenken, musst du zunächst dein Benutzerkonto mit mir verbinden. Sage dafür zum Beispiel: Benutzer verbinden, und folge den Anweisungen.",
   "INSERAT_ERZEUGEN_BEGRUESSUNG": [
-    "<speak>Es freut mich, dass du etwas verschenken möchtest. Um deinen Artikel zu erfassen, werde ich dir nun eine Reihe an Fragen stellen. Los geht's!<break time='1s' /></speak>",
-    "<speak>Das ist toll! Um deinen Artikel zu erfassen, werde ich dir nun eine Reihe an Fragen stellen. Lass uns direkt loslegen!<break time='1s' /></speak>"
+    "<speak><p><amazon:emotion name='excited' intensity='low'>Es freut mich, dass du etwas verschenken möchtest! Um deinen Artikel zu erfassen, werde ich dir nun eine Reihe an Fragen stellen. Los geht's!</amazon:emotion></p></speak>",
+    "<speak><p><amazon:emotion name='excited' intensity='low'>Das ist toll! Um deinen Artikel zu erfassen, werde ich dir nun eine Reihe an Fragen stellen. Lass uns direkt loslegen!</amazon:emotion></p></speak>"
   ],
   "ANZAHL_VERBLEIBENDE_FRAGEN": [
     "Nur noch {} Fragen!",
     "Es sind noch {} Fragen übrig!",
     "Es verbleiben noch {} Fragen!",
-    "Nur noch {} Fragen verbleibend!"
-  ]
+    "Nur noch {} Fragen verbleibend!",
+    "Du hast es fast geschafft!",
+    "Fast geschafft!"
+  ],
+  "ANZAHL_VERBLEIBENDE_FRAGEN_EINS": [
+    "Das ist meine letzte Frage!",
+    "Nur noch eine Frage!",
+    "Du hast die letzte Frage erreicht!"
+  ],
+  "INSERAT_ERZEUGEN_ZUSAMMENFASSUNG": "<speak>Du möchtest {} {} verschenken in der Farbe {} aus {} vom Hersteller {} mit den Maßen {} mal {} mal {} im Zustand {} {} Möglichkeit zur Abholung. Außerdem hast du folgende Anmerkung hinterlassen: {}<break time='1s' /></speak>",
+  "INSERAT_ERZEUGEN_FRAGE_BEANTWORTET_AUDIO": "<audio src='soundbank://soundlibrary/office/amzn_sfx_elevator_open_bell_01'/>",
+  "INSERAT_SPEICHERN_ERFOLG_AUDIO": "<audio src='soundbank://soundlibrary/alarms/chimes_and_bells/chimes_bells_04'/>"
 }

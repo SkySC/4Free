@@ -15,14 +15,14 @@ logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
 def inserat_erzeugen_start_handler(handler_input):
     logging.info(f'{__name__}: Dialog gestartet')
-    # Load language data
+    # Sprachdaten laden
     sprach_prompts = handler_input.attributes_manager.request_attributes['_']
     response_builder = handler_input.response_builder
     intent = handler_input.request_envelope.request.intent
     response_builder.set_should_end_session(False)
-    # store counter for the remaining questions in session attribute
+    # Zähler für Anzahl verbleibende Fragen in Session Attribut speichern
     handler_input.attributes_manager.session_attributes['anzahl_verbleibende_fragen'] = 12
-    # Cannot create new offer if account is not linked
+    # Inserat kann nicht erzeugt werden, solange kein Benutzer verlinkt ist
     if get_account_linking_access_token(handler_input):
         response_builder.speak(random.choice(sprach_prompts['INSERAT_ERZEUGEN_BEGRUESSUNG']))
     else:
@@ -30,7 +30,7 @@ def inserat_erzeugen_start_handler(handler_input):
         return response_builder.response
 
     return response_builder.add_directive(
-        # Redirect dialog
+        # Dialog weiterleiten
         DelegateDirective(
             updated_intent=intent
         )
@@ -40,36 +40,47 @@ def inserat_erzeugen_start_handler(handler_input):
 def inserat_erzeugen_in_progress_handler(handler_input):
     logging.info(f'{__name__}: Dialog läuft')
 
-    # Load language data
+    # Sprachdaten laden
     sprach_prompts = handler_input.attributes_manager.request_attributes['_']
     response_builder = handler_input.response_builder
     intent = handler_input.request_envelope.request.intent
     response_builder.set_should_end_session(False)
-    # Update counter for remaining questions
+    # Zähler für verbleibende Fragen aktuallisieren
     handler_input.attributes_manager.session_attributes['anzahl_verbleibende_fragen'] -= 1
-    remaining_questions_counter = handler_input.attributes_manager.session_attributes['anzahl_verbleibende_fragen']
-    speech_text = random.choice(sprach_prompts['ANZAHL_VERBLEIBENDE_FRAGEN']).format(remaining_questions_counter)
-    logging.info(f'{remaining_questions_counter=}')
+    anzahl_verbleibende_fragen = handler_input.attributes_manager.session_attributes['anzahl_verbleibende_fragen']
+    logging.info(f'{anzahl_verbleibende_fragen=}')
+    # Audio bei gültiger Antwort
+    sprach_ausgabe = f'<speak>{sprach_prompts["INSERAT_ERZEUGEN_FRAGE_BEANTWORTET_AUDIO"]}'
+    # Anzahl verbleibender Fragen nur an bestimmten Stellen ausgeben
+    if anzahl_verbleibende_fragen in [5, 2]:
+        sprach_ausgabe += random.choice(sprach_prompts['ANZAHL_VERBLEIBENDE_FRAGEN']).format(anzahl_verbleibende_fragen)
+        logging.info(f'{sprach_ausgabe=}')
+    elif anzahl_verbleibende_fragen == 1:
+        sprach_ausgabe += random.choice(sprach_prompts['ANZAHL_VERBLEIBENDE_FRAGEN_EINS'])
+    sprach_ausgabe += '</speak>'
 
     slots = intent.slots
     if slots['anmerkung'].value:
-        # build custom confirmation prompt
-        abholung_satzbaustein = 'mit' if slots["abholung"].value == 'ja' else 'ohne'
-        speech_text = f'<speak>' \
-                      f'Du möchtest {slots["stueckzahl"].value} {slots["artikelbezeichnung"].value} verschenken ' \
-                      f'in der Farbe {slots["farbe"].value} ' \
-                      f'aus {slots["material"].value} ' \
-                      f'vom Hersteller {slots["hersteller"].value} ' \
-                      f'mit den Maßen {slots["hoehe"].value} mal {slots["breite"].value} mal {slots["laenge"].value} ' \
-                      f'im Zustand {slots["zustand"].value} ' \
-                      f'{abholung_satzbaustein} Möglichkeit zur Abholung. ' \
-                      f'Außerdem hast du folgende Anmerkung hinterlassen: {slots["anmerkung"].value}' \
-                      f'<break time="1s" /></speak>'
+        # Eigener Prompt, um Artikel zu bestätigen
+        abholung_satzbaustein = 'mit' if slots['abholung'].value == 'ja' else 'ohne'
+        sprach_ausgabe = str(sprach_prompts['INSERAT_ERZEUGEN_ZUSAMMENFASSUNG']).format(
+            slots['stueckzahl'].value,
+            slots['artikelbezeichnung'].value,
+            slots['farbe'].value,
+            slots['material'].value,
+            slots['hersteller'].value,
+            slots['laenge'].value,
+            slots['breite'].value,
+            slots['hoehe'].value,
+            slots['zustand'].value,
+            abholung_satzbaustein,
+            slots['anmerkung'].value
+        )
 
-        logging.info(speech_text)
+        logging.info(sprach_ausgabe)
 
-    return response_builder.speak(speech_text).add_directive(
-        # redirect to this handler again to handle next question/slot or to completed_handler after the last question
+    return response_builder.speak(sprach_ausgabe).add_directive(
+        # Handler erneut aufrufen, solange letzte Frage nicht erreicht, sonst inserat_erzeugen_completed_handler
         DelegateDirective(
             updated_intent=intent
         )
@@ -79,12 +90,12 @@ def inserat_erzeugen_in_progress_handler(handler_input):
 def inserat_erzeugen_completed_handler(handler_input):
     logging.info(f'{__name__}: Dialog beendet')
 
-    # Load language data
+    # Sprachdaten laden
     sprach_prompts = handler_input.attributes_manager.request_attributes['_']
     response_builder = handler_input.response_builder
     request = handler_input.request_envelope.request
     response_builder.set_should_end_session(False)
-    # Interrupt, if intent has not been confirmed yet <=> user is not linked but request has to complete anyway
+    # Abbruch, wenn es keine Bestätigung gab <=> auch wenn Benutzerkonto nicht verlinkt
     if request.intent.confirmation_status.name == 'NONE':
         response_builder.speak('Inserat wurde nicht bestätigt! Abbruch')
         return response_builder.response
@@ -102,7 +113,7 @@ def inserat_erzeugen_completed_handler(handler_input):
     slot_wert_stueckzahl = request.intent.slots['stueckzahl'].value
     slot_wert_anmerkung = request.intent.slots['anmerkung'].value
 
-    inserat_document = {
+    inserat_dokument = {
         'erstellungs_datum': str(datetime.datetime.now()),
         'artikel_bezeichnung': slot_wert_artikelbezeichnung,
         'artikel_form': slot_wert_form,
@@ -118,8 +129,13 @@ def inserat_erzeugen_completed_handler(handler_input):
         'artikel_anmerkung': slot_wert_anmerkung
     }
 
-    if Database.MongoDB.benutzer_speichere_inserat(inserat_document):
-        response_builder.speak(random.choice(sprach_prompts['INSERAT_SPEICHERN_ERFOLG']))
+    if Database.MongoDB.benutzer_speichere_inserat(inserat_dokument):
+        response_builder.speak(
+            f'<speak>'
+            f'{sprach_prompts["INSERAT_SPEICHERN_ERFOLG_AUDIO"]}'
+            f'{random.choice(sprach_prompts["INSERAT_SPEICHERN_ERFOLG"])}'
+            f'</speak>'
+        )
     else:
         response_builder.speak(sprach_prompts['INSERAT_SPEICHERN_FEHLER'])
 

@@ -4,20 +4,20 @@ import sys
 from ask_sdk_model.services import ServiceException
 from ask_sdk_model.ui import AskForPermissionsConsentCard
 
-
 logger = logging.getLogger('__name__')
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
 
 def abfrage_eigene_adresse_handler(handler_input):
-
-    response_builder = get_aktuelle_adresse(handler_input)
+    """Geräte-Standortdaten abfragen"""
+    response_builder = get_adresse(handler_input)
     response_builder.set_should_end_session(False)
 
     return response_builder.response
 
 
-def get_aktuelle_adresse(handler_input) -> any:
+def get_adresse(handler_input) -> any:
+    """Rechte für Zugriff auf Adresse überprüfen"""
     # Sprachbefehle laden
     sprach_prompts = handler_input.attributes_manager.request_attributes['_']
     response_builder = handler_input.response_builder
@@ -36,16 +36,7 @@ def get_aktuelle_adresse(handler_input) -> any:
         response_builder.set_card(AskForPermissionsConsentCard(permissions=standort_rechte))
     else:
         try:
-            geraete_id = request_envelope.context.system.device.device_id
-            geraete_id_client = handler_input.service_client_factory.get_device_address_service()
-            standort = geraete_id_client.get_full_address(geraete_id)
-            # Standortdaten ausgeben
-            logging.info(f'{standort=}')
-
-            benutzer_land = 'Deutschland' if standort.country_code == 'DE' else standort.country_code
-            notwendige_standortdaten = \
-                [standort.address_line2, standort.postal_code, standort.city, benutzer_land]
-
+            notwendige_standortdaten = get_geraete_standortdaten(handler_input)
             if None in notwendige_standortdaten:
                 response_builder.speak(sprach_prompts['ADRESSE_NICHT_GEFUNDEN_ODER_UNVOLLSTAENDIG_FEHLER'])
             else:
@@ -58,3 +49,14 @@ def get_aktuelle_adresse(handler_input) -> any:
             raise e
 
     return response_builder
+
+
+def get_geraete_standortdaten(handler_input) -> list:
+    """Gerätebasierte Standortdaten abrufen"""
+    geraete_id = handler_input.request_envelope.context.system.device.device_id
+    geraete_id_client = handler_input.service_client_factory.get_device_address_service()
+    standort = geraete_id_client.get_full_address(geraete_id)
+    logging.info(f'{standort=}')
+
+    benutzer_land = 'Deutschland' if standort.country_code == 'DE' else standort.country_code
+    return [standort.address_line2, standort.postal_code, standort.city, benutzer_land]

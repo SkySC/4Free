@@ -6,7 +6,7 @@ from ask_sdk_core.utils import get_account_linking_access_token
 
 
 def radius_einstellen_handler(handler_input):
-    """Suchradius einstellen"""
+    """Suchradius verändern"""
     sprach_prompts = handler_input.attributes_manager.request_attributes['_']
     response_builder = handler_input.response_builder
     response_builder.set_should_end_session(False)
@@ -20,10 +20,10 @@ def radius_einstellen_handler(handler_input):
         else:
             db.benutzer_set_umkreis(umkreis_slot_wert)
             response_builder.speak(str(sprach_prompts['SUCHRADIUS_SPEICHERN_ERFOLG']).format(umkreis_slot_wert))
-        # Falls Wert nicht gesetzt werden konnte
+        # Prüfen, ob Wert in DB gespeichert wurde
         if db.benutzer_hat_einstellungen_eintrag() is False:
             response_builder.speak(sprach_prompts['SUCHRADIUS_SPEICHERN_FEHLER'])
-    # Store radius in session attribute, if no account is linked
+    # Falls kein Benutzerkonto verlinkt -> Radius in Session Attribut speichern
     else:
         session_attr = handler_input.attributes_manager.session_attributes
         session_attr['suchradius'] = umkreis_slot_wert

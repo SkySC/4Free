@@ -16,7 +16,6 @@ import Database
 
 # Stellt sicher, dass jeder Intent erreichbar ist
 sys.path.insert(0, './lambda/py')
-
 from EntwicklerInfoIntent import entwickler_info_handler
 from AbfrageEigeneInserateIntent import abfrage_eigene_inserate_handler
 from RadiusEinstellenIntent import radius_einstellen_handler
@@ -51,44 +50,46 @@ Response Handler & Intent Handler im Decorator-Style
 
 @sb.request_handler(can_handle_func=is_request_type('LaunchRequest'))
 def launch_request_handler(handler_input) -> Response:
-    """Handler for Skill launch."""
+    """
+    Handler für den Skillstart
+    """
     attributes_manager = handler_input.attributes_manager
-    # Sprachstrings für deutsche Sprache laden
+    # Sprachdaten laden
     sprach_prompts = attributes_manager.request_attributes['_']
-    # load session attributes
+    # Session-Attribute laden
     session_attr = attributes_manager.session_attributes
-    # Start Account Linking (can be skipped) & load user data if account is linked
-    account_already_linked, response_builder = benutzer_authorisieren(handler_input)
+    # Account-Linking starten, falls noch kein Benutzerkonto, sonst überspringen
+    benutzer_linked, response_builder = benutzer_authorisieren(handler_input)
     response_builder.set_should_end_session(False)
     # speech_output = sprach_prompts['START']
-    # Check the device id to enables/disable onboarding
-    device_id = handler_input.request_envelope.context.system.device.device_id
-    if db.skill_is_launched_first_time(device_id):
-        # onboarding process
+    # Anhand von Geräte-ID prüfen, ob Benutzer den Skill das erste Mal startet
+    geraete_id = handler_input.request_envelope.context.system.device.device_id
+    if db.skill_is_launched_first_time(geraete_id):
+        # Onboarding einleiten
         logging.info('Onboarding wird gestartet...')
 
-        if db.register_client_device(device_id):
+        if db.register_client_device(geraete_id):
             logging.info('Gerät wurde erfolgreich registriert')
 
         else:
             logging.warning('Fehler bei der Registrierung des Geräts')
 
-        # Give instructions on Account Linking if skill is the launched the first time & account not linked
-        if not account_already_linked:
+        # Beim Erststart dem Benutzer erklären, wie er das Account-Linking durchführt
+        if not benutzer_linked:
             response_builder.speak(sprach_prompts['BENUTZER_ONBOARDING_LINKING_ANWEISUNGEN'])
 
     else:
-        logging.info(f'{db.skill_is_launched_first_time(device_id)=}')
+        logging.info(f'{db.skill_is_launched_first_time(geraete_id)=}')
 
-        if account_already_linked:
-            user_name = Benutzer.AmazonBenutzer.get_benutzer_namen()
-            response_builder.speak(random.choice(sprach_prompts['BENUTZER_LINKED_BEGRUESSUNG']).format(user_name))
+        if benutzer_linked:
+            benutzer_name = Benutzer.AmazonBenutzer.get_benutzer_namen()
+            response_builder.speak(random.choice(sprach_prompts['BENUTZER_LINKED_BEGRUESSUNG']).format(benutzer_name))
         else:
             response_builder.speak(random.choice(sprach_prompts['BENUTZER_BEGRUESSUNG']))
 
-    # Store search radius in session attribute, if no account can be associated
-    if not account_already_linked:
-        # set default search radius of 15km
+    # Suchradius in Session-Attribut speichern <=> Kein Benutzerkonto
+    if not benutzer_linked:
+        # Standard-Suchradius von 15km
         session_attr['suchradius'] = 15
         logging.info(f'{session_attr=}')
 
@@ -97,8 +98,10 @@ def launch_request_handler(handler_input) -> Response:
 
 @sb.request_handler(can_handle_func=is_intent_name("AMAZON.HelpIntent"))
 def help_intent_handler(handler_input) -> Response:
-    """Handler for Help Intent."""
-    # Load language data
+    """
+    Handler für die Hilfeseite
+    """
+    # Sprachdaten laden
     sprach_prompts = handler_input.attributes_manager.request_attributes['_']
 
     response_builder = handler_input.response_builder
@@ -112,25 +115,26 @@ def help_intent_handler(handler_input) -> Response:
     is_intent_name("AMAZON.CancelIntent")(handler_input) or
     is_intent_name("AMAZON.StopIntent")(handler_input))
 def cancel_and_stop_intent_handler(handler_input) -> Response:
-    """Single handler for Cancel and Stop Intent."""
-    # Load language data
+    """
+    Handler, um den Skill zu beenden
+    """
+    # Sprachdaten laden
     sprach_prompts = handler_input.attributes_manager.request_attributes['_']
     response_builder = handler_input.response_builder
 
-    user_name = Benutzer.AmazonBenutzer.get_benutzer_namen()
-    speech_output = random.choice(sprach_prompts['BENUTZER_VERABSCHIEDEN'])\
-        .format(f'{"" if user_name is None else user_name}')
-    response_builder.speak(speech_output)
-    response_builder.set_card(SimpleCard(speech_output))
+    benutzer_name = Benutzer.AmazonBenutzer.get_benutzer_namen()
+    sprach_ausgabe = random.choice(sprach_prompts['BENUTZER_VERABSCHIEDEN'])\
+        .format(f'{"" if benutzer_name is None else benutzer_name}')
+    response_builder.speak(sprach_ausgabe)
+    response_builder.set_card(SimpleCard(sprach_ausgabe))
 
     return response_builder.response
 
 
 @sb.request_handler(can_handle_func=is_intent_name("AMAZON.FallbackIntent"))
 def fallback_handler(handler_input) -> Response:
-    """AMAZON.FallbackIntent is only available in en-US locale.
-    This handler will not be triggered except in that locale,
-    so it is safe to deploy on any locale.
+    """
+    Handler, welcher ausgeführt wird, wenn kein passender Intent gefunden wird (nur in 'en-US')
     """
     # Load language data
     sprach_prompts = handler_input.attributes_manager.request_attributes['_']
@@ -144,21 +148,23 @@ def fallback_handler(handler_input) -> Response:
 
 @sb.request_handler(can_handle_func=is_request_type("SessionEndedRequest"))
 def session_ended_request_handler(handler_input) -> Response:
-    """Handler for Session End."""
+    """
+    Handler, um die Sitzung zu beenden -> Weiterleitung an cancel_and_stop_intent_handler
+    """
     # Call cancel_and_stop_intent instead
     return cancel_and_stop_intent_handler(handler_input)
 
 
 @sb.exception_handler(can_handle_func=lambda i, e: True)
 def all_exception_handler(handler_input, exception) -> Response:
-    """Catch all exception handler, log exception and
-    respond with custom message.
+    """
+    Handler, um alle allgemeinen Exceptions abzufangen und auszugeben
     """
     # Load language data
     sprach_prompts = handler_input.attributes_manager.request_attributes['_']
     response_builder = handler_input.response_builder
 
-    logging.error(exception, exc_info=True)
+    logging.exception(exception, exc_info=True)
     response_builder.speak(sprach_prompts['ALLGEMEINE_EXCEPTION'])
 
     return response_builder.response
@@ -247,7 +253,7 @@ def localization_request_interceptor(handler_input):
             sprach_prompts = json.load(sprach_prompt_daten)
             handler_input.attributes_manager.request_attributes['_'] = sprach_prompts
     except FileNotFoundError as e:
-        logger.warning(f'Alexa-Sprachbefehle konnten nicht geladen werden: {e}')
+        logger.exception(f'Alexa-Sprachbefehle konnten nicht geladen werden: {e}')
         exit()
 
 
