@@ -61,7 +61,7 @@
     "Nur noch eine Frage!",
     "Du hast die letzte Frage erreicht!"
   ],
-  "INSERAT_ERZEUGEN_ZUSAMMENFASSUNG": "<speak>Du möchtest {} {} verschenken in der Farbe {} aus {} vom Hersteller {} mit den Maßen {} mal {} mal {} im Zustand {} {} Möglichkeit zur Abholung. Außerdem hast du folgende Anmerkung hinterlassen: {}<break time='1s' /></speak>",
+  "INSERAT_ERZEUGEN_ZUSAMMENFASSUNG": "<speak><p><prosody rate='slow'>Du möchtest <prosody volume='x-loud'>{} {}</prosody> verschenken in der Farbe <prosody volume='x-loud'>{}</prosody> aus <prosody volume='x-loud'>{}</prosody> vom Hersteller <prosody volume='x-loud'>{}</prosody> mit den Maßen <prosody volume='x-loud'>{} mal {} mal {}</prosody> im Zustand <prosody volume='x-loud'>{} {}</prosody> Möglichkeit zur Abholung. Außerdem hast du folgende Anmerkung hinterlassen: <prosody volume='x-loud'>{}</prosody></prosody></p></speak>",
   "INSERAT_ERZEUGEN_FRAGE_BEANTWORTET_AUDIO": "<audio src='soundbank://soundlibrary/office/amzn_sfx_elevator_open_bell_01'/>",
   "INSERAT_SPEICHERN_ERFOLG_AUDIO": "<audio src='soundbank://soundlibrary/alarms/chimes_and_bells/chimes_bells_04'/>"
 }
