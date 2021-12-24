@@ -57,11 +57,20 @@
     "Fast geschafft!"
   ],
   "ANZAHL_VERBLEIBENDE_FRAGEN_EINS": [
-    "Das ist meine letzte Frage!",
+    "Das ist meine letzte Frage an dich!",
     "Nur noch eine Frage!",
     "Du hast die letzte Frage erreicht!"
   ],
   "INSERAT_ERZEUGEN_ZUSAMMENFASSUNG": "<speak><p><prosody rate='slow'>Du möchtest <prosody volume='x-loud'>{} {}</prosody> verschenken in der Farbe <prosody volume='x-loud'>{}</prosody> aus <prosody volume='x-loud'>{}</prosody> vom Hersteller <prosody volume='x-loud'>{}</prosody> mit den Maßen <prosody volume='x-loud'>{} mal {} mal {}</prosody> im Zustand <prosody volume='x-loud'>{} {}</prosody> Möglichkeit zur Abholung. Außerdem hast du folgende Anmerkung hinterlassen: <prosody volume='x-loud'>{}</prosody></prosody></p></speak>",
-  "INSERAT_ERZEUGEN_FRAGE_BEANTWORTET_AUDIO": "<audio src='soundbank://soundlibrary/office/amzn_sfx_elevator_open_bell_01'/>",
-  "INSERAT_SPEICHERN_ERFOLG_AUDIO": "<audio src='soundbank://soundlibrary/alarms/chimes_and_bells/chimes_bells_04'/>"
+  "FRAGE_BEANTWORTET_ERFOLG_AUDIO": "<audio src='soundbank://soundlibrary/office/amzn_sfx_elevator_open_bell_01'/>",
+  "INSERAT_SPEICHERN_ERFOLG_AUDIO": "<audio src='soundbank://soundlibrary/alarms/chimes_and_bells/chimes_bells_04'/>",
+  "ARTIKEL_BEZEICHNUNG_ERFRAGEN": [
+    "Wie lautet der Name des gesuchten Artikels?",
+    "Wie lautet der Artikelname?",
+    "Wie lautet die Artikelbezeichnung?",
+    "Wie ist die Bezeichnung für deinen Artikel?"
+  ],
+  "ARTIKEL_SUCHE_EINLEITUNG": "<speak><p>Nachdem du die nächsten {} Fragen beantwortest, werde ich dir alle passenden Artikel nennen. Lass uns direkt loslegen!</p></speak>",
+  "EINFACHE_SUCHE_STARTEN_BEGRUESSUNG": "<speak><p><amazon:emotion name='excited' intensity='low'>Lass uns mit der einfachen Suche mit {} Fragen beginnen. Ich bin mir sicher, dass ich passende Artikel für dich finde!</amazon:emotion></p></speak>",
+  "DETAILLIERTE_SUCHE_STARTEN_BEGRUESSUNG": "<speak><p><amazon:emotion name='excited' intensity='low'>Lass uns mit der detaillierten Suche beginnen. Sie hat mit {} Fragen insgesamt mehr als die einfache Suche. Halte bis zum Ende durch und ich verspreche dir perfekte Artikel für dich zu finden. Los geht's!</amazon:emotion></p></speak>"
 }

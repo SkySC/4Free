@@ -49,12 +49,14 @@ def inserat_erzeugen_in_progress_handler(handler_input):
     handler_input.attributes_manager.session_attributes['anzahl_verbleibende_fragen'] -= 1
     anzahl_verbleibende_fragen = handler_input.attributes_manager.session_attributes['anzahl_verbleibende_fragen']
     logging.info(f'{anzahl_verbleibende_fragen=}')
+
     # Audio bei gültiger Antwort
-    sprach_ausgabe = f'<speak>{sprach_prompts["INSERAT_ERZEUGEN_FRAGE_BEANTWORTET_AUDIO"]}'
+    sprach_ausgabe = f'<speak>{sprach_prompts["FRAGE_BEANTWORTET_ERFOLG_AUDIO"]}'
     # Anzahl verbleibender Fragen nur an bestimmten Stellen ausgeben
     if anzahl_verbleibende_fragen in [5, 2]:
         sprach_ausgabe += random.choice(sprach_prompts['ANZAHL_VERBLEIBENDE_FRAGEN']).format(anzahl_verbleibende_fragen)
         logging.info(f'{sprach_ausgabe=}')
+
     elif anzahl_verbleibende_fragen == 1:
         sprach_ausgabe += random.choice(sprach_prompts['ANZAHL_VERBLEIBENDE_FRAGEN_EINS'])
     sprach_ausgabe += '</speak>'

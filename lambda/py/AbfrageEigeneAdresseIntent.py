@@ -42,7 +42,7 @@ def get_adresse(handler_input) -> any:
             else:
                 response_builder.speak(str(sprach_prompts['ADRESSE_AUSGABE']).format(*notwendige_standortdaten))
         except ServiceException as e:
-            logging.error(f'{__name__}:Service Exception: {e}')
+            logging.error(f'{__name__}: Service Exception: {e}')
 
             response_builder.speak(sprach_prompts['ALLGEMEINER_FEHLER'])
         except Exception as e:

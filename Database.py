@@ -101,7 +101,7 @@ class MongoDB:
             return True
 
     @staticmethod
-    def register_client_device(device_id: str) -> bool:
+    def registriere_benutzer_geraet(device_id: str) -> bool:
         try:
             MongoDB.get_db_instance()['registrierte_geraete'].insert_one({'geraete_id': device_id})
         except (pymongo.errors.WriteError, pymongo.errors.ConnectionFailure, pymongo.errors.NetworkTimeout) as e:
@@ -111,7 +111,25 @@ class MongoDB:
             return True
 
     @staticmethod
-    def skill_is_launched_first_time(device_id: str) -> bool:
+    def skill_erststart(device_id: str) -> bool:
         return (
             False if MongoDB.get_db_instance()['registrierte_geraete'].find_one({'geraete_id': device_id}) else True
         )
+
+    @staticmethod
+    def finde_passende_artikel(slots: any) -> list:
+        slot_wertepaare = {key: slots[key].value for key in slots}
+        logging.info(f'{slot_wertepaare=}')
+
+        try:
+            such_params = {**slot_wertepaare, 'radius': 30}
+            suchtreffer_cursor = MongoDB.get_db_instance()['benutzer_inserate'].find(
+                {'artikel_bezeichnung': {'$regex': f'.*{such_params["bezeichnung"]}.*'}},
+            )
+        except (pymongo.errors.InvalidDocument, pymongo.errors.CursorNotFound, pymongo.errors.NetworkTimeout) as e:
+            logging.exception(f'{__name__}: Dokumente konnten nicht abgerufen werden: {e}')
+        else:
+            for suchtreffer in suchtreffer_cursor:
+                print(suchtreffer)
+
+        return []
