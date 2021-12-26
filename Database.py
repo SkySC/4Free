@@ -1,3 +1,4 @@
+import datetime
 import logging
 import sys
 
@@ -5,6 +6,8 @@ import pymongo.errors
 from pymongo import MongoClient
 
 import Benutzer
+
+from FindeNahegelegeneStaedte import get_staedte_im_umkreis
 
 logger = logging.getLogger('__name__')
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
@@ -49,7 +52,7 @@ class MongoDB:
             True if MongoDB.get_db_instance()['benutzer_einstellungen'].find_one(
                 {'uid': Benutzer.AmazonBenutzer.get_benutzer_uid()}
             )
-            else True
+            else False
         )
 
     @staticmethod
@@ -75,11 +78,13 @@ class MongoDB:
 
     @staticmethod
     def benutzer_get_umkreis() -> int | None:
-        benutzer_einstellungen = MongoDB.get_db_instance()['benutzer_einstellungen'].find_one(
-            {'uid': Benutzer.AmazonBenutzer.get_benutzer_uid()}
-        )
-
-        if benutzer_einstellungen:
+        try:
+            benutzer_einstellungen = MongoDB.get_db_instance()['benutzer_einstellungen'].find_one(
+                {'uid': Benutzer.AmazonBenutzer.get_benutzer_uid()}
+            )
+        except (pymongo.errors.NetworkTimeout, pymongo.errors.ConnectionFailure, pymongo.errors.InvalidDocument) as e:
+            logging.exception(f'{__name__}: Dokument für Benutzereinstellungen konnte nicht geladen werden: {e}')
+        else:
             return benutzer_einstellungen['radius']
 
         return None
@@ -89,16 +94,21 @@ class MongoDB:
         benutzer = Benutzer.AmazonBenutzer
         try:
             MongoDB.get_db_instance()['benutzer_inserate'].insert_one({
-                'uid': benutzer.get_benutzer_uid(),
-                'artikel_anbieter': benutzer.get_benutzer_namen(),
-                'artikel_standort': benutzer.get_benutzer_plz(),
+                'meta_beschreibung': {
+                    'erstellungs_datum': str(datetime.datetime.now()),
+                    'anbieter_uid': benutzer.get_benutzer_uid(),
+                    'anbieter_name': benutzer.get_benutzer_namen(),
+                    'anbieter_plz': benutzer.get_benutzer_plz(),
+                },
+                # Artikeldaten anhängen
                 **inserat
             })
         except (pymongo.errors.WriteError, pymongo.errors.ConnectionFailure, pymongo.errors.NetworkTimeout) as e:
             logging.exception(f'{__name__}: Dokument für Inserat konnte nicht geschrieben werden: {e}')
-            return False
         else:
             return True
+
+        return False
 
     @staticmethod
     def registriere_benutzer_geraet(device_id: str) -> bool:
@@ -117,19 +127,28 @@ class MongoDB:
         )
 
     @staticmethod
-    def finde_passende_artikel(slots: any) -> list:
+    def finde_passende_artikel(slots: dict, session_attr: dict) -> list | None:
         slot_wertepaare = {key: slots[key].value for key in slots}
         logging.info(f'{slot_wertepaare=}')
 
+        benutzer = Benutzer.AmazonBenutzer
+        benutzer_land = session_attr['land']
+        benutzer_plz = benutzer.get_benutzer_plz() if benutzer.benutzer_existiert() else session_attr['plz']
+        radius = MongoDB.benutzer_get_umkreis() if benutzer.benutzer_existiert() else session_attr['suchradius']
+        staedte_im_umkreis = get_staedte_im_umkreis(land=benutzer_land, plz=benutzer_plz, radius=radius)
+        plz_im_umkreis = [plz[1] for plz in staedte_im_umkreis]
+
+        slot_wertepaare['bezeichnung'] = {'$regex': f'.*{slot_wertepaare["bezeichnung"]}.*'}
+        such_params = {**slot_wertepaare, 'anbieter_plz': {'$in': plz_im_umkreis}}
+        logging.info(f'{such_params=}')
+
         try:
-            such_params = {**slot_wertepaare, 'radius': 30}
             suchtreffer_cursor = MongoDB.get_db_instance()['benutzer_inserate'].find(
-                {'artikel_bezeichnung': {'$regex': f'.*{such_params["bezeichnung"]}.*'}},
+                {**such_params},
+                {'_id': 0, 'uid': 0}
             )
         except (pymongo.errors.InvalidDocument, pymongo.errors.CursorNotFound, pymongo.errors.NetworkTimeout) as e:
             logging.exception(f'{__name__}: Dokumente konnten nicht abgerufen werden: {e}')
+            return None
         else:
-            for suchtreffer in suchtreffer_cursor:
-                print(suchtreffer)
-
-        return []
+            return suchtreffer_cursor

@@ -12,8 +12,9 @@
   ],
   "BENUTZER_ONBOARDING_LINKING_ANWEISUNGEN": "Falls du dein Amazon Benutzerkonto mit mir verbinden möchtest, verwende bitte die Alexa Companion App. Du hast die Möglichkeit dein Amazonkonto zu einem späteren Zeitpunkt zu verbinden und For Free jetzt weiterhin zu verwenden.",
   "BENUTZER_LINKING_DATUM": "Du hast deinen Benutzer das erste Mal am {} mit For Free verbunden.",
-  "ANFRAGE_STANDORT_BERECHTIGUNGEN": "Um Interessenten zu ermöglichen deine genaue Adresse zu sehen, erteile mir bitte über die Alexa Companion App die Berechtigungen dafür.",
-  "ADRESSE_NICHT_GEFUNDEN_ODER_UNVOLLSTAENDIG_FEHLER": "Tut mir Leid, ich konnte in deinem Benutzerkonto keine oder keine vollständige Adresse finden. Um dies zu beheben, gehe bitte in dein Amazon Benutzerkonto und ändere deine Adressdaten.",
+  "ANFRAGE_STANDORT_BERECHTIGUNGEN": "Um Interessenten zu ermöglichen deine genaue Adresse zu sehen oder eine Suche zu starten, erteile mir bitte zunächst über die Alexa Companion App die Berechtigungen dafür.",
+  "BENUTZER_LINKED_ADRESSE_NICHT_GEFUNDEN_ODER_UNVOLLSTAENDIG_FEHLER": "Tut mir Leid, ich konnte in deinem Benutzerkonto keine oder keine vollständige Adresse finden. Um dies zu beheben, gehe bitte in dein Amazon Benutzerkonto und ändere deine Adressdaten.",
+  "BENUTZER_ADRESSE_NICHT_GEFUNDEN_ODER_UNVOLLSTAENDIG_FEHLER": "Tut mir Leid, ich konnte auf deinem Gerät leider keine oder keine vollständige Adresse finden. Um dies zu beheben, gehe bitte in deine Alexa Companion App und ändere deine Adressdaten",
   "ADRESSE_AUSGABE": "<speak><say-as interpret-as='address'>Folgende Adresse habe ich finden können: {}, {} {}, {}</say-as></speak>",
   "ALLGEMEINER_FEHLER": "Tut mir Leid, leider gab es ein unerwartetes Problem. Versuche es bitte erneut!",
   "ALLGEMEINE_EXCEPTION": "Tut mir Leid, leider ist ein unerwartetes Problem aufgetreten. For Free wird nun beendet.",
@@ -72,5 +73,7 @@
   ],
   "ARTIKEL_SUCHE_EINLEITUNG": "<speak><p>Nachdem du die nächsten {} Fragen beantwortest, werde ich dir alle passenden Artikel nennen. Lass uns direkt loslegen!</p></speak>",
   "EINFACHE_SUCHE_STARTEN_BEGRUESSUNG": "<speak><p><amazon:emotion name='excited' intensity='low'>Lass uns mit der einfachen Suche mit {} Fragen beginnen. Ich bin mir sicher, dass ich passende Artikel für dich finde!</amazon:emotion></p></speak>",
-  "DETAILLIERTE_SUCHE_STARTEN_BEGRUESSUNG": "<speak><p><amazon:emotion name='excited' intensity='low'>Lass uns mit der detaillierten Suche beginnen. Sie hat mit {} Fragen insgesamt mehr als die einfache Suche. Halte bis zum Ende durch und ich verspreche dir perfekte Artikel für dich zu finden. Los geht's!</amazon:emotion></p></speak>"
+  "DETAILLIERTE_SUCHE_STARTEN_BEGRUESSUNG": "<speak><p><amazon:emotion name='excited' intensity='low'>Lass uns mit der detaillierten Suche beginnen. Sie hat mit {} Fragen insgesamt mehr als die einfache Suche. Halte bis zum Ende durch und ich verspreche dir perfekte Artikel für dich zu finden. Los geht's!</amazon:emotion></p></speak>",
+  "SUCHE_NICHT_GESTARTET_FEHLER": "Tut mir Leid, deine vorherige Suche hat scheinbar keine Treffer ergeben.",
+  "SUCHE_KEINE_TREFFER": "Leider hat deine Suche keine Treffer ergeben. Versuche es bitte erneut mit anderen Suchparametern."
 }

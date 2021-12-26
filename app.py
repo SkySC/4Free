@@ -20,7 +20,7 @@ from EntwicklerInfoIntent import entwickler_info_handler
 from AbfrageEigeneInserateIntent import abfrage_eigene_inserate_handler
 from RadiusEinstellenIntent import radius_einstellen_handler
 from AbfrageAnmeldezeitpunktIntent import abfrage_anmeldezeitpunkt_handler
-from AbfrageEigeneAdresseIntent import abfrage_eigene_adresse_handler
+from AbfrageEigeneAdresseIntent import abfrage_eigene_adresse_handler, get_geraete_standortdaten
 from InseratErzeugenIntent import (
     inserat_erzeugen_start_handler, inserat_erzeugen_in_progress_handler, inserat_erzeugen_completed_handler
 )
@@ -32,6 +32,9 @@ from EinfacheSucheIntent import (
 )
 from DetaillierteSucheIntent import (
     detaillierte_suche_start_handler, detaillierte_suche_in_progress_handler, detaillierte_suche_completed_handler
+)
+from SuchergebnisseIntent import (
+    suchergebnisse_start_handler, suchergebnisse_in_progress_handler, suchergebnisse_completed_handler
 )
 
 sb = CustomSkillBuilder(api_client=DefaultApiClient())
@@ -65,7 +68,11 @@ def launch_request_handler(handler_input) -> Response:
     sprach_prompts = attributes_manager.request_attributes['_']
     # Session-Attribute laden
     session_attr = attributes_manager.session_attributes
-    session_attr['suche_gestartet'] = False
+    session_attr['plz'] = get_geraete_standortdaten(handler_input)[1]
+    session_attr['land'] = 'DE' if get_geraete_standortdaten(handler_input)[3] == 'Deutschland' \
+        else get_geraete_standortdaten(handler_input)[3]
+    logging.info(f'{session_attr["plz"]=} | {session_attr["land"]=}')
+
     # Account-Linking starten, falls noch kein Benutzerkonto, sonst überspringen
     benutzer_linked, response_builder = benutzer_authorisieren(handler_input)
     response_builder.set_should_end_session(False)
@@ -303,6 +310,33 @@ def detaillierte_suche_in_progress_handler_wrapper(handler_input) -> Response:
 )
 def detaillierte_suche_completed_handler_wrapper(handler_input) -> Response:
     return detaillierte_suche_completed_handler(handler_input)
+
+
+@sb.request_handler(
+    can_handle_func=lambda handler_input:
+    is_intent_name('SuchergebnisseIntent')(handler_input)
+    and handler_input.request_envelope.request.dialog_state == DialogState.STARTED
+)
+def suchergebnisse_start_handler_wrapper(handler_input) -> Response:
+    return suchergebnisse_start_handler(handler_input)
+
+
+@sb.request_handler(
+    can_handle_func=lambda handler_input:
+    is_intent_name('SuchergebnisseIntent')(handler_input)
+    and handler_input.request_envelope.request.dialog_state == DialogState.IN_PROGRESS
+)
+def suchergebnisse_in_progress_handler_wrapper(handler_input) -> Response:
+    return suchergebnisse_in_progress_handler(handler_input)
+
+
+@sb.request_handler(
+    can_handle_func=lambda handler_input:
+    is_intent_name('SuchergebnisseIntent')(handler_input)
+    and handler_input.request_envelope.request.dialog_state == DialogState.COMPLETED
+)
+def suchergebnisse_completed_handler_wrapper(handler_input) -> Response:
+    return suchergebnisse_completed_handler(handler_input)
 
 
 """

@@ -17,7 +17,12 @@ def einfache_suche_start_handler(handler_input):
     """
     attributes_manager = handler_input.attributes_manager
     response_builder = handler_input.response_builder
+    request_envelope_permissions = handler_input.request_envelope.context.system.user.permissions
     sprach_prompts = attributes_manager.request_attributes['_']
+    # Standortberechtigungen überprüfen
+    if not (request_envelope_permissions.scopes["alexa::devices:all:geolocation:read"].status.name == 'GRANTED'
+            and request_envelope_permissions.consent_token):
+        return response_builder.speak(sprach_prompts['ANFRAGE_STANDORT_BERECHTIGUNGEN']).response
     # Anzahl Fragen in Session Attribut speichern
     attributes_manager.session_attributes['anzahl_verbleibende_fragen'] = 4
     response_builder.speak(str(sprach_prompts['EINFACHE_SUCHE_STARTEN_BEGRUESSUNG']).format(
@@ -39,7 +44,7 @@ def einfache_suche_in_progress_handler(handler_input):
     sprach_prompts = attributes_manager.request_attributes['_']
     session_attr = attributes_manager.session_attributes
     response_builder.set_should_end_session(False)
-
+    
     session_attr['anzahl_verbleibende_fragen'] -= 1
     # Ändern, so dass Ton nur bei Erfolg kommt
     sprach_ausgabe = f'<speak>{sprach_prompts["FRAGE_BEANTWORTET_ERFOLG_AUDIO"]}'
@@ -64,5 +69,31 @@ def einfache_suche_in_progress_handler(handler_input):
 
 
 def einfache_suche_completed_handler(handler_input):
-    artikel_treffer = Database.MongoDB.finde_passende_artikel(handler_input.request_envelope.request.intent.slots)
-    return handler_input.response_builder.speak("Artikel wird gesucht!").response
+    """
+    Suchtreffer weiterleiten
+    """
+    attributes_manager = handler_input.attributes_manager
+    response_builder = handler_input.response_builder
+    sprach_prompts = attributes_manager.request_attributes['_']
+    session_attr = attributes_manager.session_attributes
+    response_builder.set_should_end_session(False)
+
+    artikel_treffer = Database.MongoDB.finde_passende_artikel(
+        handler_input.request_envelope.request.intent.slots,
+        session_attr
+    )
+    # Keine Suchtreffer
+    if not artikel_treffer:
+        return response_builder.speak(sprach_prompts['SUCHE_KEINE_TREFFER']).response
+    # Ergebnisse in Session-Attribut speichern
+    session_attr['suchergebnisse'] = list(artikel_treffer)
+
+    return response_builder.speak("Artikel wird gesucht!").add_directive(
+        DelegateDirective(
+            updated_intent=Intent(
+                name='SuchergebnisseIntent',
+                confirmation_status=IntentConfirmationStatus.NONE,
+                slots={}
+            )
+        )
+    ).response

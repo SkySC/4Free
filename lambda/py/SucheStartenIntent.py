@@ -14,8 +14,14 @@ def suche_starten_handler(handler_input):
     """
     sprach_prompts = handler_input.attributes_manager.request_attributes['_']
     response_builder = handler_input.response_builder
-    request = handler_input.request_envelope.request
+    request_envelope = handler_input.request_envelope
+    request_envelope_permissions = request_envelope.context.system.user.permissions
+    request = request_envelope.request
     response_builder.set_should_end_session(False)
+    # Standortberechtigungen überprüfen
+    if not (request_envelope_permissions.scopes["alexa::devices:all:geolocation:read"].status.name == 'GRANTED'
+            and request_envelope_permissions.consent_token):
+        return response_builder.speak(sprach_prompts['ANFRAGE_STANDORT_BERECHTIGUNGEN']).response
 
     slots = request.intent.slots
     # Slots extrahieren

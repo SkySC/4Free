@@ -81,3 +81,7 @@ class AmazonBenutzer:
     @staticmethod
     def get_benutzer_phone() -> int:
         pass
+
+    @staticmethod
+    def benutzer_existiert() -> bool:
+        return True if AmazonBenutzer.get_benutzer_uid() else False

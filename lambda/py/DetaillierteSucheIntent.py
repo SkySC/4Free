@@ -15,7 +15,12 @@ def detaillierte_suche_start_handler(handler_input):
     """
     attributes_manager = handler_input.attributes_manager
     response_builder = handler_input.response_builder
+    request_envelope_permissions = handler_input.request_envelope.context.system.user.permissions
     sprach_prompts = attributes_manager.request_attributes['_']
+    # Standortberechtigungen überprüfen
+    if not (request_envelope_permissions.scopes["alexa::devices:all:geolocation:read"].status.name == 'GRANTED'
+            and request_envelope_permissions.consent_token):
+        return response_builder.speak(sprach_prompts['ANFRAGE_STANDORT_BERECHTIGUNGEN']).response
     # Anzahl Fragen in Session Attribut speichern
     attributes_manager.session_attributes['anzahl_verbleibende_fragen'] = 7
     response_builder.speak(str(sprach_prompts['DETAILLIERTE_SUCHE_STARTEN_BEGRUESSUNG']).format(

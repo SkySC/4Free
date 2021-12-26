@@ -1,11 +1,10 @@
-import datetime
 import logging
 import random
 import sys
 
 from ask_sdk_core.utils import get_account_linking_access_token
-from ask_sdk_model.dialog import (ElicitSlotDirective, DelegateDirective)
-from ask_sdk_model import (SlotConfirmationStatus, Slot)
+from ask_sdk_model.dialog import ElicitSlotDirective, DelegateDirective
+from ask_sdk_model import SlotConfirmationStatus, Slot
 
 import Database
 
@@ -62,12 +61,13 @@ def inserat_erzeugen_in_progress_handler(handler_input):
     sprach_ausgabe += '</speak>'
 
     slots = intent.slots
+    # Wenn die letzte Frage beantwortet wird
     if slots['anmerkung'].value:
         # Eigener Prompt, um Artikel zu bestätigen
         abholung_satzbaustein = 'mit' if slots['abholung'].value == 'ja' else 'ohne'
         sprach_ausgabe = str(sprach_prompts['INSERAT_ERZEUGEN_ZUSAMMENFASSUNG']).format(
             slots['stueckzahl'].value,
-            slots['artikelbezeichnung'].value,
+            slots['bezeichnung'].value,
             slots['farbe'].value,
             slots['material'].value,
             slots['hersteller'].value,
@@ -95,40 +95,43 @@ def inserat_erzeugen_completed_handler(handler_input):
     # Sprachdaten laden
     sprach_prompts = handler_input.attributes_manager.request_attributes['_']
     response_builder = handler_input.response_builder
-    request = handler_input.request_envelope.request
+    intent = handler_input.request_envelope.request.intent
     response_builder.set_should_end_session(False)
     # Abbruch, wenn es keine Bestätigung gab <=> auch wenn Benutzerkonto nicht verlinkt
-    if request.intent.confirmation_status.name == 'NONE':
+    if intent.confirmation_status.name == 'NONE':
         response_builder.speak('Inserat wurde nicht bestätigt! Abbruch')
         return response_builder.response
     # Alle Slotwerte zwischenspeichern
-    slot_wert_artikelbezeichnung = request.intent.slots['artikelbezeichnung'].value
-    slot_wert_form = request.intent.slots['form'].value
-    slot_wert_material = request.intent.slots['material'].value
-    slot_wert_abholung = request.intent.slots['abholung'].value
-    slot_wert_farbe = request.intent.slots['farbe'].value
-    slot_wert_zustand = request.intent.slots['zustand'].value
-    slot_wert_hersteller = request.intent.slots['hersteller'].value
-    slot_wert_hoehe = request.intent.slots['hoehe'].value
-    slot_wert_breite = request.intent.slots['breite'].value
-    slot_wert_laenge = request.intent.slots['laenge'].value
-    slot_wert_stueckzahl = request.intent.slots['stueckzahl'].value
-    slot_wert_anmerkung = request.intent.slots['anmerkung'].value
+    slots = intent.slots
+    slot_wert_bezeichnung = slots['bezeichnung'].value
+    slot_wert_form = slots['form'].value
+    slot_wert_material = slots['material'].value
+    slot_wert_abholung = slots['abholung'].value
+    slot_wert_farbe = slots['farbe'].value
+    slot_wert_zustand = slots['zustand'].value
+    slot_wert_hersteller = slots['hersteller'].value
+    slot_wert_hoehe = slots['hoehe'].value
+    slot_wert_breite = slots['breite'].value
+    slot_wert_laenge = slots['laenge'].value
+    slot_wert_stueckzahl = slots['stueckzahl'].value
+    slot_wert_anmerkung = slots['anmerkung'].value
 
     inserat_dokument = {
-        'erstellungs_datum': str(datetime.datetime.now()),
-        'artikel_bezeichnung': slot_wert_artikelbezeichnung,
-        'artikel_form': slot_wert_form,
-        'artikel_material': slot_wert_material,
-        'artikel_abholung': slot_wert_abholung,
-        'artikel_farbe': slot_wert_farbe,
-        'artikel_zustand': slot_wert_zustand,
-        'artikel_hersteller': slot_wert_hersteller,
-        'aritkel_hoehe': float(slot_wert_hoehe),
-        'artikel_breite': float(slot_wert_breite),
-        'aritkel_laenge': float(slot_wert_laenge),
-        'artikel_stueckzahl': int(slot_wert_stueckzahl),
-        'artikel_anmerkung': slot_wert_anmerkung
+        # Metabeschreibung wird in benutzer_speichere_inserat() hinzugefügt
+        'artikeldaten': {
+            'bezeichnung': slot_wert_bezeichnung,
+            'form': slot_wert_form,
+            'material': slot_wert_material,
+            'abholung': slot_wert_abholung,
+            'farbe': slot_wert_farbe,
+            'zustand': slot_wert_zustand,
+            'hersteller': slot_wert_hersteller,
+            'hoehe': float(slot_wert_hoehe),
+            'breite': float(slot_wert_breite),
+            'laenge': float(slot_wert_laenge),
+            'stueckzahl': int(slot_wert_stueckzahl),
+            'anmerkung': slot_wert_anmerkung
+        }
     }
 
     if Database.MongoDB.benutzer_speichere_inserat(inserat_dokument):

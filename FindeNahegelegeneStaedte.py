@@ -14,44 +14,43 @@ logger = logging.getLogger('__name__')
 HTTPConnection.debuglevel = 1
 
 
-def get_nearby_cities(handler_input) -> list | None:
+def get_staedte_im_umkreis(land: str, plz: int, radius: int) -> list:
     """
     Städte innerhalb des Suchradius mit der geonames.org API abfragen (Limitierungen):
     - Radius <= 30km
     - 2 Credits pro findNearbyPostalCodes Anfrage
     - Login: frees@10minmail.de
     """
-    session_attr = handler_input.attributes_manager.session_attributes
-
     url = 'http://api.geonames.org/findNearbyPostalCodesJSON'
     parameter = {
-        'country': 'DE',
-        'username': 'fressfor'
+        'country': land,
+        'username': 'freesfor'
     }
     # Überprüfen, ob Benutzerkonto besteht
-    if get_account_linking_access_token(handler_input):
+    if Benutzer.AmazonBenutzer.benutzer_existiert():
         parameter['postalcode'] = Benutzer.AmazonBenutzer.get_benutzer_plz()
         parameter['radius'] = Database.MongoDB.benutzer_get_umkreis()
     else:
-        parameter['postalcode'] = 69502
-        parameter['radius'] = session_attr['radius']
+        parameter['postalcode'] = plz
+        parameter['radius'] = radius
 
+    logging.info(f'{parameter=}')
     try:
         response = requests.get(url, params=parameter)
     except requests.exceptions.RequestException as e:
         logging.exception(f'{__name__}: Städte konnten nicht abefragt werden: {e}')
-        return None
+        return []
     else:
         geolocation_daten = response.json()
         logging.info(json.dumps(geolocation_daten, indent=4, ensure_ascii=False))
 
-        stadte_namen = []
+        staedte_namen = []
         staedte_plz = []
         for geo_entry in geolocation_daten['postalCodes']:
-            stadte_namen.append(geo_entry['placeName'])
+            staedte_namen.append(geo_entry['placeName'])
             staedte_plz.append(geo_entry['postalCode'])
-
-        staedte_innerhalb_radius = list(zip(stadte_namen, staedte_plz))
+        # Format: [(stadt, plz), ...]
+        staedte_innerhalb_radius = list(zip(staedte_namen, staedte_plz))
         logging.info(f'{staedte_innerhalb_radius=}')
 
     return staedte_innerhalb_radius

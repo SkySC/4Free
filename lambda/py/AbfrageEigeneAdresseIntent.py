@@ -38,7 +38,7 @@ def get_adresse(handler_input) -> any:
         try:
             notwendige_standortdaten = get_geraete_standortdaten(handler_input)
             if None in notwendige_standortdaten:
-                response_builder.speak(sprach_prompts['ADRESSE_NICHT_GEFUNDEN_ODER_UNVOLLSTAENDIG_FEHLER'])
+                response_builder.speak(sprach_prompts['BENUTZER_ADRESSE_NICHT_GEFUNDEN_ODER_UNVOLLSTAENDIG_FEHLER'])
             else:
                 response_builder.speak(str(sprach_prompts['ADRESSE_AUSGABE']).format(*notwendige_standortdaten))
         except ServiceException as e:
