@@ -142,6 +142,7 @@ class MongoDB:
         such_params = {**slot_wertepaare, 'anbieter_plz': {'$in': plz_im_umkreis}}
         logging.info(f'{such_params=}')
 
+        suchtreffer_cursor = None
         try:
             suchtreffer_cursor = MongoDB.get_db_instance()['benutzer_inserate'].find(
                 {**such_params},
@@ -149,6 +150,5 @@ class MongoDB:
             )
         except (pymongo.errors.InvalidDocument, pymongo.errors.CursorNotFound, pymongo.errors.NetworkTimeout) as e:
             logging.exception(f'{__name__}: Dokumente konnten nicht abgerufen werden: {e}')
-            return None
-        else:
-            return suchtreffer_cursor
+
+        return suchtreffer_cursor
