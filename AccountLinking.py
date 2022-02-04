@@ -1,8 +1,9 @@
 import logging
+import random
 import sys
 
 from ask_sdk_core.utils import get_account_linking_access_token
-from ask_sdk_model.ui import LinkAccountCard, SimpleCard, AskForPermissionsConsentCard
+from ask_sdk_model.ui import LinkAccountCard, SimpleCard
 
 from Benutzer import AmazonBenutzer
 
@@ -24,12 +25,16 @@ def benutzer_authorisieren(handler_input) -> (bool, any):
 
         response_builder.set_card(LinkAccountCard())
     else:
-        logging.info('Benutzer ist bereits verlinkt')
+        logging.info('Benutzer bereits verlinkt')
 
         benutzer_linked = True
         # Statisches Benutzerobjekt erzeugen
         benutzer = AmazonBenutzer(benutzer_linking_token)
-        benutzer_card = SimpleCard(sprach_prompts['SKILL_NAME'], f'Hallo {benutzer.get_benutzer_namen()}')
+        benutzer_card = SimpleCard(
+            sprach_prompts['SKILL_NAME'],
+            str(random.choice(sprach_prompts['BENUTZER_LINKED_BEGRUESSUNG'])).format(
+                benutzer.get_benutzer_namen()
+            ))
         response_builder.set_card(benutzer_card)
 
     return benutzer_linked, response_builder

@@ -2,10 +2,9 @@ import logging
 import random
 import sys
 
-from ask_sdk_core.utils import get_account_linking_access_token
-from ask_sdk_model.dialog import ElicitSlotDirective, DelegateDirective
-from ask_sdk_model import SlotConfirmationStatus, Slot
+from ask_sdk_model.dialog import DelegateDirective
 
+import Benutzer
 import Database
 
 logger = logging.getLogger('__name__')
@@ -20,29 +19,26 @@ def inserat_erzeugen_start_handler(handler_input):
     intent = handler_input.request_envelope.request.intent
     response_builder.set_should_end_session(False)
     # Zähler für Anzahl verbleibende Fragen in Session Attribut speichern
-    handler_input.attributes_manager.session_attributes['anzahl_verbleibende_fragen'] = 12
+    handler_input.attributes_manager.session_attributes['anzahl_verbleibende_fragen'] = 11
     # Inserat kann nicht erzeugt werden, solange kein Benutzer verlinkt ist
-    if get_account_linking_access_token(handler_input):
+    if Benutzer.AmazonBenutzer.benutzer_existiert():
         response_builder.speak(random.choice(sprach_prompts['INSERAT_ERZEUGEN_BEGRUESSUNG']))
+        response_builder.add_directive(
+            DelegateDirective(updated_intent=intent)
+        )
     else:
         response_builder.speak(sprach_prompts['INSERAT_ERZEUGEN_BENUTZER_NICHT_LINKED'])
-        return response_builder.response
 
-    return response_builder.add_directive(
-        # Dialog weiterleiten
-        DelegateDirective(
-            updated_intent=intent
-        )
-    ).response
+    return response_builder.response
 
 
 def inserat_erzeugen_in_progress_handler(handler_input):
-    logging.info(f'{__name__}: Dialog läuft')
-
     # Sprachdaten laden
     sprach_prompts = handler_input.attributes_manager.request_attributes['_']
     response_builder = handler_input.response_builder
     intent = handler_input.request_envelope.request.intent
+    slots = intent.slots
+
     response_builder.set_should_end_session(False)
     # Zähler für verbleibende Fragen aktuallisieren
     handler_input.attributes_manager.session_attributes['anzahl_verbleibende_fragen'] -= 1
@@ -54,17 +50,15 @@ def inserat_erzeugen_in_progress_handler(handler_input):
     # Anzahl verbleibender Fragen nur an bestimmten Stellen ausgeben
     if anzahl_verbleibende_fragen in [5, 2]:
         sprach_ausgabe += random.choice(sprach_prompts['ANZAHL_VERBLEIBENDE_FRAGEN']).format(anzahl_verbleibende_fragen)
-        logging.info(f'{sprach_ausgabe=}')
-
     elif anzahl_verbleibende_fragen == 1:
         sprach_ausgabe += random.choice(sprach_prompts['ANZAHL_VERBLEIBENDE_FRAGEN_EINS'])
     sprach_ausgabe += '</speak>'
-
-    slots = intent.slots
     # Wenn die letzte Frage beantwortet wird
     if slots['anmerkung'].value:
         # Eigener Prompt, um Artikel zu bestätigen
-        abholung_satzbaustein = 'mit' if slots['abholung'].value == 'ja' else 'ohne'
+        abholung_satzbaustein = 'mit' \
+            if slots['abholung'].value == 'ja' \
+            else 'ohne'
         sprach_ausgabe = str(sprach_prompts['INSERAT_ERZEUGEN_ZUSAMMENFASSUNG']).format(
             slots['stueckzahl'].value,
             slots['bezeichnung'].value,
@@ -79,9 +73,9 @@ def inserat_erzeugen_in_progress_handler(handler_input):
             slots['anmerkung'].value
         )
 
-        logging.info(sprach_ausgabe)
-
-    return response_builder.speak(sprach_ausgabe).add_directive(
+    return response_builder.speak(sprach_ausgabe).ask(
+        random.choice(sprach_prompts['ALLGEMEINER_REPROMPT'])
+    ).add_directive(
         # Handler erneut aufrufen, solange letzte Frage nicht erreicht, sonst inserat_erzeugen_completed_handler
         DelegateDirective(
             updated_intent=intent
@@ -90,12 +84,11 @@ def inserat_erzeugen_in_progress_handler(handler_input):
 
 
 def inserat_erzeugen_completed_handler(handler_input):
-    logging.info(f'{__name__}: Dialog beendet')
-
     # Sprachdaten laden
     sprach_prompts = handler_input.attributes_manager.request_attributes['_']
     response_builder = handler_input.response_builder
     intent = handler_input.request_envelope.request.intent
+
     response_builder.set_should_end_session(False)
     # Abbruch, wenn es keine Bestätigung gab <=> auch wenn Benutzerkonto nicht verlinkt
     if intent.confirmation_status.name == 'NONE':
@@ -104,7 +97,6 @@ def inserat_erzeugen_completed_handler(handler_input):
     # Alle Slotwerte zwischenspeichern
     slots = intent.slots
     slot_wert_bezeichnung = slots['bezeichnung'].value
-    slot_wert_form = slots['form'].value
     slot_wert_material = slots['material'].value
     slot_wert_abholung = slots['abholung'].value
     slot_wert_farbe = slots['farbe'].value
@@ -120,7 +112,6 @@ def inserat_erzeugen_completed_handler(handler_input):
         # Metabeschreibung wird in benutzer_speichere_inserat() hinzugefügt
         'artikeldaten': {
             'bezeichnung': slot_wert_bezeichnung,
-            'form': slot_wert_form,
             'material': slot_wert_material,
             'abholung': slot_wert_abholung,
             'farbe': slot_wert_farbe,

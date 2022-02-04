@@ -1,24 +1,26 @@
 {
-  "SKILL_NAME": "For Free",
+  "SKILL_NAME": "4Free",
   "BENUTZER_BEGRUESSUNG": [
-    "Willkommen bei For Free!",
-    "Hallo und willkommen bei For Free!",
-    "Herzlich willkommen bei For Free!"
+    "Willkommen bei For Free! Wie kann ich dir helfen?",
+    "Hallo und willkommen bei For Free! Wie kann ich dir weiterhelfen?",
+    "Herzlich willkommen bei For Free! Womit kann ich dir weiterhelfen?"
   ],
   "BENUTZER_LINKED_BEGRUESSUNG": [
-    "Hallo {}, willkommen bei For Free!",
-    "Hallo {}, schön dich wieder zu hören!",
-    "Hallo {}, willkommen zurück!"
+    "Hallo {}, willkommen bei For Free! Wie kann ich dir weiterhelfen?",
+    "Hallo {}, schön dich wieder zu hören! Was soll ich für dich tun?",
+    "Hallo {}, willkommen zurück! Was kann ich für dich tun?"
   ],
-  "BENUTZER_ONBOARDING_LINKING_ANWEISUNGEN": "Falls du dein Amazon Benutzerkonto mit mir verbinden möchtest, verwende bitte die Alexa Companion App. Du hast die Möglichkeit dein Amazonkonto zu einem späteren Zeitpunkt zu verbinden und For Free jetzt weiterhin zu verwenden.",
+  "BENUTZER_ONBOARDING_BEGRUESSUNG": "Willkommen zu For Free, deinem Alexa Skill, um jegliche Artikel zu verschenken, die du nicht mehr benötigst oder nur bei dir zu Hause rumliegen.",
+  "BENUTZER_ONBOARDING_LINKING_ANWEISUNGEN": "Falls du dein Amazon Benutzerkonto mit mir verbinden möchtest, verwende bitte die Alexa Companion App. Du hast natürlich auch die Möglichkeit dein Amazonkonto zu einem späteren Zeitpunkt zu verbinden und For Free jetzt weiterhin eingeschränkt zu nutzen.",
+  "BENUTZER_ONBOARDING_TIPPS": "Mein Tipp, beginne mit der Frage: Was kann ich alles. Ich werde dir anschließend alles wichtige was es über mich zu wissen gibt erzählen. Was möchtest du tun?",
   "BENUTZER_LINKING_DATUM": "Du hast deinen Benutzer das erste Mal am {} mit For Free verbunden.",
   "ANFRAGE_STANDORT_BERECHTIGUNGEN": "Um Interessenten zu ermöglichen deine genaue Adresse zu sehen oder eine Suche zu starten, erteile mir bitte zunächst über die Alexa Companion App die Berechtigungen dafür.",
   "BENUTZER_LINKED_ADRESSE_NICHT_GEFUNDEN_ODER_UNVOLLSTAENDIG_FEHLER": "Tut mir Leid, ich konnte in deinem Benutzerkonto keine oder keine vollständige Adresse finden. Um dies zu beheben, gehe bitte in dein Amazon Benutzerkonto und ändere deine Adressdaten.",
   "BENUTZER_ADRESSE_NICHT_GEFUNDEN_ODER_UNVOLLSTAENDIG_FEHLER": "Tut mir Leid, ich konnte auf deinem Gerät leider keine oder keine vollständige Adresse finden. Um dies zu beheben, gehe bitte in deine Alexa Companion App und ändere deine Adressdaten",
   "ADRESSE_AUSGABE": "<speak><say-as interpret-as='address'>Folgende Adresse habe ich finden können: {}, {} {}, {}</say-as></speak>",
   "ALLGEMEINER_FEHLER": "Tut mir Leid, leider gab es ein unerwartetes Problem. Versuche es bitte erneut!",
-  "ALLGEMEINE_EXCEPTION": "Tut mir Leid, leider ist ein unerwartetes Problem aufgetreten. For Free wird nun beendet.",
-  "INSERAT_SPEICHERN_FEHLER": "Tut mir Leid, beim speichern deines Artikels ist ein Fehler aufgetreten. Versuche bitte zu einem späteren Zeitpunkt dein Inserat neu zu erstellen.",
+  "ALLGEMEINE_EXCEPTION": "Tut mir Leid, leider ist ein unerwartetes Problem aufgetreten.",
+  "INSERAT_SPEICHERN_FEHLER": "<audio src=\"soundbank://soundlibrary/scifi/amzn_sfx_scifi_alarm_06\"/> Tut mir Leid, beim speichern deines Artikels ist ein Fehler aufgetreten. Versuche bitte dein Inserat zu einem späteren Zeitpunkt neu zu erstellen.",
   "INSERAT_SPEICHERN_ERFOLG": [
     "Dein Artikel wurde erfolgreich gespeichert. Jetzt musst du nur noch geduldig warten, bis sich ein Interessent bei dir meldet. Um dir dein Inserat erneut anzuschauen, sage zum Beispiel: Zeige mir meine Artikel.",
     "Dein Artikel wurde erfolgreich gespeichert. Bald wird sich bestimmt schon ein Interessent bei dir melden. Ich werde dir Bescheid geben, sobald sich jemand meldet. Um dir dein Inserat erneut anzuschauen, sage zum Beispiel: Zeige mir meine Artikel."
@@ -43,7 +45,7 @@
   "SUCHRADIUS_REPROMPT": "Auf wie viel Kilometer möchtest du den Suchradius stellen?",
   "ENTWICKLER_INFORMATIONEN": "<speak>For Free wurde von <phoneme alphabet='x-sampa' ph='/\"i_?\\ssa:m SA_?\\:re:f/'>{}</phoneme> und <phoneme alphabet='x-sampa' ph='/s_?\\a: \"leh  S_?\\A:\\?bA:\\?n/'>{}</phoneme> im Rahmen einer Projektarbeit an der Hochschule Worms entwickelt.</speak>",
   "BENUTZER_LINKING_ANWEISUNGEN": "Um dein Amazon Benutzerkonto mit For Free zu verbinden, öffne bitte nun deine Alexa Companion App und führe folgende Schritte aus: Erstens: Navigiere zu den Skill-Einstellungen. Zweitens: Klicke auf Konto verknüpfen. Drittens: Melde dich mit deinen Amazon-Benutzerdaten an. Viertens: Bestätige den Button.",
-  "ACCOUNT_BEREITS_LINKED": "{}, dein Benutzerkonto ist bereits mit For Free verbunden!",
+  "BENUTZER_BEREITS_LINKED": "{}, dein Benutzerkonto ist bereits mit For Free verbunden!",
   "INSERAT_ERZEUGEN_BENUTZER_NICHT_LINKED": "Um einen Artikel zu verschenken, musst du zunächst dein Benutzerkonto mit mir verbinden. Sage dafür zum Beispiel: Benutzer verbinden, und folge den Anweisungen.",
   "INSERAT_ERZEUGEN_BEGRUESSUNG": [
     "<speak><p><amazon:emotion name='excited' intensity='low'>Es freut mich, dass du etwas verschenken möchtest! Um deinen Artikel zu erfassen, werde ich dir nun eine Reihe an Fragen stellen. Los geht's!</amazon:emotion></p></speak>",
@@ -62,7 +64,7 @@
     "Nur noch eine Frage!",
     "Du hast die letzte Frage erreicht!"
   ],
-  "INSERAT_ERZEUGEN_ZUSAMMENFASSUNG": "<speak><p><prosody rate='slow'>Du möchtest <prosody volume='x-loud'>{} {}</prosody> verschenken in der Farbe <prosody volume='x-loud'>{}</prosody> aus <prosody volume='x-loud'>{}</prosody> vom Hersteller <prosody volume='x-loud'>{}</prosody> mit den Maßen <prosody volume='x-loud'>{} mal {} mal {}</prosody> im Zustand <prosody volume='x-loud'>{} {}</prosody> Möglichkeit zur Abholung. Außerdem hast du folgende Anmerkung hinterlassen: <prosody volume='x-loud'>{}</prosody></prosody></p></speak>",
+  "INSERAT_ERZEUGEN_ZUSAMMENFASSUNG": "<speak><p><prosody rate='medium'>Du möchtest <prosody volume='x-loud'>{} {}</prosody> verschenken in der Farbe <prosody volume='x-loud'>{}</prosody> aus <prosody volume='x-loud'>{}</prosody> vom Hersteller <prosody volume='x-loud'>{}</prosody> mit den Maßen <prosody volume='x-loud'>{} mal {} mal {}</prosody> im Zustand <prosody volume='x-loud'>{} {}</prosody> Möglichkeit zur Abholung. Außerdem hast du folgende Anmerkung hinterlassen: <prosody volume='x-loud'>{}</prosody></prosody></p></speak>",
   "FRAGE_BEANTWORTET_ERFOLG_AUDIO": "<audio src='soundbank://soundlibrary/office/amzn_sfx_elevator_open_bell_01'/>",
   "INSERAT_SPEICHERN_ERFOLG_AUDIO": "<audio src='soundbank://soundlibrary/alarms/chimes_and_bells/chimes_bells_04'/>",
   "ARTIKEL_BEZEICHNUNG_ERFRAGEN": [
@@ -74,6 +76,49 @@
   "ARTIKEL_SUCHE_EINLEITUNG": "<speak><p>Nachdem du die nächsten {} Fragen beantwortest, werde ich dir alle passenden Artikel nennen. Lass uns direkt loslegen!</p></speak>",
   "EINFACHE_SUCHE_STARTEN_BEGRUESSUNG": "<speak><p><amazon:emotion name='excited' intensity='low'>Lass uns mit der einfachen Suche mit {} Fragen beginnen. Ich bin mir sicher, dass ich passende Artikel für dich finde!</amazon:emotion></p></speak>",
   "DETAILLIERTE_SUCHE_STARTEN_BEGRUESSUNG": "<speak><p><amazon:emotion name='excited' intensity='low'>Lass uns mit der detaillierten Suche beginnen. Sie hat mit {} Fragen insgesamt mehr als die einfache Suche. Halte bis zum Ende durch und ich verspreche dir perfekte Artikel für dich zu finden. Los geht's!</amazon:emotion></p></speak>",
-  "SUCHE_NICHT_GESTARTET_FEHLER": "Tut mir Leid, deine vorherige Suche hat scheinbar keine Treffer ergeben.",
-  "SUCHE_KEINE_TREFFER": "Leider hat deine Suche keine Treffer ergeben. Versuche es bitte erneut mit anderen Suchparametern."
+  "SUCHE_NICHT_GESTARTET_ODER_KEINE_TREFFER_FEHLER": "Tut mir Leid, du hast in dieser Sitzung noch keine Suche gestartet oder deine vorherige Suche hat keine Treffer ergeben. Sage zum Beispiel: Artikel suchen.",
+  "SUCHE_KEINE_TREFFER": "<speak><audio src=\"soundbank://soundlibrary/scifi/amzn_sfx_scifi_alarm_06\"/> Leider hat deine Suche keine Treffer ergeben. Versuche es am besten mit anderen Sucheinstellungen.</speak>",
+  "SUCHERGEBNISSE_VERLASSEN": "Alles klar, die Suche wird beendet! Für den Fall, dass du dir die Ergebnisse zu einem späteren Zeitpunkt erneut anhören möchtest, habe ich sie für die Sitzungsdauer zwischengespeichert. Sage zum Beispiel: Suchtreffer anzeigen, um sie erneut zu hören.",
+  "FAVORIT_BENOETIGT_BENUTZER_FEHLER": "Um Artikel zu speichern ist es erforderlich dich mit deinem Amazon Benutzerkonto zu verbinden. Du möchtest wissen wie das geht? Verlasse zunächst die Suche uns sage anschließend: Benutzerkonto verbinden.",
+  "ARTIKEL_FAVORISIEREN_ERFOLG": "Ich habe mir den Artikel für dich gemerkt.",
+  "ARTIKEL_BEREITS_FAVORISIERT_ODER_FEHLER": "Der Artikel ist bereits in deiner Favoritenliste oder es ist ein Fehler aufgetreten.",
+  "SUCHERGEBNISSE_EINEN_TREFFER": "Ich konnte nur einen passenden Artikel finden. Ich empfehle dir deine Suchkriterien für die nächste Suche anzupassen. <break time='.5s' />",
+  "SUCHERGEBNISSE_MEHRERE_TREFFER": "Insgesamt habe ich {} passende Artikel gefunden. <break time='.5s' />",
+  "SUCHERGEBNISSE_AKTION_PROMPT": "Deine Eingabe ist ungültig. Bitte nenne eine gültige Aktion, wie zum Beispiel: Nächster Artikel.",
+  "SUCHERGEBNISSE_BEREITS_LETZTER_ARTIKEL": "Du hast bereits den letzten Artikel erreicht. Was soll ich stattdessen tun?",
+  "SUCHERGEBNISSE_BEREITS_ERSTER_ARTIKEL": "Du befindest dich bereits beim ersten Artikel. Was soll ich stattdessen tun?",
+  "ARTIKEL_FAVORIT_ENTFERNEN_ERFOLG": "Ich habe den Artikel erfolgreich aus deiner Favoritenliste entfernt.",
+  "ARTIKEL_FAVORIT_ENTFERNEN_FEHLER": "Ich konnte den Artikel aufgrund eines Problems leider nicht aus deiner Favoritenliste entfernen. Versuche es bitte erneut.",
+  "SUCHERGEBNIS_ZUSAMMENFASSUNG": "Der folgende Artikel stammt vom Benutzer {} und wurde am <say-as interpret-as='date'>{}</say-as> eingestellt. {} bietet <prosody volume='x-loud'>{} {}</prosody> in der Farbe <prosody volume='x-loud'>{}</prosody> vom Hersteller <prosody volume='x-loud'>{}</prosody> an. Der Artikel befindet sich in einem <prosody volume='x-loud'>{}</prosody> Zustand.",
+  "SUCHERGEBNIS_DETAILS": "Sehr gerne! Hier sind ein paar weitere Details zur Anzeige: Der Artikel ist aus dem Material <prosody volume='x-loud'>{}</prosody> und hat die Maße: <prosody volume='x-loud'>{} mal {} mal {}</prosody>. {} erlaubt <prosody volume='x-loud'>{} Abholung</prosody> und hinterließ folgende Anmerkung: <prosody volume='x-loud'>{}</prosody>.",
+  "VORHERIGE_SUCHERGEBNISSE_WEITERLEITUNG": "Alles klar! Hier sind deine Suchergebnisse aus der vorherigen Suche.",
+  "ZURUECK_ZUM_START": "Alles klar! Ich leite dich wieder zum Start zurück. Was möchtest du als nächstes machen?",
+  "EIGENE_INSERATE_ZUSAMMENFASSUNG": "{}. Artikel: Du hast diesen Artikel am {} hochgeladen. Was du anbietest sind {} {} in der Farbe {} vom Hersteller {}. Du hast angegeben, dass sich dein Artikel in einem {} Zustand befindet.",
+  "EIGENE_INSERATE_DETAILS": "Hier sind weitere Details zu deinem Artikel! Dein Artikel ist aus {} und hat die Maße: <prosody volume='x-loud'>{} mal {} mal {}</prosody>. Du hast angegeben, dass eine Abholung vor Ort für dich {} erwünscht ist. Zusätzlich hast du folgende Anmerkung hinterlassen: {}",
+  "LETZTER_ARTIKEL_ANKUENDIGUNG": "Du befindest dich nun am Ende der Trefferliste. ",
+  "ERSTER_ARTIKEL_ANKUENDIGUNG": "Du befindest dich nun am Anfang der Trefferliste. ",
+  "FEATURE_NICHT_IMPLEMENTIERT": "Das folgende Feature ist noch nicht implementiert und dient lediglich zur Veranschaulichung. Was möchtest du stattdessen tun?",
+  "EIGENE_INSERATE_ABFRAGEN_BENUTZER_NICHT_LINKED": "Um deine Inserate abzufragen, musst du zunächst dein Benutzerkonto mit mir verbinden. Sage dafür zum Beispiel: Benutzer verbinden, und folge den Anweisungen.",
+  "INSERAT_ERFOLGREICH_GELOESCHT": "Dein Inserat wurde erfolgreich gelöscht. Welche Aktion möchtest du als nächstes tätigen?",
+  "INSERAT_LOESCHEN_FEHLER": "Tut mir Leid, beim Löschen deiner Anzeige ist es zu einem Fehler gekommen. Versuche es bitte erneut! Welche Aktion möchtest du tätigen?",
+  "SKILL_INFORMATIONEN": "Ich verfüge über folgende Funktionen: Erstens: Das Erstellen von Anzeigen, zum Beispiel mit: Neue Anzeige. Zweitens: Eine detaillierte und einfache Suchfunktion, um Artikel zu suchen, zum Beispiel mit: Suche starten. Drittens: Die Abfrage deiner eigenen Anzeigen, zum Beispiel mit: Zeige meine Artikel. Viertens: Das Wiederholen deiner letzten Suchergebnisse, zum Beispiel mit: Suchergebnisse wiederholen. Fünftens: Das Einschränken deines Suchradius, zum Beispiel mit: Suchradius ändern. Sechstens: Das Abfragen deiner hinterlegten Adressangaben, zum Beispiel mit: Wie lautet meine Adresse. Siebtens: Eine Hilfestellung zum Verbinden deines Benutzerkontos mit deinem Amazonkonto, zum Beispiel mit: Benutzerkonto verbinden. Achtens: Informationen über die Entwickler, zum Beispiel mit: Wer hat For Free entwickelt.",
+  "ANMELDEZEITPUNKT_BENUTZER_NICHT_LINKED_FEHLER": "Ein Anmeldezeitpunkt kann erst gespeichert werden, nachdem du dein Benutzerkonto mit mir verknüpft hast. Um Anweisungen dazu zu erhalten, sage einfach: Benutzerkonto verknüpfen. Was möchtest du tun?",
+  "ARTIKEL_SUCHE": [
+    "Artikel wird gesucht!",
+    "Ich befinde mich auf der Suche nach tollen Artikeln für dich!",
+    "Ich halte Mal nach passenden Artikeln für dich ausschau!"
+  ],
+  "AKTION_REPROMPT": [
+    "Sage zum Beispiel: Mehr Details, um weitere Informationen zu erhalten. Sage: Zurück, um wieder an den Start zu gelangen. Welche Aktion möchtest du tätigen?",
+    "Sage zum Beispiel: Vorherige oder: Nächste, um zwischen den Anzeigen zu blättern. Sage: Zurück, um wieder an den Start zu gelangen. Was möchtest du tun?"
+  ],
+  "ARTIKEL_BEZEICHNUNG_ERFRAGEN_REPROMPT": [
+    "Entschuldige, wie lautet die Artikelbezeichnung?",
+    "Entschuldige, wie ist die Bezeichnung für den gesuchten Artikel?"
+  ],
+  "ALLGEMEINER_REPROMPT": [
+    "Entschuldige, wie lautet deine Eingabe?",
+    "Entschuldige, wie lautet deine Antwort?",
+    "Ich habe leider noch keine Antwort erhalten. Wie lautet deine Eingabe?"
+  ]
 }

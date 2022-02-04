@@ -48,7 +48,7 @@ def get_staedte_im_umkreis(land: str, plz: int, radius: int) -> list:
         staedte_plz = []
         for geo_entry in geolocation_daten['postalCodes']:
             staedte_namen.append(geo_entry['placeName'])
-            staedte_plz.append(geo_entry['postalCode'])
+            staedte_plz.append(int(geo_entry['postalCode']))
         # Format: [(stadt, plz), ...]
         staedte_innerhalb_radius = list(zip(staedte_namen, staedte_plz))
         logging.info(f'{staedte_innerhalb_radius=}')

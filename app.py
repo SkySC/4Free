@@ -17,7 +17,12 @@ import Database
 # Stellt sicher, dass jeder Intent erreichbar ist
 sys.path.insert(0, './lambda/py')
 from EntwicklerInfoIntent import entwickler_info_handler
-from AbfrageEigeneInserateIntent import abfrage_eigene_inserate_handler
+from AuskunftIntent import auskunft_handler
+from AbfrageEigeneInserateIntent import (
+    abfrage_eigene_inserate_start_handler,
+    abfrage_eigene_inserate_in_progress_handler,
+    abfrage_eigene_inserate_completed_handler
+)
 from RadiusEinstellenIntent import radius_einstellen_handler
 from AbfrageAnmeldezeitpunktIntent import abfrage_anmeldezeitpunkt_handler
 from AbfrageEigeneAdresseIntent import abfrage_eigene_adresse_handler, get_geraete_standortdaten
@@ -68,20 +73,25 @@ def launch_request_handler(handler_input) -> Response:
     sprach_prompts = attributes_manager.request_attributes['_']
     # Session-Attribute laden
     session_attr = attributes_manager.session_attributes
-    session_attr['plz'] = get_geraete_standortdaten(handler_input)[1]
-    session_attr['land'] = 'DE' if get_geraete_standortdaten(handler_input)[3] == 'Deutschland' \
-        else get_geraete_standortdaten(handler_input)[3]
-    logging.info(f'{session_attr["plz"]=} | {session_attr["land"]=}')
 
     # Account-Linking starten, falls noch kein Benutzerkonto, sonst überspringen
     benutzer_linked, response_builder = benutzer_authorisieren(handler_input)
     response_builder.set_should_end_session(False)
-    # speech_output = sprach_prompts['START']
+
+    session_attr['plz'] = get_geraete_standortdaten(handler_input)[1]
+    session_attr['land'] = 'DE' \
+        if get_geraete_standortdaten(handler_input)[3] == 'Deutschland' \
+        else get_geraete_standortdaten(handler_input)[3]
+    logging.info(f'{session_attr["plz"]=}, {session_attr["land"]=}')
+
+    sprach_ausgabe = ''
     # Anhand von Geräte-ID prüfen, ob Benutzer den Skill das erste Mal startet
     geraete_id = handler_input.request_envelope.context.system.device.device_id
     if db.skill_erststart(geraete_id):
         # Onboarding einleiten
         logging.info('Onboarding wird gestartet...')
+
+        sprach_ausgabe += sprach_prompts['BENUTZER_ONBOARDING_BEGRUESSUNG']
 
         if db.registriere_benutzer_geraet(geraete_id):
             logging.info('Gerät wurde erfolgreich registriert')
@@ -91,16 +101,18 @@ def launch_request_handler(handler_input) -> Response:
 
         # Beim Erststart dem Benutzer erklären, wie er das Account-Linking durchführt
         if not benutzer_linked:
-            response_builder.speak(sprach_prompts['BENUTZER_ONBOARDING_LINKING_ANWEISUNGEN'])
+            sprach_ausgabe += ' ' + sprach_prompts['BENUTZER_ONBOARDING_LINKING_ANWEISUNGEN']
 
+        sprach_ausgabe += ' ' + sprach_prompts['BENUTZER_ONBOARDING_TIPPS']
+    # Falls Gerät bereits registriert
     else:
         logging.info(f'{db.skill_erststart(geraete_id)=}')
 
         if benutzer_linked:
             benutzer_name = Benutzer.AmazonBenutzer.get_benutzer_namen()
-            response_builder.speak(random.choice(sprach_prompts['BENUTZER_LINKED_BEGRUESSUNG']).format(benutzer_name))
+            sprach_ausgabe = random.choice(sprach_prompts['BENUTZER_LINKED_BEGRUESSUNG']).format(benutzer_name)
         else:
-            response_builder.speak(random.choice(sprach_prompts['BENUTZER_BEGRUESSUNG']))
+            sprach_ausgabe = random.choice(sprach_prompts['BENUTZER_BEGRUESSUNG'])
 
     # Suchradius in Session-Attribut speichern <=> Kein Benutzerkonto
     if not benutzer_linked:
@@ -108,7 +120,7 @@ def launch_request_handler(handler_input) -> Response:
         session_attr['suchradius'] = 15
         logging.info(f'{session_attr=}')
 
-    return response_builder.response
+    return response_builder.speak(sprach_ausgabe).response
 
 
 @sb.request_handler(can_handle_func=is_intent_name("AMAZON.HelpIntent"))
@@ -118,9 +130,11 @@ def help_intent_handler(handler_input) -> Response:
     """
     # Sprachdaten laden
     sprach_prompts = handler_input.attributes_manager.request_attributes['_']
-
     response_builder = handler_input.response_builder
-    response_builder.speak(sprach_prompts['HILFESEITE_EINLEITUNG']).ask(sprach_prompts['HILFESEITE_FRAGE_PROMPT'])
+
+    response_builder.set_should_end_session(False)
+
+    response_builder.speak('Folgende Aktionen sind möglich: blabla')
 
     return response_builder.response
 
@@ -137,11 +151,14 @@ def cancel_and_stop_intent_handler(handler_input) -> Response:
     sprach_prompts = handler_input.attributes_manager.request_attributes['_']
     response_builder = handler_input.response_builder
 
+    response_builder.set_should_end_session(True)
+
     benutzer_name = Benutzer.AmazonBenutzer.get_benutzer_namen()
-    sprach_ausgabe = random.choice(sprach_prompts['BENUTZER_VERABSCHIEDEN'])\
-        .format(f'{"" if benutzer_name is None else benutzer_name}')
+    sprach_ausgabe = random.choice(sprach_prompts['BENUTZER_VERABSCHIEDEN']).format(
+        f'{"" if benutzer_name is None else benutzer_name}'
+    )
     response_builder.speak(sprach_ausgabe)
-    response_builder.set_card(SimpleCard(sprach_ausgabe))
+    response_builder.set_card(SimpleCard(sprach_prompts['SKILL_NAME'], sprach_ausgabe))
 
     return response_builder.response
 
@@ -151,7 +168,7 @@ def fallback_handler(handler_input) -> Response:
     """
     Handler, welcher ausgeführt wird, wenn kein passender Intent gefunden wird (nur in 'en-US')
     """
-    # Load language data
+    # Sprachdaten laden
     sprach_prompts = handler_input.attributes_manager.request_attributes['_']
     response_builder = handler_input.response_builder
     response_builder.set_should_end_session(False)
@@ -201,9 +218,36 @@ def entwickler_info_handler_wrapper(handler_input) -> Response:
     return entwickler_info_handler(handler_input)
 
 
-@sb.request_handler(can_handle_func=is_intent_name('AbfrageEigeneInserateIntent'))
-def abfrage_eigene_inserate_handler_wrapper(handler_input) -> Response:
-    return abfrage_eigene_inserate_handler(handler_input)
+@sb.request_handler(can_handle_func=is_intent_name('AuskunftIntent'))
+def auskunft_handler_wrapper(handler_input) -> Response:
+    return auskunft_handler(handler_input)
+
+
+@sb.request_handler(
+    can_handle_func=lambda handler_input:
+    is_intent_name('AbfrageEigeneInserateIntent')(handler_input)
+    and handler_input.request_envelope.request.dialog_state == DialogState.STARTED
+)
+def abfrage_eigene_inserate_start_handler_wrapper(handler_input) -> Response:
+    return abfrage_eigene_inserate_start_handler(handler_input)
+
+
+@sb.request_handler(
+    can_handle_func=lambda handler_input:
+    is_intent_name('AbfrageEigeneInserateIntent')(handler_input)
+    and handler_input.request_envelope.request.dialog_state == DialogState.IN_PROGRESS
+)
+def abfrage_eigene_inserate_in_progress_handler_wrapper(handler_input) -> Response:
+    return abfrage_eigene_inserate_in_progress_handler(handler_input)
+
+
+@sb.request_handler(
+    can_handle_func=lambda handler_input:
+    is_intent_name('AbfrageEigeneInserateIntent')(handler_input)
+    and handler_input.request_envelope.request.dialog_state == DialogState.COMPLETED
+)
+def abfrage_eigene_inserate_completed_handler_wrapper(handler_input) -> Response:
+    return abfrage_eigene_inserate_completed_handler(handler_input)
 
 
 @sb.request_handler(can_handle_func=is_intent_name('RadiusEinstellenIntent'))

@@ -25,10 +25,13 @@ class AmazonBenutzer:
         AmazonBenutzer.uid = benutzer_daten['user_id']
         AmazonBenutzer.name = benutzer_daten['name'].split()[0]
         AmazonBenutzer.email = benutzer_daten['email']
-        AmazonBenutzer.plz = benutzer_daten['postal_code']
+        AmazonBenutzer.plz = int(benutzer_daten['postal_code'])
         # Prüfen, ob Datum bereits eingetragen wurde
         if AmazonBenutzer.benutzer_get_statistik('datum') is None:
             AmazonBenutzer.anmeldedatum_speichern()
+        # Benutzereinstellungen erzeugen, falls nicht vorhanden
+        if not Database.MongoDB.benutzer_hat_einstellungen_eintrag():
+            Database.MongoDB.benutzer_einstellungen_erzeugen()
 
     @staticmethod
     def anmeldedatum_speichern() -> None:
@@ -52,7 +55,7 @@ class AmazonBenutzer:
             try:
                 angefragter_wert = benutzer_statistik[eintrag]
             except KeyError as e:
-                logging.exception(f'{__name__}:Key existiert nicht: {e}')
+                logging.exception(f'{__name__}: Key existiert nicht: {e}')
             else:
                 return angefragter_wert
 

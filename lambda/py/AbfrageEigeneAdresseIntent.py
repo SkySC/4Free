@@ -9,7 +9,9 @@ logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
 
 def abfrage_eigene_adresse_handler(handler_input):
-    """Geräte-Standortdaten abfragen"""
+    """
+    Geräte-Standortdaten abfragen
+    """
     response_builder = get_adresse(handler_input)
     response_builder.set_should_end_session(False)
 
@@ -25,15 +27,16 @@ def get_adresse(handler_input) -> any:
     request_envelope_permissions = request_envelope.context.system.user.permissions
 
     logging.info(f'{request_envelope_permissions.consent_token=}')
-    
+
     if not (request_envelope_permissions.scopes["alexa::devices:all:geolocation:read"].status.name == 'GRANTED'
             and request_envelope_permissions.consent_token):
-        logging.info('Benutzer hat keine Berechtigung für den Standort gesetzt')
+        logging.info('Benutzer fehlt Berechtigungen für Standortdienste')
 
         response_builder.speak(sprach_prompts['ANFRAGE_STANDORT_BERECHTIGUNGEN'])
 
         standort_rechte = ['read::alexa:device:all:address']
         response_builder.set_card(AskForPermissionsConsentCard(permissions=standort_rechte))
+    # Standortdaten können gelesen werden
     else:
         try:
             notwendige_standortdaten = get_geraete_standortdaten(handler_input)
@@ -42,7 +45,7 @@ def get_adresse(handler_input) -> any:
             else:
                 response_builder.speak(str(sprach_prompts['ADRESSE_AUSGABE']).format(*notwendige_standortdaten))
         except ServiceException as e:
-            logging.error(f'{__name__}: Service Exception: {e}')
+            logging.exception(f'{__name__}: Service Exception: {e}')
 
             response_builder.speak(sprach_prompts['ALLGEMEINER_FEHLER'])
         except Exception as e:

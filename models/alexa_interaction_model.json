@@ -116,26 +116,58 @@
                     "name": "SucheStartenIntent",
                     "slots": [
                         {
-                            "name": "artikelbezeichnung",
+                            "name": "gesuchterArtikel",
                             "type": "AMAZON.SearchQuery"
+                        },
+                        {
+                            "name": "detaillierteSuche",
+                            "type": "Allgemeine_Bestaetigung",
+                            "samples": [
+                                "Nein",
+                                "Ja"
+                            ]
                         }
                     ],
                     "samples": [
-                        "Ich würde gerne nach einer {artikelbezeichnung} suchen",
-                        "Ich würde gerne nach einem {artikelbezeichnung} suchen",
-                        "Ich würde gerne ein {artikelbezeichnung} finden",
-                        "Ich würde gerne ein {artikelbezeichnung} haben",
-                        "Ich bin auf der Suche nach einer {artikelbezeichnung}",
-                        "Ich bin auf der Suche nach einem {artikelbezeichnung}",
-                        "Ich will ein {artikelbezeichnung} haben",
-                        "Ich will ein {artikelbezeichnung} suchen",
-                        "Ich will ein {artikelbezeichnung} finden",
-                        "Ich möcht ein {artikelbezeichnung} suchen",
-                        "Ich möchte ein {artikelbezeichnung} finden",
-                        "Finde eine {artikelbezeichnung}",
-                        "Suche nach einer {artikelbezeichnung}",
-                        "Suche nach einem {artikelbezeichnung}",
-                        "Suche nach {artikelbezeichnung}",
+                        "Ich will einen {gesuchterArtikel}",
+                        "Ich will eine {gesuchterArtikel}",
+                        "Ich möchte eine {gesuchterArtikel}",
+                        "Ich möchte ein {gesuchterArtikel}",
+                        "Ich möchte ein {gesuchterArtikel} haben",
+                        "Finde einen {gesuchterArtikel}",
+                        "Finde ein {gesuchterArtikel}",
+                        "Suche eine {gesuchterArtikel}",
+                        "Suche ein {gesuchterArtikel}",
+                        "Ich befinde mich auf der Suche nach einer {gesuchterArtikel}",
+                        "Ich befinde mich auf der Suche nach einem {gesuchterArtikel}",
+                        "Ich suche nach einer {gesuchterArtikel}",
+                        "Ich suche nach einem {gesuchterArtikel}",
+                        "Ich bin auf der Suche nach einem  {gesuchterArtikel}",
+                        "Ich suche einen {gesuchterArtikel}",
+                        "Ich suche eine {gesuchterArtikel}",
+                        "Ich suche ein {gesuchterArtikel}",
+                        "Gegenstand suchen",
+                        "Nach Gegenstand suchen",
+                        "Artikelsuche starten",
+                        "Nach Artikel suchen",
+                        "Artikel suchen",
+                        "Suche beginnen",
+                        "Suche starten",
+                        "Ich würde gerne nach einer {gesuchterArtikel} suchen",
+                        "Ich würde gerne nach einem {gesuchterArtikel} suchen",
+                        "Ich würde gerne ein {gesuchterArtikel} finden",
+                        "Ich würde gerne ein {gesuchterArtikel} haben",
+                        "Ich bin auf der Suche nach einer {gesuchterArtikel}",
+                        "Ich bin auf der Suche nach einem {gesuchterArtikel}",
+                        "Ich will ein {gesuchterArtikel} haben",
+                        "Ich will ein {gesuchterArtikel} suchen",
+                        "Ich will ein {gesuchterArtikel} finden",
+                        "Ich möchte ein {gesuchterArtikel} suchen",
+                        "Ich möchte ein {gesuchterArtikel} finden",
+                        "Finde eine {gesuchterArtikel}",
+                        "Suche nach einer {gesuchterArtikel}",
+                        "Suche nach einem {gesuchterArtikel}",
+                        "Suche nach {gesuchterArtikel}",
                         "Ich möchte eine Suche starten",
                         "Ich will eine Suche starten",
                         "Ich möchte einen Artikel haben",
@@ -259,24 +291,24 @@
                     "name": "InseratErzeugenIntent",
                     "slots": [
                         {
-                            "name": "artikelbezeichnung",
+                            "name": "bezeichnung",
                             "type": "AMAZON.SearchQuery",
                             "samples": [
-                                "ein {artikelbezeichnung}",
-                                "{artikelbezeichnung}",
-                                "Der Name ist {artikelbezeichnung}",
-                                "Ich biete ein {artikelbezeichnung} an",
-                                "Ich biete einen {artikelbezeichnung} an",
-                                "Der Artikel heißt {artikelbezeichnung}",
-                                "Der Artikelname lautet {artikelbezeichnung}",
-                                "Der Name des Artikels lautet {artikelbezeichnung}",
-                                "Der Name lautet {artikelbezeichnung}",
-                                "Ich biete eine {artikelbezeichnung} an",
-                                "eine {artikelbezeichnung}",
-                                "Der Artikel ist eine {artikelbezeichnung}",
-                                "Der Artikel ist ein {artikelbezeichnung}",
-                                "einen {artikelbezeichnung}",
-                                "Ich biete einen  {artikelbezeichnung} an"
+                                "ein {bezeichnung}",
+                                "{bezeichnung}",
+                                "Der Name ist {bezeichnung}",
+                                "Ich biete ein {bezeichnung} an",
+                                "Ich biete einen {bezeichnung} an",
+                                "Der Artikel heißt {bezeichnung}",
+                                "Der Artikelname lautet {bezeichnung}",
+                                "Der Name des Artikels lautet {bezeichnung}",
+                                "Der Name lautet {bezeichnung}",
+                                "Ich biete eine {bezeichnung} an",
+                                "eine {bezeichnung}",
+                                "Der Artikel ist eine {bezeichnung}",
+                                "Der Artikel ist ein {bezeichnung}",
+                                "einen {bezeichnung}",
+                                "Ich biete einen  {bezeichnung} an"
                             ]
                         },
                         {
@@ -351,15 +383,17 @@
                             ]
                         },
                         {
-                            "name": "hoehe",
+                            "name": "laenge",
                             "type": "AMAZON.NUMBER",
                             "samples": [
-                                "Die Höhe beträgt {hoehe} Zentimeter",
-                                "Die Höhe ist {hoehe} Zentimeter",
-                                "Mein Artikel ist {hoehe} Zentimeter hoch",
-                                "Der Artikel hat eine Höhe von {hoehe} Zentimetern",
-                                "{hoehe} Zentimeter",
-                                "Der Artikel ist {hoehe} Zentimeter hoch"
+                                "Die Länge beträgt {laenge} Zentimeter",
+                                "Die Länge ist {laenge} Zentimeter",
+                                "Er ist {laenge} Zentimeter lang",
+                                "Mein Artikel hat eine Länge von {laenge} Zentimetern",
+                                "Mein Artikel ist {laenge} Zentimeter lang",
+                                "Der Artikel hat eine Länge von {laenge} Zentimetern",
+                                "{laenge} Zentimeter",
+                                "Der Artikel ist {laenge} Zentimeter lang"
                             ]
                         },
                         {
@@ -376,17 +410,15 @@
                             ]
                         },
                         {
-                            "name": "laenge",
+                            "name": "hoehe",
                             "type": "AMAZON.NUMBER",
                             "samples": [
-                                "Die Länge beträgt {laenge} Zentimeter",
-                                "Die Länge ist {laenge} Zentimeter",
-                                "Er ist {laenge} Zentimeter lang",
-                                "Mein Artikel hat eine Länge von {laenge} Zentimetern",
-                                "Mein Artikel ist {laenge} Zentimeter lang",
-                                "Der Artikel hat eine Länge von {laenge} Zentimetern",
-                                "{laenge} Zentimeter",
-                                "Der Artikel ist {laenge} Zentimeter lang"
+                                "Die Höhe beträgt {hoehe} Zentimeter",
+                                "Die Höhe ist {hoehe} Zentimeter",
+                                "Mein Artikel ist {hoehe} Zentimeter hoch",
+                                "Der Artikel hat eine Höhe von {hoehe} Zentimetern",
+                                "{hoehe} Zentimeter",
+                                "Der Artikel ist {hoehe} Zentimeter hoch"
                             ]
                         },
                         {
@@ -405,7 +437,7 @@
                         },
                         {
                             "name": "abholung",
-                            "type": "ARTIKEL_Bestaetigung",
+                            "type": "Allgemeine_Bestaetigung",
                             "samples": [
                                 "{abholung} soll er nicht",
                                 "{abholung} soll er",
@@ -432,15 +464,15 @@
                         "Ich möchte einen Gegenstand verschenken",
                         "Ich habe einen Gegenstand zu verschenken",
                         "Einen Gegenstand verschenken",
-                        "Ich möchte eine {artikelbezeichnung} verschenken",
-                        "Ich habe eine {artikelbezeichnung} zu verschenken",
-                        "Ich will eine {artikelbezeichnung} verschenken",
-                        "Ich möchte einen {artikelbezeichnung} verschenken",
-                        "Ich habe einen {artikelbezeichnung} zu verschenken",
-                        "Ich will einen {artikelbezeichnung} verschenken",
-                        "Ich möchte ein {artikelbezeichnung} verschenken",
-                        "Ich habe ein {artikelbezeichnung} zu verschenken",
-                        "Ich will ein {artikelbezeichnung} verschenken",
+                        "Ich möchte eine {bezeichnung} verschenken",
+                        "Ich habe eine {bezeichnung} zu verschenken",
+                        "Ich will eine {bezeichnung} verschenken",
+                        "Ich möchte einen {bezeichnung} verschenken",
+                        "Ich habe einen {bezeichnung} zu verschenken",
+                        "Ich will einen {bezeichnung} verschenken",
+                        "Ich möchte ein {bezeichnung} verschenken",
+                        "Ich habe ein {bezeichnung} zu verschenken",
+                        "Ich will ein {bezeichnung} verschenken",
                         "Ich will etwas verschenken",
                         "Ich will was verschenken",
                         "Ich will einen Gegenstand verschenken",
@@ -471,18 +503,18 @@
                         "For Free. Ich habe was für dich",
                         "For Free. Ich habe was zu verschenken",
                         "For Free. Ich habe einen Gegenstand zu verschenken",
-                        "For Free. Ich habe eine {artikelbezeichnung} zu verschenken",
-                        "For Free. Ich habe einen {artikelbezeichnung} zu verschenken",
-                        "For Free. Ich habe ein {artikelbezeichnung} zu verschenken",
+                        "For Free. Ich habe eine {bezeichnung} zu verschenken",
+                        "For Free. Ich habe einen {bezeichnung} zu verschenken",
+                        "For Free. Ich habe ein {bezeichnung} zu verschenken",
                         "For Free. Ich habe Geschenke",
                         "For Free. Ich habe Geschenke für dich",
                         "For Free. Ich habe einen Artikel zu verschenken",
                         "For Free. Ich habe einen Artikel für dich",
                         "For Free. Ich habe einen Gegenstand für dich",
                         "For Free. Ich habe eine Sache für dich",
-                        "For Free. Ich will eine {artikelbezeichnung} verschenken",
-                        "For Free. Ich will einen {artikelbezeichnung} verschenken",
-                        "For Free. Ich will ein {artikelbezeichnung} verschenken",
+                        "For Free. Ich will eine {bezeichnung} verschenken",
+                        "For Free. Ich will einen {bezeichnung} verschenken",
+                        "For Free. Ich will ein {bezeichnung} verschenken",
                         "For Free. Ich will etwas verschenken",
                         "For Free. Ich will was verschenken",
                         "For Free. Ich will einen Gegenstand verschenken",
@@ -492,9 +524,9 @@
                         "For Free. Ich möchte etwas verschenken",
                         "For Free. Ich möchte was verschenken",
                         "For Free. Ich möchte einen Gegenstand verschenken",
-                        "For Free. Ich möchte eine {artikelbezeichnung} verschenken",
-                        "For Free. Ich möchte einen {artikelbezeichnung} verschenken",
-                        "For Free. Ich möchte ein {artikelbezeichnung} verschenken",
+                        "For Free. Ich möchte eine {bezeichnung} verschenken",
+                        "For Free. Ich möchte einen {bezeichnung} verschenken",
+                        "For Free. Ich möchte ein {bezeichnung} verschenken",
                         "For Free. Ich möchte Anderen eine Freude bereiten",
                         "For Free. Ich möchte verschenken",
                         "For Free. Ich möchte einen Artikel verschenken",
@@ -651,6 +683,120 @@
                         "Nenn meine Adresse",
                         "Nenne mir meine Adresse"
                     ]
+                },
+                {
+                    "name": "EinfacheSucheIntent",
+                    "slots": [
+                        {
+                            "name": "kategorie",
+                            "type": "ARTIKEL_Kategorie",
+                            "samples": [
+                                "{kategorie}"
+                            ]
+                        },
+                        {
+                            "name": "bezeichnung",
+                            "type": "AMAZON.SearchQuery"
+                        },
+                        {
+                            "name": "farbe",
+                            "type": "AMAZON.Color",
+                            "samples": [
+                                "{farbe}"
+                            ]
+                        },
+                        {
+                            "name": "abholung",
+                            "type": "Allgemeine_Bestaetigung",
+                            "samples": [
+                                "nein",
+                                "ja"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "Einfache Suche starten",
+                        "Einfache Suche"
+                    ]
+                },
+                {
+                    "name": "DetaillierteSucheIntent",
+                    "slots": [
+                        {
+                            "name": "kategorie",
+                            "type": "ARTIKEL_Kategorie",
+                            "samples": [
+                                "{kategorie}"
+                            ]
+                        },
+                        {
+                            "name": "bezeichnung",
+                            "type": "AMAZON.SearchQuery"
+                        },
+                        {
+                            "name": "farbe",
+                            "type": "AMAZON.Color",
+                            "samples": [
+                                "{farbe}"
+                            ]
+                        },
+                        {
+                            "name": "marke",
+                            "type": "ARTIKEL_Hersteller",
+                            "samples": [
+                                "{marke}"
+                            ]
+                        },
+                        {
+                            "name": "zustand",
+                            "type": "ARTIKEL_Zustand",
+                            "samples": [
+                                "{zustand}"
+                            ]
+                        },
+                        {
+                            "name": "material",
+                            "type": "ARTIKEL_Material",
+                            "samples": [
+                                "{material}"
+                            ]
+                        },
+                        {
+                            "name": "abholung",
+                            "type": "Allgemeine_Bestaetigung",
+                            "samples": [
+                                "nein",
+                                "ja"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "Detaillierte Suche starten",
+                        "Detaillierte Suche"
+                    ]
+                },
+                {
+                    "name": "SuchergebnisseIntent",
+                    "slots": [
+                        {
+                            "name": "navigationsrichtung",
+                            "type": "SUCHE_Navigationsrichtung"
+                        },
+                        {
+                            "name": "favorisieren",
+                            "type": "AMAZON.SearchQuery"
+                        },
+                        {
+                            "name": "kontaktieren",
+                            "type": "AMAZON.SearchQuery"
+                        }
+                    ],
+                    "samples": [
+                        "Suchtreffer anzeigen",
+                        "Suchtreffer",
+                        "Suchergebnisse anzeigen",
+                        "Suchergebnisse"
+                    ]
                 }
             ],
             "types": [
@@ -705,7 +851,7 @@
                     ]
                 },
                 {
-                    "name": "ARTIKEL_Bestaetigung",
+                    "name": "Allgemeine_Bestaetigung",
                     "values": [
                         {
                             "name": {
@@ -715,6 +861,99 @@
                         {
                             "name": {
                                 "value": "ja"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "SUCHE_Navigationsrichtung",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "nächste"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "vorherige"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "SUCHE_Kontaktieren",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "Mit Anbieter in Verbindung setzen",
+                                "synonyms": [
+                                    "Mit Inserent in Verbindung setzen"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Kontaktieren",
+                                "synonyms": [
+                                    "Kontakt aufnehmen",
+                                    "in Verbindung setzen"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Anbieter kontaktieren",
+                                "synonyms": [
+                                    "Inserent kontaktieren"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "SUCHE_Favorisieren",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "Merke dir den Artikel",
+                                "synonyms": [
+                                    "Artikel merken"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Markiere den Artikel",
+                                "synonyms": [
+                                    "Like den Artikel",
+                                    "Favorisiere den Artikel"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Ich mag den Artikel",
+                                "synonyms": [
+                                    "Ich liebe den Artikel"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Artikel favorisieren",
+                                "synonyms": [
+                                    "Artikel liken",
+                                    "Artikel markieren"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Favorisieren",
+                                "synonyms": [
+                                    "Liken",
+                                    "Markieren"
+                                ]
                             }
                         }
                     ]
@@ -732,7 +971,7 @@
                     },
                     "slots": [
                         {
-                            "name": "artikelbezeichnung",
+                            "name": "bezeichnung",
                             "type": "AMAZON.SearchQuery",
                             "confirmationRequired": false,
                             "elicitationRequired": true,
@@ -793,12 +1032,12 @@
                             }
                         },
                         {
-                            "name": "hoehe",
+                            "name": "laenge",
                             "type": "AMAZON.NUMBER",
                             "confirmationRequired": false,
                             "elicitationRequired": true,
                             "prompts": {
-                                "elicitation": "Elicit.Slot.167088562670.623808636453"
+                                "elicitation": "Elicit.Slot.167088562670.973967840772"
                             }
                         },
                         {
@@ -811,12 +1050,12 @@
                             }
                         },
                         {
-                            "name": "laenge",
+                            "name": "hoehe",
                             "type": "AMAZON.NUMBER",
                             "confirmationRequired": false,
                             "elicitationRequired": true,
                             "prompts": {
-                                "elicitation": "Elicit.Slot.167088562670.973967840772"
+                                "elicitation": "Elicit.Slot.167088562670.623808636453"
                             }
                         },
                         {
@@ -830,7 +1069,7 @@
                         },
                         {
                             "name": "abholung",
-                            "type": "ARTIKEL_Bestaetigung",
+                            "type": "Allgemeine_Bestaetigung",
                             "confirmationRequired": false,
                             "elicitationRequired": true,
                             "prompts": {
@@ -882,6 +1121,201 @@
                                     "value": "1"
                                 }
                             ]
+                        }
+                    ]
+                },
+                {
+                    "name": "SucheStartenIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "gesuchterArtikel",
+                            "type": "AMAZON.SearchQuery",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
+                        },
+                        {
+                            "name": "detaillierteSuche",
+                            "type": "Allgemeine_Bestaetigung",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.510739564708.1504030870891"
+                            },
+                            "validations": [
+                                {
+                                    "type": "isInSet",
+                                    "prompt": "Slot.Validation.510739564708.1504030870891.580880154135",
+                                    "values": [
+                                        "Ja",
+                                        "Nein"
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "EinfacheSucheIntent",
+                    "delegationStrategy": "SKILL_RESPONSE",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "kategorie",
+                            "type": "ARTIKEL_Kategorie",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1181431963545.289755380648"
+                            }
+                        },
+                        {
+                            "name": "bezeichnung",
+                            "type": "AMAZON.SearchQuery",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
+                        },
+                        {
+                            "name": "farbe",
+                            "type": "AMAZON.Color",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.923261509854.1374524856225"
+                            }
+                        },
+                        {
+                            "name": "abholung",
+                            "type": "Allgemeine_Bestaetigung",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.999667160592.754310000529"
+                            },
+                            "validations": [
+                                {
+                                    "type": "isInSet",
+                                    "prompt": "Slot.Validation.999667160592.754310000529.1027281910323",
+                                    "values": [
+                                        "ja",
+                                        "nein"
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "DetaillierteSucheIntent",
+                    "delegationStrategy": "SKILL_RESPONSE",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "kategorie",
+                            "type": "ARTIKEL_Kategorie",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.640968784717.323887020274"
+                            }
+                        },
+                        {
+                            "name": "bezeichnung",
+                            "type": "AMAZON.SearchQuery",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
+                        },
+                        {
+                            "name": "farbe",
+                            "type": "AMAZON.Color",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.640968784717.875759163651"
+                            }
+                        },
+                        {
+                            "name": "marke",
+                            "type": "ARTIKEL_Hersteller",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.640968784717.895917798806"
+                            }
+                        },
+                        {
+                            "name": "zustand",
+                            "type": "ARTIKEL_Zustand",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.640968784717.429857837918"
+                            }
+                        },
+                        {
+                            "name": "material",
+                            "type": "ARTIKEL_Material",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.640968784717.13651836266"
+                            }
+                        },
+                        {
+                            "name": "abholung",
+                            "type": "Allgemeine_Bestaetigung",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.640968784717.971566898881"
+                            },
+                            "validations": [
+                                {
+                                    "type": "isInSet",
+                                    "prompt": "Slot.Validation.640968784717.971566898881.11697839474",
+                                    "values": [
+                                        "ja",
+                                        "nein"
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "SuchergebnisseIntent",
+                    "delegationStrategy": "SKILL_RESPONSE",
+                    "confirmationRequired": true,
+                    "prompts": {
+                        "confirmation": "Confirm.Intent.1233892232493"
+                    },
+                    "slots": [
+                        {
+                            "name": "navigationsrichtung",
+                            "type": "SUCHE_Navigationsrichtung",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
+                        },
+                        {
+                            "name": "favorisieren",
+                            "type": "AMAZON.SearchQuery",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
+                        },
+                        {
+                            "name": "kontaktieren",
+                            "type": "AMAZON.SearchQuery",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
                         }
                     ]
                 }
@@ -1136,6 +1570,195 @@
                     {
                         "type": "PlainText",
                         "value": "Der Suchumkreis muss mindestens einen Kilometer betragen"
+                    }
+                ]
+            },
+            {
+                "id": "Confirm.Intent.458057758161",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Möchtest du eine detaillierte Suche starten?"
+                    }
+                ]
+            },
+            {
+                "id": "Confirm.Intent.492291965956",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Soll die Suche mit folgenden Werten gestartet werden?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.492291965956.1513865364321",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Zu welcher Kategorie gehört das?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.1181431963545.289755380648",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Zu welcher Kategorie gehört dein gesuchter Artikel?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Unter welche Kategorie fällt dein gesuchter Artikel?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.510739564708.1504030870891",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Möchtest du eine detaillierte Suche starten?"
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Validation.510739564708.1504030870891.580880154135",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Bitte antworte nur mit Ja oder Nein."
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.923261509854.1374524856225",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Welche Farbe soll dein gewünschter Artikel haben?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Welche Farbe soll dein gesuchter Artikel haben?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.999667160592.754310000529",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Möchtest du den Artikel abholen können?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Soll der Artikel abholbar sein?"
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Validation.999667160592.754310000529.1027281910323",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Beantworte die Frage bitte nur mit Ja oder Nein. Möchtest du den Artikel abholen können?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.640968784717.323887020274",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Unter welche Kategorie fällt dein gesuchter Artikel?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Zu welcher Kategorie gehört dein gesuchter Artikel?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.640968784717.875759163651",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Welche Farbe soll dein gesuchter Artikel haben?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Welche Farbe soll dein gewünschter Artikel haben?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.640968784717.971566898881",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Soll der Artikel abholbar sein?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Möchtest du den Artikel abholen können?"
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Validation.640968784717.971566898881.11697839474",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Beantworte die Frage bitte nur mit Ja oder Nein. Möchtest du den Artikel abholen können?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.640968784717.895917798806",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Wie heißt die Marke deines gesuchten Artikels?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Von welcher Marke ist dein gesuchter Artikel?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.640968784717.429857837918",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Welchen Zustand sollte dein gesuchter Artikel mindestens haben?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "In welchem Zustand sollte sich dein gesuchter Artikel mindestens befinden?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.640968784717.13651836266",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Welches Material soll dein gesuchter Artikel haben?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Aus welchem Material soll dein gesuchter Artikel bestehen?"
+                    }
+                ]
+            },
+            {
+                "id": "Confirm.Intent.1233892232493",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Möchtest du die Suche wirklich beenden?"
                     }
                 ]
             }

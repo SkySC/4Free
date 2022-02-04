@@ -1,8 +1,8 @@
 import logging
 import sys
 
-from ask_sdk_model.dialog import DelegateDirective
 from ask_sdk_model import Intent, IntentConfirmationStatus, Slot, SlotConfirmationStatus
+from ask_sdk_model.dialog import DelegateDirective
 
 logger = logging.getLogger('__name__')
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
@@ -17,6 +17,7 @@ def suche_starten_handler(handler_input):
     request_envelope = handler_input.request_envelope
     request_envelope_permissions = request_envelope.context.system.user.permissions
     request = request_envelope.request
+
     response_builder.set_should_end_session(False)
     # Standortberechtigungen überprüfen
     if not (request_envelope_permissions.scopes["alexa::devices:all:geolocation:read"].status.name == 'GRANTED'
@@ -26,7 +27,8 @@ def suche_starten_handler(handler_input):
     slots = request.intent.slots
     # Slots extrahieren
     gesuchter_artikel_name = slots['gesuchterArtikel'].value if slots['gesuchterArtikel'].value else None
-    zu_delegierender_intent_name = 'DetaillierteSucheIntent' if slots['detaillierteSuche'].value == 'ja' \
+    zu_delegierender_intent_name = 'DetaillierteSucheIntent' \
+        if slots['detaillierteSuche'].value == 'ja' \
         else 'EinfacheSucheIntent'
     logging.info(f'{__name__}: {gesuchter_artikel_name=} | {zu_delegierender_intent_name=}')
 
@@ -51,7 +53,7 @@ def suche_starten_handler(handler_input):
                     'bezeichnung': Slot(
                         name='bezeichnung',
                         confirmation_status=SlotConfirmationStatus.NONE,
-                        # Artikelname übergeben, falls ex.
+                        # Artikelnamen übergeben, falls ex.
                         value=gesuchter_artikel_name
                     )
                 }
