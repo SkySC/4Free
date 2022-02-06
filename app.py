@@ -15,7 +15,7 @@ import Benutzer
 import Database
 
 # Stellt sicher, dass jeder Intent erreichbar ist
-sys.path.insert(0, './lambda/py')
+sys.path.insert(0, 'lambda/py')
 from EntwicklerInfoIntent import entwickler_info_handler
 from AuskunftIntent import auskunft_handler
 from AbfrageEigeneInserateIntent import (
@@ -134,7 +134,7 @@ def help_intent_handler(handler_input) -> Response:
 
     response_builder.set_should_end_session(False)
 
-    response_builder.speak('Folgende Aktionen sind möglich: blabla')
+    response_builder.speak(sprach_prompts['FEATURE_NICHT_IMPLEMENTIERT'])
 
     return response_builder.response
 
@@ -166,7 +166,7 @@ def cancel_and_stop_intent_handler(handler_input) -> Response:
 @sb.request_handler(can_handle_func=is_intent_name("AMAZON.FallbackIntent"))
 def fallback_handler(handler_input) -> Response:
     """
-    Handler, welcher ausgeführt wird, wenn kein passender Intent gefunden wird (nur in 'en-US')
+    Handler, welcher ausgeführt wird, wenn kein passender Intent gefunden wird (klappt nicht immer)
     """
     # Sprachdaten laden
     sprach_prompts = handler_input.attributes_manager.request_attributes['_']
@@ -181,9 +181,8 @@ def fallback_handler(handler_input) -> Response:
 @sb.request_handler(can_handle_func=is_request_type("SessionEndedRequest"))
 def session_ended_request_handler(handler_input) -> Response:
     """
-    Handler, um die Sitzung zu beenden -> Weiterleitung an cancel_and_stop_intent_handler
+    Handler, um die Sitzung zu beenden -> Weiterleitung auf cancel_and_stop_intent_handler
     """
-    # Call cancel_and_stop_intent instead
     return cancel_and_stop_intent_handler(handler_input)
 
 
@@ -204,12 +203,6 @@ def all_exception_handler(handler_input, exception) -> Response:
 
 """
 Eigene Intent-Handler im Decorator-Style
-- EntwicklerInfoIntent
-- AbfrageEigeneInserateIntent
-- RadiusEinstellenIntent
-- AbfrageAnmeldeZeitpunktIntent
-- AbfrageEigeneAdresseIntent
-- InseratErzeugenIntent
 """
 
 
@@ -392,19 +385,26 @@ Eigene Interceptoren, um Vor- & Nachbedingungen zu schaffen
 
 @sb.global_request_interceptor()
 def localization_request_interceptor(handler_input):
+    """
+    Stellt die Sprachdaten für jeden Handler bereit
+    """
     logger.info('Localization Interceptor wird ausgeführt...')
 
     try:
-        with open('languages/de-DE.json') as sprach_prompt_daten:
+        with open('languages/de-DE.json', 'r') as sprach_prompt_daten:
             sprach_prompts = json.load(sprach_prompt_daten)
-            handler_input.attributes_manager.request_attributes['_'] = sprach_prompts
     except FileNotFoundError as e:
         logger.exception(f'Alexa-Sprachbefehle konnten nicht geladen werden: {e}')
         exit()
+    else:
+        handler_input.attributes_manager.request_attributes['_'] = sprach_prompts
 
 
 @sb.global_request_interceptor()
 def logging_request_interceptor(handler_input):
+    """
+    Loggt den Typen jeder Anfrage
+    """
     logging.info(f'{handler_input.request_envelope.request.object_type=}')
 
 

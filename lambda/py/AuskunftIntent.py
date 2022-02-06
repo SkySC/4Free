@@ -22,7 +22,7 @@ def auskunft_handler(handler_input):
     if get_supported_interfaces(handler_input).alexa_presentation_apl:
         response_builder.add_directive(
             RenderDocumentDirective(
-                document=_lade_apl_dokument('./lambda/py/apl/auskunft_apl.json'),
+                document=_lade_apl_dokument('lambda/py/apl/auskunft_apl.json'),
                 datasources=get_apl_daten()
             )
         )
@@ -33,5 +33,11 @@ def auskunft_handler(handler_input):
 
 
 def _lade_apl_dokument(dateipfad: str):
-    with open(dateipfad, 'r') as json_datei:
-        return json.load(json_datei)
+    try:
+        with open(dateipfad, 'r') as json_datei:
+            apl_dokument = json.load(json_datei)
+    except FileNotFoundError as e:
+        logger.exception(f'Alexa-Sprachbefehle konnten nicht geladen werden: {e}')
+        exit()
+    else:
+        return json.load(apl_dokument)

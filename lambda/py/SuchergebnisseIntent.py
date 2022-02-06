@@ -108,7 +108,7 @@ def suchergebnisse_in_progress_handler(handler_input):
                 # Artikel-Id in DB unter Benutzereinstellungen speichern
                 artikel_id = session_attr['suchergebnisse'][session_attr['ergebnis_zeiger']]['_id']
                 if Database.MongoDB.favorit_setzen(artikel_id):
-                    sprach_ausgabe += sprach_prompts['ARTIKEL_FAVORISIEREN_ERFOLG']
+                    sprach_ausgabe += random.choice(sprach_prompts['ARTIKEL_FAVORISIEREN_ERFOLG'])
                 else:
                     sprach_ausgabe += sprach_prompts['ARTIKEL_BEREITS_FAVORISIERT_ODER_FEHLER']
 
@@ -120,7 +120,7 @@ def suchergebnisse_in_progress_handler(handler_input):
                 # Artikel aus DB entfernen
                 artikel_id = session_attr['suchergebnisse'][session_attr['ergebnis_zeiger']]['_id']
                 if Database.MongoDB.favorit_entfernen(artikel_id):
-                    sprach_ausgabe += sprach_prompts['ARTIKEL_FAVORIT_ENTFERNEN_ERFOLG']
+                    sprach_ausgabe += random.choice(sprach_prompts['ARTIKEL_FAVORIT_ENTFERNEN_ERFOLG'])
                 else:
                     sprach_ausgabe += sprach_prompts['ARTIKEL_FAVORIT_ENTFERNEN_FEHLER']
         # Detaillierte Ausgabe

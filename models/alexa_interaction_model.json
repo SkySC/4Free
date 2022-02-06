@@ -13,18 +13,8 @@
                 {
                     "name": "AMAZON.HelpIntent",
                     "samples": [
-                        "For Free. Hilf mir bitte",
+                        "Bitte hilf mir",
                         "Hilf mir bitte",
-                        "For Free. Ich komme nicht weiter",
-                        "For Free. Wie funktioniert das",
-                        "For Free. Ich möchte Hilfe",
-                        "For Free. Öffne die Hilfeseite",
-                        "For Free. Hilf mir",
-                        "For Free. Ich benötige Hilfe",
-                        "For Free. Ich brauche Hilfe",
-                        "For Free. Öffne die Hilfe",
-                        "For Free. Hilfe",
-                        "For Free. Wie geht das",
                         "Wie geht das",
                         "Ich komme nicht weiter",
                         "Wie funktioniert das",
@@ -41,20 +31,7 @@
                 {
                     "name": "AMAZON.StopIntent",
                     "samples": [
-                        "For Free. Bis zum nächsten Mal",
                         "Bis zum nächsten Mal",
-                        "For Free. Ich bin für heute durch",
-                        "For Free. Ich bin fertig für heute",
-                        "For Free. Genug für heute",
-                        "For Free. Ich bin durch",
-                        "For Free. Ich bin fertig",
-                        "For Free. Bis dann",
-                        "For Free. Mach's gut",
-                        "For Free. Auf Wiedersehen",
-                        "For Free. Schließe dich",
-                        "For Free. Schließen",
-                        "For Free. Beende dich",
-                        "For Free. Beenden",
                         "Ich bin für heute durch",
                         "Ich bin fertig für heute",
                         "Genug für heute",
@@ -72,6 +49,10 @@
                 {
                     "name": "AMAZON.NavigateHomeIntent",
                     "samples": [
+                        "Springe an den Anfang",
+                        "Springe zum Start",
+                        "Zurück zum Anfang",
+                        "Zurück zum Start",
                         "Kehre zur Startseite zurück",
                         "Kehre zum Start zurück",
                         "Gehe zum Start zurück",
@@ -90,15 +71,7 @@
                     "name": "EinstellungenOeffnenIntent",
                     "slots": [],
                     "samples": [
-                        "For Free. Zeig meine Einstellungen",
-                        "For Free. Zeige meine Einstellungen",
-                        "For Free. Ruf meine Einstellungen auf",
-                        "For Free. Rufe meine Einstellungen auf",
-                        "For Free. Öffne meine Einstellungen",
-                        "For Free. Öffne die Einstellungen",
-                        "For Free. Einstellungen öffnen",
-                        "For Free. Navigiere zu den Einstellungen",
-                        "For Free. Einstellungen aufrufen",
+                        "Meine Einstellungen",
                         "Ruf meine Einstellungen auf",
                         "Zeig meine Einstellungen",
                         "Zeige meine Einstellungen",
@@ -121,14 +94,31 @@
                         },
                         {
                             "name": "detaillierteSuche",
-                            "type": "Allgemeine_Bestaetigung",
-                            "samples": [
-                                "Nein",
-                                "Ja"
-                            ]
+                            "type": "Allgemeine_Bestaetigung"
                         }
                     ],
                     "samples": [
+                        "Beginne mit einer Suche nach einer {gesuchterArtikel}",
+                        "Beginne mit einer Suche nach einem {gesuchterArtikel}",
+                        "Starte mit einer Suche nach einem {gesuchterArtikel}",
+                        "Starte mit einer Suche nach einer {gesuchterArtikel}",
+                        "Starte mit einer Suche",
+                        "Beginne mit der Suche",
+                        "Starte eine Suche nach einem Artikel für mich",
+                        "Ich suche nach einem Artikel",
+                        "Beginne die Suche nach einem Artikel",
+                        "Beginne mit einer Suche",
+                        "Starte eine Suche für mich",
+                        "Starte eine Suche",
+                        "Suche einen {gesuchterArtikel} für mich",
+                        "Suche ein {gesuchterArtikel} für mich",
+                        "Suche eine {gesuchterArtikel} für mich",
+                        "Begib dich auf die Suche nach einer {gesuchterArtikel}",
+                        "Begib dich auf die Suche nach einem {gesuchterArtikel}",
+                        "Starte eine Suche nach einem {gesuchterArtikel}",
+                        "Starte eine Suche nach einer {gesuchterArtikel}",
+                        "Ich will ein {gesuchterArtikel}",
+                        "Ich möchte einen {gesuchterArtikel}",
                         "Ich will einen {gesuchterArtikel}",
                         "Ich will eine {gesuchterArtikel}",
                         "Ich möchte eine {gesuchterArtikel}",
@@ -187,64 +177,86 @@
                     ]
                 },
                 {
-                    "name": "InserentKontaktierenIntent",
-                    "slots": [],
-                    "samples": [
-                        "Kontaktiere den Anbieter",
-                        "Anbieter kontaktieren",
-                        "Inserent kontaktieren",
-                        "Kontaktiere die Person",
-                        "Kontaktieren",
-                        "Kontaktiere den Inserent",
-                        "Ich bin daran interessiert",
-                        "Ich habe Interesse daran",
-                        "Ich habe Interesse an dem Artikel"
-                    ]
-                },
-                {
-                    "name": "FavorisierenIntent",
-                    "slots": [],
-                    "samples": [
-                        "Merke dir den Artikel",
-                        "Artikel merken",
-                        "Markiere den Artikel",
-                        "Markiere diesen Artikel",
-                        "Artikel favorisieren",
-                        "Favorisiere diesen Artikel",
-                        "Favorisiere den Artikel",
-                        "Favorisieren",
-                        "Markieren"
-                    ]
-                },
-                {
                     "name": "EntwicklerInfoIntent",
                     "slots": [],
                     "samples": [
                         "Von wem stammt For Free",
                         "Von wem stammt der Skill",
                         "Wer hat For Free entwickelt",
-                        "For Free. Wie heißen deine Entwickler",
-                        "For Free. Wer sind deine Entwickler",
-                        "For Free. Wer hat dich entwickelt",
+                        "Wie heißen deine Entwickler",
+                        "Wer sind deine Entwickler",
+                        "Wer hat dich entwickelt",
                         "Von wem wurde der Skill entwickelt",
                         "Von wem wurde For Free entwickelt"
                     ]
                 },
                 {
                     "name": "AbfrageEigeneInserateIntent",
-                    "slots": [],
+                    "slots": [
+                        {
+                            "name": "reihenfolge",
+                            "type": "AMAZON.SearchQuery",
+                            "samples": [
+                                "älteste zuletzt",
+                                "neuste zuletzt",
+                                "älteste zuerst",
+                                "neuste zuerst"
+                            ]
+                        },
+                        {
+                            "name": "aktion",
+                            "type": "AMAZON.SearchQuery"
+                        }
+                    ],
                     "samples": [
-                        "For Free. Welche Artikel biete ich an",
+                        "Was für Inserate habe ich",
+                        "Was für Angebote habe ich",
+                        "Was für Anzeigen habe ich",
+                        "Was für Artikel habe ich",
+                        "Nenne meine Anzeigen",
+                        "Nenne meine Artikel",
+                        "Nenne meine Angebote",
+                        "Nenne meine Inserate",
+                        "Was sind meine Inserate",
+                        "Nenne mir meine Anzeigen",
+                        "Nenne mir meine Inserate",
+                        "Nenne mir meine Artikel",
+                        "Nenne mir meine Angebote",
+                        "Welche Anzeigen gehören mir",
+                        "Welche Angebote gehören mir",
+                        "Welche Artikel gehören mir",
+                        "Welche Inserate gehören mir",
+                        "Welche Anzeigen besitze ich",
+                        "Welche Angebote besitze ich",
+                        "Was sind meine Anzeigen",
+                        "Was sind meine Angebote",
+                        "Was sind meine Artikel",
+                        "Zeig mir meine Angebote",
+                        "Eigene Angebote zeigen",
+                        "Welche Angebote habe ich",
+                        "Welche Artikel besitze ich",
+                        "Liste meine Artikel auf",
+                        "Eigene Artikel auflisten",
+                        "Eigene Angebote auflisten",
+                        "Eigene Angebote anzeigen",
+                        "Eigene Artikel anzeigen",
+                        "Eigene Inserate anzeigen",
+                        "Welche meiner Artikel sind online",
+                        "Welche meiner Anzeigen sind online",
+                        "Welche Anzeigen habe ich",
+                        "Zeige meine aktiven Anzeigen",
+                        "Zeige meine aktiven Artikel",
+                        "Zeige meine aktiven Inserate",
+                        "Welche meiner Artikel sind aktiv",
+                        "Welche Artikel habe ich derzeit",
+                        "Zeig mir meine Artikel",
+                        "Zeig meine Artikel",
+                        "Eigene Artikel zeigen",
+                        "Eigene Inserate zeigen",
+                        "Eigene Artikel",
+                        "Eigene Inserate",
                         "Welche Artikel biete ich an",
-                        "For Free. Welche Artikel habe ich",
                         "Welche Artikel habe ich",
-                        "For Free. Zeige mir meine Artikel",
-                        "For Free. Was biete ich alles an",
-                        "For Free. Was biete ich an",
-                        "For Free. Zeige meine Angebote",
-                        "For Free. Zeige meine Artikel",
-                        "For Free. Zeige meine Inserate",
-                        "For Free. Welche Artikel biete ich derzeit an",
                         "Zeige mir meine Artikel",
                         "Was biete ich alles an",
                         "Was biete ich an",
@@ -255,35 +267,50 @@
                     ]
                 },
                 {
-                    "name": "AbfrageAnzahlKauefeIntent",
-                    "slots": [],
-                    "samples": [
-                        "Sage mir wie viele Artikel ich schon erworben habe",
-                        "Sage mir wie viele Artikel ich erworben habe",
-                        "Sage mir wie viele Artikel ich bereits erworben habe",
-                        "Wie viele Artikel habe ich schon erworben",
-                        "Wie viele Artikel habe ich erworben",
-                        "Wie viele Artikel habe ich bereits erworben"
-                    ]
-                },
-                {
-                    "name": "AbfrageAnzahlInserateIntent",
-                    "slots": [],
-                    "samples": [
-                        "Wie viele Anzeigen habe ich geschaltet"
-                    ]
-                },
-                {
-                    "name": "AbfrageAnzahlSchenkungenIntent",
-                    "slots": [],
-                    "samples": [
-                        "Wie viele Artikel habe ich verschenkt"
-                    ]
-                },
-                {
                     "name": "AbfrageAnmeldezeitpunktIntent",
                     "slots": [],
                     "samples": [
+                        "An welchem Datum habe ich meinen Benutzer verknüpft",
+                        "An welchem Datum habe ich meinen Benutzer verbunden",
+                        "An welchem Datum habe ich mein Benutzer verbunden",
+                        "An welchem Datum habe ich mein Benutzer verknüpft",
+                        "Wann habe ich meinen Benutzer verknüpft",
+                        "Wann habe ich mich mit meinem Benutzer verbunden",
+                        "Wann habe ich mich mit meinem Benutzer registriert",
+                        "Wann habe ich mein Benutzer verbunden",
+                        "An welchem Datum habe ich mein Benutzerkonto mit For Free verbunden",
+                        "An welchem Datum habe ich mein Benutzerkonto verknüpft",
+                        "An welchem Datum habe ich mein Benutzerkonto verbunden",
+                        "An welchem Datum habe ich mein Benutzerkonto mit For Free verknüpft",
+                        "An welchem Datum habe ich mein Amazonkonto mit For Free verbunden",
+                        "An welchem Datum habe ich mein Amazonkonto mit For Free verknüpft",
+                        "An welchem Datum habe ich mein Konto mit For Free verknüpft",
+                        "An welchem Datum habe ich mein Konto verbunden",
+                        "An welchem Datum habe ich mich mit For Free verbunden",
+                        "Wann habe ich mein Benutzerkonto mit For Free verknüpft",
+                        "Wann habe ich mein Amazonkonto mit For Free verbunden",
+                        "Wann habe ich mein Amazonkonto mit For Free verknüpft",
+                        "Wann habe ich mein Konto mit For Free verbunden",
+                        "An welchem Datum habe ich mein Amazonkonto verknüpft",
+                        "An welchem Datum habe ich mein Konto verknüpft",
+                        "Wann ist meine Anmeldung erfolgt",
+                        "Wann habe ich mein Benutzerkonto angelegt",
+                        "Wann habe ich meinen Benutzer angelegt",
+                        "Wann habe ich mein Benutzerkonto verknüpft",
+                        "Wann habe ich mein Benutzerkonto verbunden",
+                        "Wann habe ich mein Amazonkonto verbunden",
+                        "Wann habe ich mein Benutzer verknüpft",
+                        "Wann habe ich For Free das erste Mal verwendet",
+                        "Wann habe ich mich angemeldet",
+                        "Wann wurde mein Benutzer registriert",
+                        "Wann habe ich mich mit meinem Benutzer angemeldet",
+                        "Wann habe ich mein Konto bei For Free registriert",
+                        "Wann habe ich mich mit For Free verbunden",
+                        "Wann habe ich mein Konto verknüpft",
+                        "Wann habe ich mich registriert",
+                        "Wann habe ich meinen Benutzer verbunden",
+                        "Wann nutzte ich For Free das erste Mal",
+                        "Wann habe ich For Free das erste Mal genutzt",
                         "Wann habe ich das erste Mal For Free verwendet"
                     ]
                 },
@@ -355,19 +382,8 @@
                             ]
                         },
                         {
-                            "name": "form",
-                            "type": "ARTIKEL_Form",
-                            "samples": [
-                                "Der Artikel hat eine {form} Form",
-                                "Mein Artikel hat eine {form} Form",
-                                "Mein Artikel ist {form}",
-                                "{form}",
-                                "Der Artikel ist {form}"
-                            ]
-                        },
-                        {
                             "name": "hersteller",
-                            "type": "ARTIKEL_Hersteller",
+                            "type": "AMAZON.SearchQuery",
                             "samples": [
                                 "Er ist von {hersteller}",
                                 "Von {hersteller}",
@@ -455,6 +471,27 @@
                         }
                     ],
                     "samples": [
+                        "Angebot schalten",
+                        "Inserat schalten",
+                        "Neues Inserat schalten",
+                        "Neues Angebot schalten",
+                        "Neue Anzeige schalten",
+                        "Neuen Artikel verschenken",
+                        "Neues Angebot einstellen",
+                        "Neues Angebot hinzufügen",
+                        "Neuen Artikel hinzufügen",
+                        "Artikel hinzufügen",
+                        "Angebot hinzufügen",
+                        "Angebot einstellen",
+                        "Ich möchte einen neuen Artikel einstellen",
+                        "Artikel einstellen",
+                        "Neuen Artikel einstellen",
+                        "Neuen Artikel inseriern",
+                        "Neue Anzeige erstellen",
+                        "Neue Anzeige",
+                        "Artikel inserieren",
+                        "Etwas verschenken",
+                        "Artikel verschenken",
                         "Ich habe etwas für dich",
                         "Ich möchte etwas verschenken",
                         "Ich habe etwas zu verschenken",
@@ -498,74 +535,54 @@
                         "Ich möchte jemandem einen Gegenstand schenken",
                         "Einen Artikel verschenken",
                         "Eine Sache verschenken",
-                        "For Free. Ich habe etwas für dich",
-                        "For Free. Ich habe etwas zu verschenken",
-                        "For Free. Ich habe was für dich",
-                        "For Free. Ich habe was zu verschenken",
-                        "For Free. Ich habe einen Gegenstand zu verschenken",
-                        "For Free. Ich habe eine {bezeichnung} zu verschenken",
-                        "For Free. Ich habe einen {bezeichnung} zu verschenken",
-                        "For Free. Ich habe ein {bezeichnung} zu verschenken",
-                        "For Free. Ich habe Geschenke",
-                        "For Free. Ich habe Geschenke für dich",
-                        "For Free. Ich habe einen Artikel zu verschenken",
-                        "For Free. Ich habe einen Artikel für dich",
-                        "For Free. Ich habe einen Gegenstand für dich",
-                        "For Free. Ich habe eine Sache für dich",
-                        "For Free. Ich will eine {bezeichnung} verschenken",
-                        "For Free. Ich will einen {bezeichnung} verschenken",
-                        "For Free. Ich will ein {bezeichnung} verschenken",
-                        "For Free. Ich will etwas verschenken",
-                        "For Free. Ich will was verschenken",
-                        "For Free. Ich will einen Gegenstand verschenken",
-                        "For Free. Ich will eine Sache verschenken",
-                        "For Free. Ich will Anderen eine Freude bereiten",
-                        "For Free. Ich will einen Artikel verschenken",
-                        "For Free. Ich möchte etwas verschenken",
-                        "For Free. Ich möchte was verschenken",
-                        "For Free. Ich möchte einen Gegenstand verschenken",
-                        "For Free. Ich möchte eine {bezeichnung} verschenken",
-                        "For Free. Ich möchte einen {bezeichnung} verschenken",
-                        "For Free. Ich möchte ein {bezeichnung} verschenken",
-                        "For Free. Ich möchte Anderen eine Freude bereiten",
-                        "For Free. Ich möchte verschenken",
-                        "For Free. Ich möchte einen Artikel verschenken",
-                        "For Free. Ich möchte jemand anderem eine Sache schenken",
-                        "For Free. Ich möchte jemandem eine Sache schenken",
-                        "For Free. Ich möchte jemand anderem einen Gegenstand schenken",
-                        "For Free. Ich möchte jemand anderem einen Artikel schenken",
-                        "For Free. Ich möchte jemandem einen Artikel schenken",
-                        "For Free. Ich möchte jemandem einen Gegenstand schenken",
-                        "For Free. Ich möchte eine Sache verschenken",
-                        "For Free. Es gibt bei mir einen Gegenstand zu verschenken",
-                        "For Free. Es gibt bei mir etwas zu verschenken",
-                        "For Free. Es gibt bei mir was zu verschenken",
-                        "For Free. Es gibt bei mir einen Artikel zu verschenken",
-                        "For Free. Es gibt bei mir eine Sache zu verschenken",
-                        "For Free. Es gibt einen Gegenstand zu verschenken",
-                        "For Free. Es gibt etwas zu verschenken",
-                        "For Free. Es gibt was zu verschenken",
-                        "For Free. Es gibt einen Artikel zu verschenken",
-                        "For Free. Es gibt eine Sache zu verschenken",
                         "Inserat erzeugen",
                         "Ich möchte ein Inserat erzeugen",
                         "Ich möchte ein Inserat erstellen",
                         "Ich will ein Inserat erzeugen",
                         "Ich will ein Inserat erstellen",
                         "Erstelle ein Inserat",
-                        "Erzeuge ein Inserat",
-                        "For Free. Ich möchte ein Inserat erzeugen",
-                        "For Free. Ich möchte ein Inserat erstellen",
-                        "For Free. Ich will ein Inserat erzeugen",
-                        "For Free. Ich will ein Inserat erstellen",
-                        "For Free. Erstelle ein Inserat",
-                        "For Free. Erzeuge ein Inserat"
+                        "Erzeuge ein Inserat"
                     ]
                 },
                 {
                     "name": "BenutzerLinkingIntent",
                     "slots": [],
                     "samples": [
+                        "Verbinde mein Benutzer mit For Free",
+                        "Verbinde meinen Benutzer mit For Free",
+                        "Verbinde mein Amazonkonto mit For Free",
+                        "Ich will meinen Benutzer mit For Free verbinden",
+                        "Ich will mein Benutzer mit For Free verbinden",
+                        "Ich will mein Amazonkonto mit For Free verknüpfen",
+                        "Ich will mein Amazonkonto mit For Free verbinden",
+                        "Ich will mein Konto mit For Free verknüpfen",
+                        "Ich will mein Konto mit For Free verbinden",
+                        "Ich möchte meinen Benutzer mit For Free verknüpfen",
+                        "Ich möchte meinen Benutzer mit For Free verbinden",
+                        "Verknüpfe mein Konto mit For Free",
+                        "Verbinde mein Konto mit For Free",
+                        "Ich möchte mein Konto mit For Free verknüpfen",
+                        "Ich möchte mein Konto mit For Free verbinden",
+                        "Ich möchte mich mit For Free verbinden",
+                        "Verknüpfe mein Benutzerkonto mit For Free",
+                        "Verbinde mein Benutzerkonto mit For Free",
+                        "Ich will mein Benutzerkonto mit For Free verknüpfen",
+                        "Ich möchte mein Benutzerkonto mit For Free verbinden",
+                        "Ich will mein Benutzerkonto mit For Free verbinden",
+                        "Ich möchte mein Benutzerkonto mit For Free verknüpfen",
+                        "Verbind mein Benutzerkonto",
+                        "Verknüpfe mein Benutzerkonto",
+                        "Verknüpfe meinen Benutzer",
+                        "Verknüpfe mein Amazonkonto",
+                        "Amazonkonto verknüpfen",
+                        "Mein Benutzerkonto verbinden",
+                        "Amazonkonto verbinden",
+                        "Ich möchte mein Benutzerkonto verbinden",
+                        "Ich will mein Amazonkonto verbinden",
+                        "Ich will mein Benutzerkonto verbinden",
+                        "Ich möchte mein Amazonkonto verknüpfen",
+                        "Ich möchte mein Amazonkonto verbinden",
+                        "Verbinde mein Amazonkonto",
                         "Verbinde meinen Benutzer",
                         "Verbinde mein Benutzerkonto",
                         "Verbinde mein Konto",
@@ -619,6 +636,22 @@
                         }
                     ],
                     "samples": [
+                        "Grenze mein Radius auf {radius} Kilometer ein",
+                        "Grenze meinen Suchradius auf {radius} Kilometer ein",
+                        "Ich möchte mein Suchradius einstellen",
+                        "Ich will mein Suchradius einstellen",
+                        "Ich will meinen Suchradius einstellen",
+                        "Ich möchte meinen Suchradius einstellen",
+                        "Update meinen Suchradius",
+                        "Update meinen Suchradius auf {radius} Kilometer",
+                        "Update meinen Radius auf {radius} Kilometer",
+                        "Update meinen Radius",
+                        "Setze mein Radius auf {radius} Kilometer",
+                        "Stelle mein Radius auf {radius} Kilometer",
+                        "Radius auf {radius} Kilometer stellen",
+                        "Radius auf {radius} Kilometer setzen",
+                        "Suchradius auf {radius} Kilometer setzen",
+                        "Suchradius auf {radius} Kilometer stellen",
                         "Radius eingrenzen",
                         "Verändere meinen Radius auf {radius} Kilometer",
                         "Verändere den Radius auf {radius} Kilometer",
@@ -643,7 +676,7 @@
                         "Setze meinen Radius auf {radius} Kilometer",
                         "Verändere meinen Suchradius auf {radius} Kilometer",
                         "Ändere meinen Suchradius auf {radius} Kilometer",
-                        "Stelle meinen Suchradius auf {radius} Kilomete",
+                        "Stelle meinen Suchradius auf {radius} Kilometer",
                         "Stelle den Radius auf {radius} Kilometer",
                         "Radius einstellen",
                         "Ändere den Umkreis auf {radius} Kilometer",
@@ -656,12 +689,8 @@
                         "Stelle den Suchradius auf {radius} Kilometer",
                         "Radius verändern",
                         "Radius ändern",
-                        "Umkreis verändern",
-                        "Umkreis ändern",
                         "Suchradius ändern",
-                        "Umkreis eingrenzen",
                         "Suchradius eingrenzen",
-                        "Umkreis einstellen",
                         "Suchradius verändern",
                         "Suchradius einstellen",
                         "Ändere den Radius auf {radius} Kilometer"
@@ -671,6 +700,51 @@
                     "name": "AbfrageEigeneAdresseIntent",
                     "slots": [],
                     "samples": [
+                        "Wie lautet die hinterlegte Adresse",
+                        "Meine hinterlegten Adressangaben",
+                        "Meine hinterlegte Adresse",
+                        "Meine Adressangaben",
+                        "Meine Adresse",
+                        "Wo befinde ich mich",
+                        "Was ist mein Wohnort",
+                        "Wie lautet mein Wohnort",
+                        "Wo lebe ich",
+                        "Nenne mir meine Adressangaben",
+                        "Nenne mir meine hinterlegte Adresse",
+                        "Nenne mir meine hinterlegte Anschrift",
+                        "Wie lautet meine hinterlegte Anschrift",
+                        "Wie lautet meine hinterlegte Adresse",
+                        "Welche aktuelle Anschrift ist hinterlegt",
+                        "Welche aktuelle Adresse ist hinterlegt",
+                        "Welche Adressangaben sind in meinem Benutzerkonto hinterlegt",
+                        "Welche Adressangaben sind in meinem Konto hinterlegt",
+                        "Welche Adressangaben sind in meinem Amazonkonto hinterlegt",
+                        "Welche Adressangaben hast du hinterlegt",
+                        "Welche Adressangaben sind hinterlegt",
+                        "Wie sind meine Adressangaben",
+                        "Wie lautet meine aktuelle Anschrift",
+                        "Wie lautet die aktuelle Anschrift",
+                        "Nenne mir meine Anschrift",
+                        "Nenne meine Anschrift",
+                        "Zeige mir meine Anschrift",
+                        "Zeige meine Anschrift",
+                        "Welche Anschrift ist in meinem Amazonkonto hinterlegt",
+                        "Welche Anschrift ist in meinem Benutzerkonto hinterlegt",
+                        "Welche Anschrift ist in meinem Konto hinterlegt",
+                        "Welche Anschrift habe ich hinterlegt",
+                        "Welche Anschrift hast du hinterlegt",
+                        "Welche Anschrift ist hinterlegt",
+                        "Wie ist meine Anschrift",
+                        "Wie ist meine Adresse",
+                        "Wie lautet meine Anschrift",
+                        "Nenne meine Adresse",
+                        "Ich will meine Adresse wissen",
+                        "Ich möchte meine Adresse wissen",
+                        "Welche Adresse ist bei mir hinterlegt",
+                        "Welche Adresse ist bei dir hinterlegt",
+                        "Welche Adresse ist in meinem Konto hinterlegt",
+                        "Wo wohne ich",
+                        "Welche Adresse habe ich hinterlegt",
                         "Zeige meine Adresse",
                         "Zeige mir meine Adresse",
                         "Sag mir meine Adresse",
@@ -689,10 +763,7 @@
                     "slots": [
                         {
                             "name": "kategorie",
-                            "type": "ARTIKEL_Kategorie",
-                            "samples": [
-                                "{kategorie}"
-                            ]
+                            "type": "ARTIKEL_Kategorie"
                         },
                         {
                             "name": "bezeichnung",
@@ -700,21 +771,53 @@
                         },
                         {
                             "name": "farbe",
-                            "type": "AMAZON.Color",
-                            "samples": [
-                                "{farbe}"
-                            ]
+                            "type": "AMAZON.Color"
                         },
                         {
                             "name": "abholung",
-                            "type": "Allgemeine_Bestaetigung",
-                            "samples": [
-                                "nein",
-                                "ja"
-                            ]
+                            "type": "Allgemeine_Bestaetigung"
                         }
                     ],
                     "samples": [
+                        "Ich will mit einer einfachen Suche beginnen",
+                        "Ich will mit einer einfachen Suche starten",
+                        "Ich möchte mit einer einfachen Suche starten",
+                        "Ich will mit einer vereinfachten Suche beginnen",
+                        "Ich möchte mit einer vereinfachten Suche beginnen",
+                        "Ich möchte mit einer vereinfachten Suche starten",
+                        "Ich will mit einer vereinfachten Suche starten",
+                        "Beginne mit einer vereinfachten Suche",
+                        "Starte mit einer vereinfachten Suche",
+                        "Ich will eine einfache Suche beginnen",
+                        "Ich will eine vereinfachte Suche beginnen",
+                        "Ich möchte eine einfache Suche starten",
+                        "Ich will eine einfache Suche starten",
+                        "Ich will eine vereinfachte Suche starten",
+                        "Ich möchte eine vereinfachte Suche starten",
+                        "Ich möchte eine vereinfachte Suche beginnen",
+                        "Ich möchte eine einfache Suche beginnen",
+                        "Vereinfachte Suche durchführen",
+                        "Vereinfachte Suche nach einer {bezeichnung}",
+                        "Vereinfachte Suche nach einem {bezeichnung}",
+                        "Führe eine einfache Suche nach einer {bezeichnung} durch",
+                        "Führe eine einfache Suche nach einem {bezeichnung} durch",
+                        "Führe eine einfache Suche durch",
+                        "Starte eine vereinfachte Suche nach einer {bezeichnung}",
+                        "Starte eine vereinfachte Suche nach einem {bezeichnung}",
+                        "Beginne eine vereinfachte Suche",
+                        "Starte eine vereinfachte Suche",
+                        "Vereinfachte Suche starten",
+                        "Vereinfachte Suche",
+                        "Starte eine einfache Suche nach einer {bezeichnung}",
+                        "Starte eine einfache Suche nach einem {bezeichnung}",
+                        "Beginne eine einfache Suche",
+                        "Starte mit einer einfachen Suche",
+                        "Einfache Suche durchführen",
+                        "Ich möchte eine einfache Suche nach einer {bezeichnung} durchführen",
+                        "Ich möchte eine einfache Suche nach einem {bezeichnung} durchführen",
+                        "Ich möchte eine einfache Suche durchführen",
+                        "Beginne mit einer einfachen Suche",
+                        "Starte eine einfache Suche",
                         "Einfache Suche starten",
                         "Einfache Suche"
                     ]
@@ -724,10 +827,7 @@
                     "slots": [
                         {
                             "name": "kategorie",
-                            "type": "ARTIKEL_Kategorie",
-                            "samples": [
-                                "{kategorie}"
-                            ]
+                            "type": "ARTIKEL_Kategorie"
                         },
                         {
                             "name": "bezeichnung",
@@ -735,87 +835,327 @@
                         },
                         {
                             "name": "farbe",
-                            "type": "AMAZON.Color",
-                            "samples": [
-                                "{farbe}"
-                            ]
+                            "type": "AMAZON.Color"
                         },
                         {
-                            "name": "marke",
-                            "type": "ARTIKEL_Hersteller",
+                            "name": "hersteller",
+                            "type": "AMAZON.SearchQuery",
                             "samples": [
-                                "{marke}"
+                                "Benq",
+                                "Logitech",
+                                "Birkenstock",
+                                "Nike",
+                                "Adidas",
+                                "Hollister",
+                                "Jack and Jones",
+                                "Gucci",
+                                "Porsche",
+                                "Microsoft",
+                                "LG",
+                                "zalando",
+                                "zara",
+                                "ace and tate",
+                                "Bose",
+                                "HP",
+                                "Denns Biomarkt",
+                                "Denns",
+                                "Blue Yeti",
+                                "Dell",
+                                "Jabra",
+                                "Alibaba",
+                                "Amazon",
+                                "Saturn",
+                                "Mediamarkt",
+                                "Netto",
+                                "Aldi",
+                                "Lidl",
+                                "Edeka",
+                                "Mömax",
+                                "IKEA",
+                                "Huawei",
+                                "Xiaomi",
+                                "P und C",
+                                "H und M",
+                                "Samsung",
+                                "Lenovo",
+                                "Volkswagen",
+                                "VW",
+                                "Audi",
+                                "Grovemade",
+                                "Google",
+                                "Apple"
                             ]
                         },
                         {
                             "name": "zustand",
-                            "type": "ARTIKEL_Zustand",
-                            "samples": [
-                                "{zustand}"
-                            ]
+                            "type": "ARTIKEL_Zustand"
                         },
                         {
                             "name": "material",
-                            "type": "ARTIKEL_Material",
-                            "samples": [
-                                "{material}"
-                            ]
+                            "type": "ARTIKEL_Material"
                         },
                         {
                             "name": "abholung",
-                            "type": "Allgemeine_Bestaetigung",
-                            "samples": [
-                                "nein",
-                                "ja"
-                            ]
+                            "type": "Allgemeine_Bestaetigung"
                         }
                     ],
                     "samples": [
+                        "Ich will mit einer detaillierten Suche nach einer {bezeichnung} beginnen",
+                        "Ich will mit einer detaillierten Suche nach einem {bezeichnung} beginnen",
+                        "Ich möchte mit einer detaillierten Suche nach einer {bezeichnung} beginnen",
+                        "Ich möchte mit einer detaillierten Suche nach einem {bezeichnung} beginnen",
+                        "Ich will mit einer detaillierten Suche starten",
+                        "Ich will mit einer detaillierten Suche beginnen",
+                        "Ich will eine detaillierte Suche beginnen",
+                        "Ich will eine detaillierte Suche starten",
+                        "Ich möchte mit einer detaillierten Suche starten",
+                        "Ich möchte mit einer detaillierten Suche beginnen",
+                        "Ich möchte eine detaillierte Suche beginnen",
+                        "Ich möchte eine detaillierte Suche starten",
+                        "Starte eine Suche mit Details",
+                        "Suche mit Details",
+                        "Detaillierte Suche durchführen",
+                        "Detaillierte Suche nach einer {bezeichnung}",
+                        "Detaillierte Suche nach einem {bezeichnung}",
+                        "Führe eine detaillierte Suche nach einer {bezeichnung} durch",
+                        "Führe eine detaillierte Suche nach einem {bezeichnung} durch",
+                        "Führe eine detaillierte Suche durch",
+                        "Starte eine detaillierte Suche nach einer {bezeichnung}",
+                        "Starte eine detaillierte Suche nach einem {bezeichnung}",
+                        "Beginne eine detaillierte Suche",
+                        "Starte eine detaillierte Suche",
                         "Detaillierte Suche starten",
-                        "Detaillierte Suche"
+                        "Detaillierte Suche",
+                        "Starte mit einer detaillierten Suche",
+                        "Ich möchte eine detaillierte Suche nach einer {bezeichnung} durchführen",
+                        "Ich möchte eine detaillierte Suche nach einem {bezeichnung} durchführen",
+                        "Ich möchte eine detaillierte Suche durchführen",
+                        "Beginne mit einer detaillierten Suche"
                     ]
                 },
                 {
                     "name": "SuchergebnisseIntent",
                     "slots": [
                         {
-                            "name": "navigationsrichtung",
-                            "type": "SUCHE_Navigationsrichtung"
+                            "name": "ergebnisseAusgeben",
+                            "type": "SUCHE_Bestaetigen"
                         },
                         {
-                            "name": "favorisieren",
-                            "type": "AMAZON.SearchQuery"
-                        },
-                        {
-                            "name": "kontaktieren",
+                            "name": "aktion",
                             "type": "AMAZON.SearchQuery"
                         }
                     ],
                     "samples": [
+                        "Ich möchte die Suchtreffer aus der vorherigen Suche sehen",
+                        "Ich will die Suchtreffer aus der vorherigen Suche sehen",
+                        "Ich möchte die Suchergebnisse aus der vorherigen Suche sehen",
+                        "Ich will die Suchergebnisse aus der vorherigen Suche sehen",
+                        "Ich möchte die Resultate aus der vorherigen Suche sehen",
+                        "Ich will die Resultate aus der vorherigen Suche sehen",
+                        "Ich will die Ergebnisse aus der vorherigen Suche sehen",
+                        "Ich möchte die Ergebnisse aus der vorherigen Suche sehen",
+                        "Lade meine Resultate aus der Suche zuvor",
+                        "Lade meine Ergebnisse aus der Suche zuvor",
+                        "Welche Treffer hatte meine Suche zuvor",
+                        "Welche Ergebnisse hatte meine Suche zuvor",
+                        "Welche Suchergebnisse hatte meine Suche zuvor",
+                        "Welche Suchergebnisse hatte meine Suche",
+                        "Welche Ergebnisse hatte meine Suche",
+                        "Welche Treffer hatte meine Suche",
+                        "Lade meine Suchergebnisse aus der vorherigen Suche",
+                        "Lade meine Suchtreffer aus der vorherigen Suche",
+                        "Lade meine Ergebnisse aus der vorherigen Suche",
+                        "Was hat die Suche zuvor ergeben",
+                        "Welche Treffer hatte die vorherige Suche",
+                        "Nenne mir die Treffer aus der vorherigen Suche",
+                        "Nenne mir die Resultate aus der vorherigen Suche",
+                        "Welche Resultate hatte die Suche zuvor",
+                        "Welche Ergebnisse hatte die Suche zuvor",
+                        "Welche Resultate hat die Suche zuvor ergeben",
+                        "Welche Ergebnisse hat die Suche zuvor ergeben",
+                        "Welche Resultate hatte die vorherige Suche",
+                        "Welche Ergebnisse hatte die vorherige Suche",
+                        "Nenne mir die Ergebnisse aus der vorherigen Suche",
+                        "Was sind die Ergebnisse aus der vorherigen Suche",
+                        "Die Ergebnisse aus der vorherigen Suche",
+                        "Ergebnisse aus vorheriger Suche",
+                        "Die Ergebnisse der vorherigen Suche",
+                        "Was sind die Ergebnisse der vorherigen Suche",
+                        "Welches Resultat hatte die vorherige Suche",
+                        "Nenne mir die Suchtreffer der vorherigen Suche",
+                        "Nenne mir die Suchergebniss der vorherigen Suche",
+                        "Zeige mir die Suchtreffer der vorherigen Suche",
+                        "Zeige mir die Suchtreffer",
+                        "Zeige mir die Suchergebnisse der vorherigen Suche",
+                        "Zeige mir die Ergebnisse der Suche",
+                        "Zeige mir die Suchergebnisse",
+                        "Welches Ergebnis hatte die Suche zuvor",
+                        "Welches Ergebnis hatte die vorherige Suche",
+                        "Was ist bei der vorherigen Suche rausgekommen",
+                        "Welche Resultate hat die vorherige Suche ergeben",
+                        "Resultate der vorherigen Suche",
+                        "Suchergebnisse der vorherigen Suche",
+                        "Suchtreffer der vorherigen Suche",
+                        "Suchtreffer aus vorheriger Suche",
+                        "Suchtreffer aus der vorherigen Suche",
+                        "Was hat die vorherige Suche ergeben",
+                        "Welche Artikel wurden in der vorherigen Suche gefunden",
+                        "Ergebnisse der vorherigen Suche",
+                        "Suchergebnisse aus vorheriger Suche",
+                        "Zeige meine Suchtreffer",
+                        "Zeige meine Suchergebnisse",
+                        "Suchergebnisse wiederholen",
                         "Suchtreffer anzeigen",
                         "Suchtreffer",
                         "Suchergebnisse anzeigen",
                         "Suchergebnisse"
                     ]
+                },
+                {
+                    "name": "AuskunftIntent",
+                    "slots": [],
+                    "samples": [
+                        "Erzähle mir etwas über die Funktionen",
+                        "Ich möchte mehr über die Funktionen erfahren",
+                        "Was bietest du alles an Funktionen an",
+                        "Welche Funktionen bietest du alles an",
+                        "Was bietest du an Funktion an",
+                        "Welche Funktionen bietest du an",
+                        "Welche Funktionen bietest du",
+                        "Welche Funktionen hast du",
+                        "Was kann der Skill tun",
+                        "Was kann der Skill machen",
+                        "Was steht mir alles an Funktionen zur Verfügung",
+                        "Was steht mir an Funktionen zur Verfügung",
+                        "Ich möchte etwas über die Funktionen erfahren",
+                        "Erzähle mir was über die Funktionen",
+                        "Was sollte ich dringend wissen",
+                        "Was muss ich dringend wissen",
+                        "Was sollte ich unbedingt wissen",
+                        "Was muss ich unbedingt wissen",
+                        "Ich weiß nicht was ich tun kann",
+                        "Wozu dient der Skill",
+                        "Ich will was über die Funktionen erfahren",
+                        "Ich will die Funktionen kennenlernen",
+                        "Ich möchte was über die Funktionen erfahren",
+                        "Ich möchte die Funktionen kennenlernen",
+                        "Nenne mir die Funktionen",
+                        "Nenne mir alle Funktionen",
+                        "Wofür ist der Skill",
+                        "Wofür ist der Skill da",
+                        "Ich weiß nicht was ich machen kann",
+                        "Ich kenne mich nicht aus",
+                        "Was für Möglichkeiten habe ich",
+                        "Welche Funktionen stehen mir zur Verfügung",
+                        "Was kann ich alles mit For Free tun",
+                        "Was kann ich alles mit For Free machen",
+                        "Was kann der Skill",
+                        "Was kann ich mit For Free machen",
+                        "Was sollte ich wissen",
+                        "Was muss ich wissen",
+                        "Was gibt es zu wissen",
+                        "Was kannst du alles For Free",
+                        "Über welche Funktionen verfügst du",
+                        "Über welche Funktionen verfügt For Free",
+                        "Welche Funktionen hat For Free",
+                        "Welche Funktionen existieren",
+                        "Welche Funktionen gibt es",
+                        "Was kann For Free",
+                        "Was kann For Free alles",
+                        "Was kann ich alles machen",
+                        "Was kann ich alles tun",
+                        "Was kann ich alles"
+                    ]
                 }
             ],
             "types": [
-                {
-                    "name": "ARTIKEL_Form",
-                    "values": [
-                        {
-                            "name": {
-                                "value": "rechteckig"
-                            }
-                        }
-                    ]
-                },
                 {
                     "name": "ARTIKEL_Zustand",
                     "values": [
                         {
                             "name": {
-                                "value": "sehr gut"
+                                "value": "repariert"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "beschädigt",
+                                "synonyms": [
+                                    "mit Schäden"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "mangelhaft",
+                                "synonyms": [
+                                    "sehr schlecht",
+                                    "nicht funktionsfähig",
+                                    "unbrauchbar",
+                                    "miserabel"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "unbeschädigt",
+                                "synonyms": [
+                                    "funktionierend",
+                                    "ohne Schäden"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "schlecht",
+                                "synonyms": [
+                                    "nicht gut"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "originalverpackt",
+                                "synonyms": [
+                                    "neuverpackt",
+                                    "verpackt"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "neu",
+                                "synonyms": [
+                                    "hervorragend"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "befriedigend",
+                                "synonyms": [
+                                    "intakt",
+                                    "funktionsfähig"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "gut",
+                                "synonyms": [
+                                    "gut erhalten"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "sehr gut",
+                                "synonyms": [
+                                    "klasse",
+                                    "sehr gut erhalten",
+                                    "einwandfrei",
+                                    "ohne Mängel"
+                                ]
                             }
                         }
                     ]
@@ -825,7 +1165,101 @@
                     "values": [
                         {
                             "name": {
-                                "value": "Technik"
+                                "value": "Kunst",
+                                "synonyms": [
+                                    "Gemälde"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Sammeln"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Recycling"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Industrie"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Business"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Sport"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Accessoires",
+                                "synonyms": [
+                                    "Armbänder",
+                                    "Ketten"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Haus und Garten",
+                                "synonyms": [
+                                    "Blumen",
+                                    "Pflanzen",
+                                    "Möbel",
+                                    "Garten",
+                                    "Haus"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Motors",
+                                "synonyms": [
+                                    "Autos"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Schreibwaren"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Kleidung",
+                                "synonyms": [
+                                    "Dessous",
+                                    "Hemden",
+                                    "Hosen",
+                                    "Oberteile",
+                                    "Schuhe"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Technik",
+                                "synonyms": [
+                                    "Kopfhörer",
+                                    "Waschmaschinen",
+                                    "Staubsauger",
+                                    "Monitore",
+                                    "Laptops",
+                                    "Lautsprecher",
+                                    "Staubsauger",
+                                    "Smartphones",
+                                    "Tablets",
+                                    "Handys",
+                                    "Computer",
+                                    "PC",
+                                    "Elektronik"
+                                ]
                             }
                         }
                     ]
@@ -835,17 +1269,189 @@
                     "values": [
                         {
                             "name": {
-                                "value": "Holz"
+                                "value": "Tier",
+                                "synonyms": [
+                                    "Fell",
+                                    "Tierfell"
+                                ]
                             }
-                        }
-                    ]
-                },
-                {
-                    "name": "ARTIKEL_Hersteller",
-                    "values": [
+                        },
                         {
                             "name": {
-                                "value": "IKEA"
+                                "value": "Plastik"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Polyester"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Seide"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Elasthan"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Polyamid"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Polyacryl"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Viskose"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Lyocell"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Daunen"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Leinen"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Kaschmir"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Naturfaser"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Titan"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Smaragd"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Diamant"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Saphir"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Nickel"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Kupfer"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Knochen"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Edelstein"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Chrom"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Keramik"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Baumwolle",
+                                "synonyms": [
+                                    "Wolle"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Glas"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Kunststoff"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Harz"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Stahl"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Eisen"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Bronze"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Silber"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Gold"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Samt"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Aluminium"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Metall"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Holz"
                             }
                         }
                     ]
@@ -855,104 +1461,49 @@
                     "values": [
                         {
                             "name": {
-                                "value": "nein"
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "ja"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "SUCHE_Navigationsrichtung",
-                    "values": [
-                        {
-                            "name": {
-                                "value": "nächste"
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "vorherige"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "SUCHE_Kontaktieren",
-                    "values": [
-                        {
-                            "name": {
-                                "value": "Mit Anbieter in Verbindung setzen",
+                                "value": "Ja",
                                 "synonyms": [
-                                    "Mit Inserent in Verbindung setzen"
+                                    "Yes"
                                 ]
                             }
                         },
                         {
                             "name": {
-                                "value": "Kontaktieren",
+                                "value": "Nein",
                                 "synonyms": [
-                                    "Kontakt aufnehmen",
-                                    "in Verbindung setzen"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Anbieter kontaktieren",
-                                "synonyms": [
-                                    "Inserent kontaktieren"
+                                    "No"
                                 ]
                             }
                         }
                     ]
                 },
                 {
-                    "name": "SUCHE_Favorisieren",
+                    "name": "SUCHE_Bestaetigen",
                     "values": [
                         {
                             "name": {
-                                "value": "Merke dir den Artikel",
+                                "value": "Zurück",
                                 "synonyms": [
-                                    "Artikel merken"
+                                    "Zurück zum Start",
+                                    "Zum Start",
+                                    "Umkehren",
+                                    "Zurückkehren"
                                 ]
                             }
                         },
                         {
                             "name": {
-                                "value": "Markiere den Artikel",
+                                "value": "Ergebnisse laden",
                                 "synonyms": [
-                                    "Like den Artikel",
-                                    "Favorisiere den Artikel"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Ich mag den Artikel",
-                                "synonyms": [
-                                    "Ich liebe den Artikel"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Artikel favorisieren",
-                                "synonyms": [
-                                    "Artikel liken",
-                                    "Artikel markieren"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Favorisieren",
-                                "synonyms": [
-                                    "Liken",
-                                    "Markieren"
+                                    "Resultate zeigen",
+                                    "Suchergebnisse zeigen",
+                                    "Suchtreffer zeigen",
+                                    "Treffer zeigen",
+                                    "Ergebnisse zeigen",
+                                    "Treffer laden",
+                                    "Suchergebnisse laden",
+                                    "Suchtreffer laden",
+                                    "Resultate laden"
                                 ]
                             }
                         }
@@ -1014,17 +1565,8 @@
                             }
                         },
                         {
-                            "name": "form",
-                            "type": "ARTIKEL_Form",
-                            "confirmationRequired": false,
-                            "elicitationRequired": true,
-                            "prompts": {
-                                "elicitation": "Elicit.Slot.167088562670.494883029924"
-                            }
-                        },
-                        {
                             "name": "hersteller",
-                            "type": "ARTIKEL_Hersteller",
+                            "type": "AMAZON.SearchQuery",
                             "confirmationRequired": false,
                             "elicitationRequired": true,
                             "prompts": {
@@ -1119,6 +1661,11 @@
                                     "type": "isGreaterThanOrEqualTo",
                                     "prompt": "Slot.Validation.35832918871.1502533261928.756172721208",
                                     "value": "1"
+                                },
+                                {
+                                    "type": "isLessThanOrEqualTo",
+                                    "prompt": "Slot.Validation.1283406940617.154130017149.988565126280",
+                                    "value": "30"
                                 }
                             ]
                         }
@@ -1146,12 +1693,8 @@
                             },
                             "validations": [
                                 {
-                                    "type": "isInSet",
-                                    "prompt": "Slot.Validation.510739564708.1504030870891.580880154135",
-                                    "values": [
-                                        "Ja",
-                                        "Nein"
-                                    ]
+                                    "type": "hasEntityResolutionMatch",
+                                    "prompt": "Slot.Validation.1259717479281.752935374094.1319302517781"
                                 }
                             ]
                         }
@@ -1198,12 +1741,8 @@
                             },
                             "validations": [
                                 {
-                                    "type": "isInSet",
-                                    "prompt": "Slot.Validation.999667160592.754310000529.1027281910323",
-                                    "values": [
-                                        "ja",
-                                        "nein"
-                                    ]
+                                    "type": "hasEntityResolutionMatch",
+                                    "prompt": "Slot.Validation.1540728308320.475153551055.914015978933"
                                 }
                             ]
                         }
@@ -1241,8 +1780,8 @@
                             }
                         },
                         {
-                            "name": "marke",
-                            "type": "ARTIKEL_Hersteller",
+                            "name": "hersteller",
+                            "type": "AMAZON.SearchQuery",
                             "confirmationRequired": false,
                             "elicitationRequired": true,
                             "prompts": {
@@ -1256,7 +1795,13 @@
                             "elicitationRequired": true,
                             "prompts": {
                                 "elicitation": "Elicit.Slot.640968784717.429857837918"
-                            }
+                            },
+                            "validations": [
+                                {
+                                    "type": "hasEntityResolutionMatch",
+                                    "prompt": "Slot.Validation.1214244575754.458246299668.1080599099927"
+                                }
+                            ]
                         },
                         {
                             "name": "material",
@@ -1265,7 +1810,13 @@
                             "elicitationRequired": true,
                             "prompts": {
                                 "elicitation": "Elicit.Slot.640968784717.13651836266"
-                            }
+                            },
+                            "validations": [
+                                {
+                                    "type": "hasEntityResolutionMatch",
+                                    "prompt": "Slot.Validation.1214244575754.1581140681237.1310457276456"
+                                }
+                            ]
                         },
                         {
                             "name": "abholung",
@@ -1277,12 +1828,8 @@
                             },
                             "validations": [
                                 {
-                                    "type": "isInSet",
-                                    "prompt": "Slot.Validation.640968784717.971566898881.11697839474",
-                                    "values": [
-                                        "ja",
-                                        "nein"
-                                    ]
+                                    "type": "hasEntityResolutionMatch",
+                                    "prompt": "Slot.Validation.1214244575754.258960391240.1295970150922"
                                 }
                             ]
                         }
@@ -1291,27 +1838,64 @@
                 {
                     "name": "SuchergebnisseIntent",
                     "delegationStrategy": "SKILL_RESPONSE",
-                    "confirmationRequired": true,
-                    "prompts": {
-                        "confirmation": "Confirm.Intent.1233892232493"
-                    },
+                    "confirmationRequired": false,
+                    "prompts": {},
                     "slots": [
                         {
-                            "name": "navigationsrichtung",
-                            "type": "SUCHE_Navigationsrichtung",
+                            "name": "ergebnisseAusgeben",
+                            "type": "SUCHE_Bestaetigen",
                             "confirmationRequired": false,
-                            "elicitationRequired": false,
-                            "prompts": {}
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.622923308817.586624665236"
+                            },
+                            "validations": [
+                                {
+                                    "type": "hasEntityResolutionMatch",
+                                    "prompt": "Slot.Validation.1553797501009.1503774426345.16396232026"
+                                }
+                            ]
                         },
                         {
-                            "name": "favorisieren",
+                            "name": "aktion",
                             "type": "AMAZON.SearchQuery",
                             "confirmationRequired": false,
                             "elicitationRequired": false,
                             "prompts": {}
+                        }
+                    ]
+                },
+                {
+                    "name": "AbfrageEigeneInserateIntent",
+                    "delegationStrategy": "SKILL_RESPONSE",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "reihenfolge",
+                            "type": "AMAZON.SearchQuery",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1185925745601.474419681501"
+                            },
+                            "validations": [
+                                {
+                                    "type": "isInSet",
+                                    "prompt": "Slot.Validation.321086570298.1359075013860.1172735294055",
+                                    "values": [
+                                        "neuste zuerst",
+                                        "neuste zuletzt",
+                                        "älteste zuerst",
+                                        "neueste zuerst",
+                                        "neueste zuletzt",
+                                        "älteste zuletzt"
+                                    ]
+                                }
+                            ]
                         },
                         {
-                            "name": "kontaktieren",
+                            "name": "aktion",
                             "type": "AMAZON.SearchQuery",
                             "confirmationRequired": false,
                             "elicitationRequired": false,
@@ -1337,19 +1921,6 @@
                     {
                         "type": "PlainText",
                         "value": "Sind die Daten soweit korrekt?"
-                    }
-                ]
-            },
-            {
-                "id": "Elicit.Slot.167088562670.494883029924",
-                "variations": [
-                    {
-                        "type": "PlainText",
-                        "value": "Wie würdest du die Form deines Artikels beschreiben?"
-                    },
-                    {
-                        "type": "PlainText",
-                        "value": "Welche Form hat dein Artikel?"
                     }
                 ]
             },
@@ -1542,7 +2113,15 @@
                 "variations": [
                     {
                         "type": "PlainText",
-                        "value": "Möchtest du den Suchradius wirklich auf {radius} Kilometer setzen?"
+                        "value": "Soll ich deinen Suchradius wirklich auf {radius} Kilometer setzen?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Du möchtest deinen Suchradius auf {radius} Kilometer setzen, stimmt das?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Möchtest du deinen Suchradius wirklich auf {radius} Kilometer setzen?"
                     }
                 ]
             },
@@ -1569,7 +2148,7 @@
                 "variations": [
                     {
                         "type": "PlainText",
-                        "value": "Der Suchumkreis muss mindestens einen Kilometer betragen"
+                        "value": "Der Suchradius sollte mindestens einen Kilometer betragen. Auf wie viel Kilometer möchtest du deinen Suchradius stellen?"
                     }
                 ]
             },
@@ -1605,11 +2184,11 @@
                 "variations": [
                     {
                         "type": "PlainText",
-                        "value": "Zu welcher Kategorie gehört dein gesuchter Artikel?"
+                        "value": "Zu welcher Kategorie gehört der gesuchte Artikel?"
                     },
                     {
                         "type": "PlainText",
-                        "value": "Unter welche Kategorie fällt dein gesuchter Artikel?"
+                        "value": "Unter welche Kategorie fällt der gesuchte Artikel?"
                     }
                 ]
             },
@@ -1623,24 +2202,19 @@
                 ]
             },
             {
-                "id": "Slot.Validation.510739564708.1504030870891.580880154135",
-                "variations": [
-                    {
-                        "type": "PlainText",
-                        "value": "Bitte antworte nur mit Ja oder Nein."
-                    }
-                ]
-            },
-            {
                 "id": "Elicit.Slot.923261509854.1374524856225",
                 "variations": [
                     {
                         "type": "PlainText",
-                        "value": "Welche Farbe soll dein gewünschter Artikel haben?"
+                        "value": "Nach welcher Farbe suchst du?"
                     },
                     {
                         "type": "PlainText",
-                        "value": "Welche Farbe soll dein gesuchter Artikel haben?"
+                        "value": "Nenne mir deine für den Artikel gewünschte Farbe"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Welche Farbe sollte dein gewünschter Artikel haben?"
                     }
                 ]
             },
@@ -1658,24 +2232,15 @@
                 ]
             },
             {
-                "id": "Slot.Validation.999667160592.754310000529.1027281910323",
-                "variations": [
-                    {
-                        "type": "PlainText",
-                        "value": "Beantworte die Frage bitte nur mit Ja oder Nein. Möchtest du den Artikel abholen können?"
-                    }
-                ]
-            },
-            {
                 "id": "Elicit.Slot.640968784717.323887020274",
                 "variations": [
                     {
                         "type": "PlainText",
-                        "value": "Unter welche Kategorie fällt dein gesuchter Artikel?"
+                        "value": "Unter welche Kategorie fällt der gesuchte Artikel?"
                     },
                     {
                         "type": "PlainText",
-                        "value": "Zu welcher Kategorie gehört dein gesuchter Artikel?"
+                        "value": "Zu welcher Kategorie gehört der gesuchte Artikel?"
                     }
                 ]
             },
@@ -1684,11 +2249,15 @@
                 "variations": [
                     {
                         "type": "PlainText",
-                        "value": "Welche Farbe soll dein gesuchter Artikel haben?"
+                        "value": "Welche Farbe sollte dein gewünschter Artikel haben?"
                     },
                     {
                         "type": "PlainText",
-                        "value": "Welche Farbe soll dein gewünschter Artikel haben?"
+                        "value": "Nenne mir deine für den Artikel gewünschte Farbe"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Nach welcher Farbe suchst du?"
                     }
                 ]
             },
@@ -1706,24 +2275,19 @@
                 ]
             },
             {
-                "id": "Slot.Validation.640968784717.971566898881.11697839474",
-                "variations": [
-                    {
-                        "type": "PlainText",
-                        "value": "Beantworte die Frage bitte nur mit Ja oder Nein. Möchtest du den Artikel abholen können?"
-                    }
-                ]
-            },
-            {
                 "id": "Elicit.Slot.640968784717.895917798806",
                 "variations": [
                     {
                         "type": "PlainText",
-                        "value": "Wie heißt die Marke deines gesuchten Artikels?"
+                        "value": "Wie heißt der Hersteller des Produkts?"
                     },
                     {
                         "type": "PlainText",
-                        "value": "Von welcher Marke ist dein gesuchter Artikel?"
+                        "value": "Zu welcher Marke gehört der gesuchte Artikel?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Von welcher Marke ist der gesuchte Artikel?"
                     }
                 ]
             },
@@ -1732,11 +2296,19 @@
                 "variations": [
                     {
                         "type": "PlainText",
-                        "value": "Welchen Zustand sollte dein gesuchter Artikel mindestens haben?"
+                        "value": "In welchem Mindestzustand sollte sich der gesuchte Artikel befinden?"
                     },
                     {
                         "type": "PlainText",
-                        "value": "In welchem Zustand sollte sich dein gesuchter Artikel mindestens befinden?"
+                        "value": "Was für einen Zustand sollte der gesuchte Artikel mindestens haben?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Welchen Zustand sollte der gesuchte Artikel mindestens besitzen?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "In welchem Zustand sollte sich der gesuchte Artikel mindestens befinden?"
                     }
                 ]
             },
@@ -1745,11 +2317,15 @@
                 "variations": [
                     {
                         "type": "PlainText",
-                        "value": "Welches Material soll dein gesuchter Artikel haben?"
+                        "value": "Aus welchem speziellen Material sollte der gesuchte Artikel sein?"
                     },
                     {
                         "type": "PlainText",
-                        "value": "Aus welchem Material soll dein gesuchter Artikel bestehen?"
+                        "value": "Welches Material soll der gesuchte Artikel haben?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Aus welchem Material soll der gesuchte Artikel bestehen?"
                     }
                 ]
             },
@@ -1758,7 +2334,115 @@
                 "variations": [
                     {
                         "type": "PlainText",
-                        "value": "Möchtest du die Suche wirklich beenden?"
+                        "value": "Test"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.622923308817.586624665236",
+                "variations": [
+                    {
+                        "type": "SSML",
+                        "value": "<speak>Deine Suche hat Treffer ergeben. Sage: Ergebnisse laden, um zu hören was ich gefunden habe oder: Zurück, um wieder auf die Hauptseite zu gelangen. Was möchtest du tun?</speak>"
+                    }
+                ]
+            },
+            {
+                "id": "Confirm.Slot.1324301691799.309317166996",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "ff"
+                    }
+                ]
+            },
+            {
+                "id": "Confirm.Intent.1553797501009",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Test"
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Validation.1553797501009.1503774426345.16396232026",
+                "variations": [
+                    {
+                        "type": "SSML",
+                        "value": "<speak> {ergebnisseAusgeben} ist keine gültige Antwort. Beantworte die Frage bitte nur mit: Ergebnisse laden oder: Zurück.</speak>"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.1185925745601.474419681501",
+                "variations": [
+                    {
+                        "type": "SSML",
+                        "value": "<speak>Du kannst bestimmen in welcher Reihenfolge ich deine Artikel ordne. Sage zum Beispiel <break time=\".3s\" />neuste zuerst oder <break time=\".3s\" />älteste zuerst. Wie sollen deine Artikel angeordnet werden?</speak>"
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Validation.321086570298.1359075013860.1172735294055",
+                "variations": [
+                    {
+                        "type": "SSML",
+                        "value": "<speak>{reihenfolge} ist keine gültige Sortierung. Eine gültige Sortierung ist zum Beispiel: Neuste zuerst oder: Älteste zuerst. Wie lautet deine Eingabe?</speak>"
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Validation.1259717479281.752935374094.1319302517781",
+                "variations": [
+                    {
+                        "type": "SSML",
+                        "value": "<speak>{detaillierteSuche} ist keine gültige Antwort. Antworte bitte nur mit: Ja oder: Nein. Möchtest du eine detaillierte Suche starten?</speak>"
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Validation.1540728308320.475153551055.914015978933",
+                "variations": [
+                    {
+                        "type": "SSML",
+                        "value": "<speak>{abholung} ist keine gültige Antwort. Beantworte die Frage bitte nur mit: Ja oder: Nein. Soll eine Abholung vor Ort möglich sein?</speak>"
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Validation.1214244575754.458246299668.1080599099927",
+                "variations": [
+                    {
+                        "type": "SSML",
+                        "value": "<speak> {zustand} ist kein gültiger Zustand. Versuche es zum Beispiel mit: sehr gut, einwandfrei oder: neu. Welcher Mindestzustand ist gewünscht?</speak>"
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Validation.1214244575754.1581140681237.1310457276456",
+                "variations": [
+                    {
+                        "type": "SSML",
+                        "value": "<speak> {material}  kenne ich leider nicht. Versuche es zum Beispiel mit: Aluminium, Baumwolle oder: Holz. Aus welchem Material soll der gesuchte Artikel bestehen?</speak>"
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Validation.1214244575754.258960391240.1295970150922",
+                "variations": [
+                    {
+                        "type": "SSML",
+                        "value": "<speak>{abholung} ist keine gültige Antwort. Beantworte die Frage bitte nur mit: Ja oder: Nein. Soll eine Abholung vor Ort möglich sein?</speak>"
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Validation.1283406940617.154130017149.988565126280",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Der Suchradius darf dreißig Kilometer nicht übersteigen. Auf wie viel Kilometer möchtest du deinen Suchradius stellen?"
                     }
                 ]
             }
