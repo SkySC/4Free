@@ -40,16 +40,17 @@ def get_adresse(handler_input) -> any:
     else:
         try:
             notwendige_standortdaten = get_geraete_standortdaten(handler_input)
-            if None in notwendige_standortdaten:
-                response_builder.speak(sprach_prompts['BENUTZER_ADRESSE_NICHT_GEFUNDEN_ODER_UNVOLLSTAENDIG_FEHLER'])
-            else:
-                response_builder.speak(str(sprach_prompts['ADRESSE_AUSGABE']).format(*notwendige_standortdaten))
         except ServiceException as e:
             logging.exception(f'{__name__}: Service Exception: {e}')
 
             response_builder.speak(sprach_prompts['ALLGEMEINER_FEHLER'])
         except Exception as e:
             raise e
+        else:
+            if None in notwendige_standortdaten:
+                response_builder.speak(sprach_prompts['BENUTZER_ADRESSE_NICHT_GEFUNDEN_ODER_UNVOLLSTAENDIG_FEHLER'])
+            else:
+                response_builder.speak(str(sprach_prompts['ADRESSE_AUSGABE']).format(*notwendige_standortdaten))
 
     return response_builder
 
@@ -62,4 +63,4 @@ def get_geraete_standortdaten(handler_input) -> list:
     logging.info(f'{standort=}')
 
     benutzer_land = 'Deutschland' if standort.country_code == 'DE' else standort.country_code
-    return [standort.address_line2, standort.postal_code, standort.city, benutzer_land]
+    return [standort.address_line1, standort.postal_code, standort.city, benutzer_land]

@@ -17,7 +17,10 @@ def inserat_erzeugen_start_handler(handler_input):
     sprach_prompts = handler_input.attributes_manager.request_attributes['_']
     response_builder = handler_input.response_builder
     intent = handler_input.request_envelope.request.intent
+
     response_builder.set_should_end_session(False)
+
+    logging.info(f'{intent.slots["bezeichnung"]}=')
     # Zähler für Anzahl verbleibende Fragen in Session Attribut speichern
     handler_input.attributes_manager.session_attributes['anzahl_verbleibende_fragen'] = 11
     # Inserat kann nicht erzeugt werden, solange kein Benutzer verlinkt ist
@@ -55,7 +58,6 @@ def inserat_erzeugen_in_progress_handler(handler_input):
     sprach_ausgabe += '</speak>'
     # Wenn die letzte Frage beantwortet wird
     if slots['anmerkung'].value:
-        # Eigener Prompt, um Artikel zu bestätigen
         abholung_satzbaustein = 'mit' \
             if slots['abholung'].value == 'ja' \
             else 'ohne'

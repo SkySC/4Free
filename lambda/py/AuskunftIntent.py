@@ -40,4 +40,4 @@ def _lade_apl_dokument(dateipfad: str):
         logger.exception(f'Alexa-Sprachbefehle konnten nicht geladen werden: {e}')
         exit()
     else:
-        return json.load(apl_dokument)
+        return apl_dokument

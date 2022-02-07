@@ -1,4 +1,5 @@
 import logging
+import random
 import sys
 
 from ask_sdk_model.dialog import ElicitSlotDirective, DelegateDirective
@@ -190,7 +191,7 @@ def abfrage_eigene_inserate_in_progress_handler(handler_input):
     sprach_ausgabe += '</speak>'
 
     return response_builder.speak(sprach_ausgabe).ask(
-        sprach_prompts['AKTION_REPROMPT']
+        random.choice(sprach_prompts['AKTION_REPROMPT'])
     ).add_directive(
         ElicitSlotDirective(slot_to_elicit='aktion')
     ).response

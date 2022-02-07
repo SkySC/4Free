@@ -26,7 +26,7 @@ def einfache_suche_start_handler(handler_input):
         return response_builder.speak(sprach_prompts['ANFRAGE_STANDORT_BERECHTIGUNGEN']).response
     # Anzahl Fragen in Session Attribut speichern
     attributes_manager.session_attributes['anzahl_verbleibende_fragen'] = 3 \
-        if intent.slots['beschreibung'].value \
+        if intent.slots['bezeichnung'].value \
         else 4
     response_builder.speak(str(sprach_prompts['EINFACHE_SUCHE_STARTEN_BEGRUESSUNG']).format(
         attributes_manager.session_attributes['anzahl_verbleibende_fragen'])
@@ -57,7 +57,7 @@ def einfache_suche_in_progress_handler(handler_input):
     if not slots['bezeichnung'].value:
         sprach_ausgabe += f'{random.choice(sprach_prompts["ARTIKEL_BEZEICHNUNG_ERFRAGEN"])}</speak>'
         return response_builder.speak(sprach_ausgabe).ask(
-            sprach_prompts['ARTIKEL_BEZEICHNUNG_ERFRAGEN_REPROMPT']
+            random.choice(sprach_prompts['ARTIKEL_BEZEICHNUNG_ERFRAGEN_REPROMPT'])
         ).add_directive(
             ElicitSlotDirective(slot_to_elicit='bezeichnung')
         ).response

@@ -52,12 +52,13 @@ class AmazonBenutzer:
         except (pymongo.errors.InvalidDocument, pymongo.errors.ConnectionFailure, pymongo.errors.NetworkTimeout) as e:
             logging.exception(f'{__name__}: Statistik für \"{eintrag}\" konnte nicht gelesen werden: {e}')
         else:
-            try:
-                angefragter_wert = benutzer_statistik[eintrag]
-            except KeyError as e:
-                logging.exception(f'{__name__}: Key existiert nicht: {e}')
-            else:
-                return angefragter_wert
+            if benutzer_statistik:
+                try:
+                    angefragter_wert = benutzer_statistik[eintrag]
+                except KeyError as e:
+                    logging.exception(f'{__name__}: Key existiert nicht: {e}')
+                else:
+                    return angefragter_wert
 
         return None
 

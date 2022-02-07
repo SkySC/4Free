@@ -1165,6 +1165,11 @@
                     "values": [
                         {
                             "name": {
+                                "value": "Freizeit"
+                            }
+                        },
+                        {
+                            "name": {
                                 "value": "Kunst",
                                 "synonyms": [
                                     "Gemälde"
@@ -1221,6 +1226,7 @@
                             "name": {
                                 "value": "Motors",
                                 "synonyms": [
+                                    "Fahrzeuge",
                                     "Autos"
                                 ]
                             }
@@ -1451,7 +1457,10 @@
                         },
                         {
                             "name": {
-                                "value": "Holz"
+                                "value": "Holz",
+                                "synonyms": [
+                                    "Bambus"
+                                ]
                             }
                         }
                     ]
@@ -1562,7 +1571,13 @@
                             "elicitationRequired": true,
                             "prompts": {
                                 "elicitation": "Elicit.Slot.167088562670.1243103029895"
-                            }
+                            },
+                            "validations": [
+                                {
+                                    "type": "hasEntityResolutionMatch",
+                                    "prompt": "Slot.Validation.1568553633816.1515195407577.118028118169"
+                                }
+                            ]
                         },
                         {
                             "name": "hersteller",
@@ -1607,7 +1622,13 @@
                             "elicitationRequired": true,
                             "prompts": {
                                 "elicitation": "Elicit.Slot.167088562670.556712077720"
-                            }
+                            },
+                            "validations": [
+                                {
+                                    "type": "hasEntityResolutionMatch",
+                                    "prompt": "Slot.Validation.1568553633816.1506575260211.298568957713"
+                                }
+                            ]
                         },
                         {
                             "name": "abholung",
@@ -1616,7 +1637,13 @@
                             "elicitationRequired": true,
                             "prompts": {
                                 "elicitation": "Elicit.Slot.167088562670.1409346292419"
-                            }
+                            },
+                            "validations": [
+                                {
+                                    "type": "hasEntityResolutionMatch",
+                                    "prompt": "Slot.Validation.1568553633816.1027307388277.1072138263546"
+                                }
+                            ]
                         },
                         {
                             "name": "anmerkung",
@@ -1713,7 +1740,13 @@
                             "elicitationRequired": true,
                             "prompts": {
                                 "elicitation": "Elicit.Slot.1181431963545.289755380648"
-                            }
+                            },
+                            "validations": [
+                                {
+                                    "type": "hasEntityResolutionMatch",
+                                    "prompt": "Slot.Validation.1120072556095.116966157622.663468488109"
+                                }
+                            ]
                         },
                         {
                             "name": "bezeichnung",
@@ -1761,7 +1794,13 @@
                             "elicitationRequired": true,
                             "prompts": {
                                 "elicitation": "Elicit.Slot.640968784717.323887020274"
-                            }
+                            },
+                            "validations": [
+                                {
+                                    "type": "hasEntityResolutionMatch",
+                                    "prompt": "Slot.Validation.634269590599.1445113322719.41029274205"
+                                }
+                            ]
                         },
                         {
                             "name": "bezeichnung",
@@ -2086,8 +2125,8 @@
                 "id": "Slot.Validation.392550176061.859591506360.83472921330",
                 "variations": [
                     {
-                        "type": "PlainText",
-                        "value": "Du musst mindestens einen Artikel anbieten"
+                        "type": "SSML",
+                        "value": "<speak><audio src=\"soundbank://soundlibrary/scifi/amzn_sfx_scifi_alarm_06\"/> Um eine Anzeige zu erstellen, musst du mindestens einen Artikel anbieten. Wie viele Artikel dieser Art bietest du an?</speak>"
                     }
                 ]
             },
@@ -2147,8 +2186,8 @@
                 "id": "Slot.Validation.35832918871.1502533261928.756172721208",
                 "variations": [
                     {
-                        "type": "PlainText",
-                        "value": "Der Suchradius sollte mindestens einen Kilometer betragen. Auf wie viel Kilometer möchtest du deinen Suchradius stellen?"
+                        "type": "SSML",
+                        "value": "<speak><audio src=\"soundbank://soundlibrary/scifi/amzn_sfx_scifi_alarm_06\"/> Der Suchradius sollte mindestens einen Kilometer betragen. Auf wie viel Kilometer möchtest du deinen Suchradius stellen?</speak>"
                     }
                 ]
             },
@@ -2370,7 +2409,7 @@
                 "variations": [
                     {
                         "type": "SSML",
-                        "value": "<speak> {ergebnisseAusgeben} ist keine gültige Antwort. Beantworte die Frage bitte nur mit: Ergebnisse laden oder: Zurück.</speak>"
+                        "value": "<speak><audio src=\"soundbank://soundlibrary/scifi/amzn_sfx_scifi_alarm_06\"/>  {ergebnisseAusgeben} ist keine gültige Antwort. Beantworte die Frage bitte nur mit: Ergebnisse laden oder: Zurück.</speak>"
                     }
                 ]
             },
@@ -2388,7 +2427,7 @@
                 "variations": [
                     {
                         "type": "SSML",
-                        "value": "<speak>{reihenfolge} ist keine gültige Sortierung. Eine gültige Sortierung ist zum Beispiel: Neuste zuerst oder: Älteste zuerst. Wie lautet deine Eingabe?</speak>"
+                        "value": "<speak><audio src=\"soundbank://soundlibrary/scifi/amzn_sfx_scifi_alarm_06\"/> {reihenfolge} ist keine gültige Sortierung. Eine gültige Sortierung ist zum Beispiel: Neuste zuerst oder: Älteste zuerst. Wie lautet deine Eingabe?</speak>"
                     }
                 ]
             },
@@ -2397,7 +2436,7 @@
                 "variations": [
                     {
                         "type": "SSML",
-                        "value": "<speak>{detaillierteSuche} ist keine gültige Antwort. Antworte bitte nur mit: Ja oder: Nein. Möchtest du eine detaillierte Suche starten?</speak>"
+                        "value": "<speak><audio src=\"soundbank://soundlibrary/scifi/amzn_sfx_scifi_alarm_06\"/> {detaillierteSuche} ist keine gültige Antwort. Antworte bitte nur mit: Ja oder: Nein. Möchtest du eine detaillierte Suche starten?</speak>"
                     }
                 ]
             },
@@ -2406,7 +2445,7 @@
                 "variations": [
                     {
                         "type": "SSML",
-                        "value": "<speak>{abholung} ist keine gültige Antwort. Beantworte die Frage bitte nur mit: Ja oder: Nein. Soll eine Abholung vor Ort möglich sein?</speak>"
+                        "value": "<speak><audio src=\"soundbank://soundlibrary/scifi/amzn_sfx_scifi_alarm_06\"/> {abholung} ist keine gültige Antwort. Beantworte die Frage bitte nur mit: Ja oder: Nein. Soll eine Abholung vor Ort möglich sein?</speak>"
                     }
                 ]
             },
@@ -2415,7 +2454,7 @@
                 "variations": [
                     {
                         "type": "SSML",
-                        "value": "<speak> {zustand} ist kein gültiger Zustand. Versuche es zum Beispiel mit: sehr gut, einwandfrei oder: neu. Welcher Mindestzustand ist gewünscht?</speak>"
+                        "value": "<speak><audio src=\"soundbank://soundlibrary/scifi/amzn_sfx_scifi_alarm_06\"/>  {zustand} ist kein gültiger Zustand. Versuche es zum Beispiel mit: sehr gut, einwandfrei oder: neu. Welcher Mindestzustand ist gewünscht?</speak>"
                     }
                 ]
             },
@@ -2424,7 +2463,7 @@
                 "variations": [
                     {
                         "type": "SSML",
-                        "value": "<speak> {material}  kenne ich leider nicht. Versuche es zum Beispiel mit: Aluminium, Baumwolle oder: Holz. Aus welchem Material soll der gesuchte Artikel bestehen?</speak>"
+                        "value": "<speak><audio src=\"soundbank://soundlibrary/scifi/amzn_sfx_scifi_alarm_06\"/>  {material}  kenne ich leider nicht. Versuche es zum Beispiel mit: Aluminium, Baumwolle oder: Holz. Aus welchem Material soll der gesuchte Artikel bestehen?</speak>"
                     }
                 ]
             },
@@ -2433,7 +2472,7 @@
                 "variations": [
                     {
                         "type": "SSML",
-                        "value": "<speak>{abholung} ist keine gültige Antwort. Beantworte die Frage bitte nur mit: Ja oder: Nein. Soll eine Abholung vor Ort möglich sein?</speak>"
+                        "value": "<speak><audio src=\"soundbank://soundlibrary/scifi/amzn_sfx_scifi_alarm_06\"/> {abholung} ist keine gültige Antwort. Beantworte die Frage bitte nur mit: Ja oder: Nein. Soll eine Abholung vor Ort möglich sein?</speak>"
                     }
                 ]
             },
@@ -2441,8 +2480,53 @@
                 "id": "Slot.Validation.1283406940617.154130017149.988565126280",
                 "variations": [
                     {
-                        "type": "PlainText",
-                        "value": "Der Suchradius darf dreißig Kilometer nicht übersteigen. Auf wie viel Kilometer möchtest du deinen Suchradius stellen?"
+                        "type": "SSML",
+                        "value": "<speak><audio src=\"soundbank://soundlibrary/scifi/amzn_sfx_scifi_alarm_06\"/> Der Suchradius darf dreißig Kilometer nicht übersteigen. Auf wie viel Kilometer möchtest du deinen Suchradius stellen?</speak>"
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Validation.1120072556095.116966157622.663468488109",
+                "variations": [
+                    {
+                        "type": "SSML",
+                        "value": "<speak><audio src=\"soundbank://soundlibrary/scifi/amzn_sfx_scifi_alarm_06\"/> {kategorie} ist keine gültige Kategorie. Versuche es zum Beispiel mit: Kunst oder: Freizeit. Unter welche Kategorie fällt dein Artikel?</speak>"
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Validation.634269590599.1445113322719.41029274205",
+                "variations": [
+                    {
+                        "type": "SSML",
+                        "value": "<speak><audio src=\"soundbank://soundlibrary/scifi/amzn_sfx_scifi_alarm_06\"/> {kategorie} ist keine gültige Kategorie. Versuche es zum Beispiel mit: Kunst oder: Freizeit. Unter welche Kategorie fällt dein Artikel?</speak>"
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Validation.1568553633816.1515195407577.118028118169",
+                "variations": [
+                    {
+                        "type": "SSML",
+                        "value": "<speak><audio src=\"soundbank://soundlibrary/scifi/amzn_sfx_scifi_alarm_06\"/> {material}  kenne ich leider nicht. Versuche es zum Beispiel mit: Aluminium, Baumwolle oder: Holz. Aus welchem Material soll der gesuchte Artikel bestehen?</speak>"
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Validation.1568553633816.1506575260211.298568957713",
+                "variations": [
+                    {
+                        "type": "SSML",
+                        "value": "<speak><audio src=\"soundbank://soundlibrary/scifi/amzn_sfx_scifi_alarm_06\"/> {zustand} ist kein gültiger Zustand. Versuche es zum Beispiel mit: sehr gut, einwandfrei oder: neu. Welcher Mindestzustand ist gewünscht?</speak>"
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Validation.1568553633816.1027307388277.1072138263546",
+                "variations": [
+                    {
+                        "type": "SSML",
+                        "value": "<speak><audio src=\"soundbank://soundlibrary/scifi/amzn_sfx_scifi_alarm_06\"/> {abholung} ist keine gültige Antwort. Beantworte die Frage bitte nur mit: Ja oder: Nein. Soll eine Abholung vor Ort möglich sein?</speak>"
                     }
                 ]
             }

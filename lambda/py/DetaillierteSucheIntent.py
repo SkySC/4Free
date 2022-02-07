@@ -27,7 +27,7 @@ def detaillierte_suche_start_handler(handler_input):
     # Anzahl Fragen in Session Attribut speichern
 
     attributes_manager.session_attributes['anzahl_verbleibende_fragen'] = 6\
-        if intent.slots['beschreibung'].value \
+        if intent.slots['bezeichnung'].value \
         else 7
     response_builder.speak(str(sprach_prompts['DETAILLIERTE_SUCHE_STARTEN_BEGRUESSUNG']).format(
         attributes_manager.session_attributes['anzahl_verbleibende_fragen'])
